@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Coleccion;
 use Coleccion1\http\Request\ColeccionRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ColeccionController extends Controller
 {
@@ -15,9 +16,9 @@ class ColeccionController extends Controller
      */
     public function index(Request $request)
     {
-        $nombre = $request->get('nombre');
+        $nombre = $request->get('nombreColeccion');
         $colecciones = Coleccion::orderBy('id','DESC')->nombre($nombre)->paginate(10);
-        return view('coleccion.index',compact('colecciones'));
+               return view('coleccion.index',compact('colecciones'));
     }
 
     /**
@@ -42,12 +43,13 @@ class ColeccionController extends Controller
     {
         $this->validate($request,[
 
-          'idColeccion',
+          'id',
           'nombreColeccion'
         ]);
         
         Coleccion::create($request->all());
-        return redirect()->route('coleccion.index')->with('success','Coleccion creada con éxito');
+        Alert::success('Colección agregada con éxito');
+        return redirect()->route('coleccion.index');
     }
 
     /**
@@ -101,9 +103,11 @@ class ColeccionController extends Controller
     {
         try{
             Coleccion::find($idColeccion)->delete();
-        return redirect()->route('coleccion.index')->with('success','Coleccion eliminado con exito');
+            Alert::success('Coleccion eliminada con exito');
+        return redirect()->route('coleccion.index');
     		} catch  (\Illuminate\Database\QueryException $e){
-        return redirect()->route('coleccion.index')->with('danger','No se Puede eliminar este registro porque esta asociado con otra asignación');
+                 Alert::danger('No se Puede eliminar este registro porque esta asociado con otra asignació');
+        return redirect()->route('coleccion.index');
         }
     }
 }
