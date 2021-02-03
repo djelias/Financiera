@@ -16,4 +16,5 @@ Route::get('/', function () {
 });
 
  Route::resource('coleccion','ColeccionController');
+ Route::resource('departamento','DepartamentoController');
 
