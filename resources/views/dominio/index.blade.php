@@ -42,7 +42,7 @@
               <i class="glyphicon glyphicon-list-alt"></i></a>
           <a class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('dominio.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil"></i></a>
-            {!! Form::open(['method' => 'DELETE','route' => ['coleccion.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
+            {!! Form::open(['method' => 'DELETE','route' => ['dominio.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-trash" ></i></button>
             {!! Form::close() !!}
         </td>

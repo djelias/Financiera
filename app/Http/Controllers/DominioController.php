@@ -90,8 +90,16 @@ class DominioController extends Controller
      * @param  \App\Dominio  $dominio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dominio $dominio)
+    public function destroy($idDominio)
     {
-        //
+       try{
+            Dominio::find($idDominio)->delete();
+            Alert::success('Dominio eliminado con exito');
+        return redirect()->route('dominio.index');
+            } catch  (\Illuminate\Database\QueryException $e){
+                 Alert::danger('No se Puede eliminar este registro porque esta asociado con otros datos');
+        return redirect()->route('dominio.index');
+        }
     }
-}
+    }
+
