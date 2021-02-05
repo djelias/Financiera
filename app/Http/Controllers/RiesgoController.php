@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Dominio;
-use Dominio1\http\Request\DominioRequest;
+use App\Riesgo;
+use Riesgo1\http\Request\RiesgoRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class DominioController extends Controller
+class RiesgoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class DominioController extends Controller
      */
     public function index(Request $request)
     {
-        $nombre = $request->get('nombreDominio');
-        $dominios = Dominio::orderBy('id','DESC')->nombre($nombre)->paginate(10);
-               return view('dominio.index',compact('dominios'));
+        $nombre = $request->get('nombre');
+        $riesgos = Riesgo::orderBy('id','DESC')->nombre($nombre)->paginate(10);
+        return view('riesgo.index',compact('riesgos'));
     }
 
     /**
@@ -26,10 +26,11 @@ class DominioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
-         $dominios = Dominio::all();
-        return view('dominio.create', compact('dominios'));
+        $riesgos = Riesgo::all();
+        return view('riesgo.create', compact('riesgos'));
     }
 
     /**
@@ -40,14 +41,15 @@ class DominioController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate($request,[
+        $this->validate($request,[
 
           'id',
-          'nombreDominio'=>'required|alpha_spaces',
+          'catRiesgo'=>'required|alpha_spaces',
         ]);
-        Dominio::create($request->all());
-        Alert::success('Dominio agregada con éxito');
-        return redirect()->route('dominio.index');
+        
+        Riesgo::create($request->all());
+         Alert::success('Riesgo agregado con éxito');
+        return redirect()->route('riesgo.index')->with('success','Riesgo creada con éxito');
     }
 
     /**
@@ -58,8 +60,8 @@ class DominioController extends Controller
      */
     public function show($id)
     {
-        $dominios = Dominio::find($id);
-      return view('dominio.show',compact('dominios'));
+        $riesgos = Riesgo::find($id);
+      return view('riesgo.show',compact('riesgos'));
     }
 
     /**
@@ -68,10 +70,10 @@ class DominioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($idDominio)
+    public function edit($idRiesgo)
     {
-        $dominios = Dominio::find($idDominio);
-        return view('dominio.edit',compact('dominios'));
+        $riesgos = Riesgo::find($idRiesgo);
+        return view('riesgo.edit',compact('riesgos'));
     }
 
     /**
@@ -81,14 +83,14 @@ class DominioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $idDominio)
+    public function update(Request $request, $idRiesgo)
     {
         $this->validate($request,[
-          'idDominio',
-          'nombreDominio'
+          'id',
+          'catRiesgo'
         ]);
-        Dominio::find($idDominio)->update($request->all());
-        return redirect()->route('dominio.index')->with('success','Dominio actualizado con exito');
+        Riesgo::find($idRiesgo)->update($request->all());
+        return redirect()->route('riesgo.index')->with('success','Riesgo actualizado con exito');
     }
 
     /**
@@ -97,15 +99,14 @@ class DominioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($idDominio)
+    public function destroy($idRiesgo)
     {
-       try{
-            Dominio::find($idDominio)->delete();
-            Alert::success('Dominio eliminado con exito');
-        return redirect()->route('dominio.index');
-            } catch  (\Illuminate\Database\QueryException $e){
+        try{
+            Riesgo::find($idRiesgo)->delete();
+        return redirect()->route('riesgo.index')->with('success','Riesgo eliminado con exito');
+    		} catch  (\Illuminate\Database\QueryException $e){
                  Alert::danger('No se Puede eliminar este registro porque esta asociado con otros datos');
-        return redirect()->route('dominio.index');
+        return redirect()->route('riesgo.index');
         }
     }
-    }
+}

@@ -16,6 +16,10 @@ Route::get('/', function () {
 });
 
  Route::resource('coleccion','ColeccionController');
+ Route::resource('zona','ZonaController');
  Route::resource('dominio','DominioController');
+ Route::resource('secuencia','SecuenciaController');
+ Route::resource('riesgo','RiesgoController');
+ Route::resource('tipoInvestigacion','TipoInvestigacionController');
  Route::resource('departamento','DepartamentoController');
 

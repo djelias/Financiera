@@ -23,7 +23,6 @@
              @include('dominio.form_master')
              {{ form::close() }}
         
-        
       </div>
       <br>
   <table class="table table-striped" style="text-align:center" >
@@ -85,4 +84,3 @@ $('.formulario-eliminar').submit(function(e){
 
     </script>
 @endsection
-
