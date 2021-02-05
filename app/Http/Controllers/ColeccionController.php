@@ -105,7 +105,7 @@ class ColeccionController extends Controller
             Coleccion::find($idColeccion)->delete();
             Alert::success('Coleccion eliminada con exito');
         return redirect()->route('coleccion.index');
-            } catch  (\Illuminate\Database\QueryException $e){
+    		} catch  (\Illuminate\Database\QueryException $e){
                  Alert::danger('No se Puede eliminar este registro porque esta asociado con otra asignació');
         return redirect()->route('coleccion.index');
         }

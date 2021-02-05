@@ -71,4 +71,3 @@ $('.formulario-eliminar').submit(function(e){
     </script>
 @endsection
 
-  

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Dominio;
 use Dominio1\http\Request\DominioRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DominioController extends Controller
 {
@@ -15,9 +16,9 @@ class DominioController extends Controller
      */
     public function index(Request $request)
     {
-        $nombre = $request->get('nombre');
+        $nombre = $request->get('nombreDominio');
         $dominios = Dominio::orderBy('id','DESC')->nombre($nombre)->paginate(10);
-        return view('dominio.index',compact('dominios'));
+               return view('dominio.index',compact('dominios'));
     }
 
     /**
@@ -25,10 +26,9 @@ class DominioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
-        $dominios = Dominio::all();
+         $dominios = Dominio::all();
         return view('dominio.create', compact('dominios'));
     }
 
@@ -40,14 +40,14 @@ class DominioController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+       $this->validate($request,[
 
-          'idDominio',
-          'nombreDominio'
+          'id',
+          'nombreDominio'=>'required|alpha_spaces',
         ]);
-        
         Dominio::create($request->all());
-        return redirect()->route('dominio.index')->with('success','Dominio creada con éxito');
+        Alert::success('Dominio agregada con éxito');
+        return redirect()->route('dominio.index');
     }
 
     /**
@@ -99,11 +99,13 @@ class DominioController extends Controller
      */
     public function destroy($idDominio)
     {
-        try{
+       try{
             Dominio::find($idDominio)->delete();
-        return redirect()->route('dominio.index')->with('success','Dominio eliminado con exito');
-    		} catch  (\Illuminate\Database\QueryException $e){
-        return redirect()->route('dominio.index')->with('danger','No se Puede eliminar este registro porque esta asociado con otra asignación');
+            Alert::success('Dominio eliminado con exito');
+        return redirect()->route('dominio.index');
+            } catch  (\Illuminate\Database\QueryException $e){
+                 Alert::danger('No se Puede eliminar este registro porque esta asociado con otros datos');
+        return redirect()->route('dominio.index');
         }
     }
-}
+    }
