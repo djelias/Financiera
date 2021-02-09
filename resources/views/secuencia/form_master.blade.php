@@ -2,9 +2,10 @@
     <div class="col-sm-3">
       {!! form::label('Secuencia obtenida') !!}
     </div>
-     <div class="col-sm-5">
-      <div class="form-group {{ $errors->has('nombreSecuencia') ? 'has-error' : "" }}">
-       <i>{{ Form::text('nombreSecuencia',NULL, ['class'=>'form-control','id'=>'nombreSecuencia','placeholder'=>'Secuencia']) }} </i>
+
+  <div class="col-sm-5">
+    <div class="form-group {{ $errors->has('secuenciaObtenida') ? 'has-error' : "" }}">
+       <i>{{ Form::text('secuenciaObtenida',NULL, ['class'=>'form-control','id'=>'secuenciaObtenida','placeholder'=>'Secuencia']) }} </i>
     </div>
   </div>
       </div>
@@ -14,20 +15,20 @@
       {!! form::label('seccion','Método de Secuenciación') !!}
     </div>
     <div class="col-sm-4">
-         <div class="form-group {{ $errors->has('seccion') ? 'has-error' : "" }}">
-           <select name="seccion" id="seccion" class="form-control" >
-                <option value="" disabled selected>Seleccione uno</option>
-                <option>Método 1</option>
-                <option>Método 2 </option>
+     <div class="form-group {{ $errors->has('metodoSecuenciacion') ? 'has-error' : "" }}">           <select name="metodoSecuenciacion" id="metodoSecuenciacion" class="form-control" >
+                <option value="" disabled selected>Seleccione Uno </option>
+                <option>Método A</option>
+                <option>Método B </option>
             </select>
             <div class="help-block" >
-        <strong>{{ $errors->first('seccion', 'Obligatorio') }}</strong> 
+        <strong>{{ $errors->first('metodoSecuenciacion', 'Obligatorio') }}</strong> 
       </div>
-        </div>
+     </div>
    </div>
   </div>
+   
    <div class="row">
-  <div class="col-sm-3">
+    <div class="col-sm-3">
       {!! form::label('Lugar de la Secuenciación') !!}
     </div>
      <div class="col-sm-5">
@@ -37,13 +38,13 @@
    </div>
   </div>
 
-   <div class="row">
+  <div class="row">
   <div class="col-sm-3">
       {!! form::label('Hora') !!}
     </div>
      <div class="col-sm-5">
       <div class="form-group {{ $errors->has('horaSec') ? 'has-error' : "" }}">
-       <i>{{ Form::text('horaSec',NULL, ['class'=>'form-control','id'=>'horaSec','placeholder'=>'Hora de Secuenciación']) }} </i>
+       <i>{{ Form::time('horaSec',NULL, ['class'=>'form-control','id'=>'horaSec','placeholder'=>'Hora de Secuenciación']) }} </i>
     </div>
    </div>
   </div>
@@ -54,19 +55,22 @@
     </div>
      <div class="col-sm-5">
       <div class="form-group {{ $errors->has('fechaSec') ? 'has-error' : "" }}">
-       <i>{{ Form::text('lugarSec',NULL, ['class'=>'form-control','id'=>'fechaSec','placeholder'=>'Fechaa de Secuenciación']) }} </i>
+        <i>{{ Form::date('fechaSec',NULL, ['class'=>'form-control', 'id'=>'fechaSec','type'=>'text', 'placeholder'=>'Fecha(yyyy-mm-dd)']) }} </i>
+               <div class="help-block"> 
+          <strong>{{ $errors->first('fechaSec', '**Ingrese la Fecha correctamente') }}</strong>
     </div>
    </div>
   </div>
+  </div>
 
 
-    <div class="row">
+  <div class="row">
   <div class="col-sm-3">
       {!! form::label('Responsable') !!}
     </div>
      <div class="col-sm-5">
-      <div class="form-group {{ $errors->has('responsable') ? 'has-error' : "" }}">
-       <i>{{ Form::text('responsable',NULL, ['class'=>'form-control','id'=>'responsable','placeholder'=>'Responsable']) }} </i>
+      <div class="form-group {{ $errors->has('responsableSec') ? 'has-error' : "" }}">
+       <i>{{ Form::text('responsableSec',NULL, ['class'=>'form-control','id'=>'responsableSec','placeholder'=>'Responsable']) }} </i>
     </div>
    </div>
   </div>
@@ -76,6 +80,32 @@
        <div class="form-group text-center" >
       {{ Form::button(isset($model)? 'Update' : 'Guardar' , ['class'=>'btn btn-success btn-lg','type'=>'submit']) }}
       <a class="btn btn-danger btn-lg" href="{{ route('secuencia.index') }}">Cancelar</a>
-    </div>
+    </div> 
 
-    <!--Script para Colocar guion automatico en numero de DUI-->
+    <!--Script para Colocar Calendario en español en fecha de secuencia--> 
+<script>
+          $.datepicker.regional['es'] = {
+            closeText: 'Cerrar',
+            prevText: '< Ant',
+            nextText: 'Sig >',
+            currentText: 'Hoy',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+            dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '-30:+0',
+            weekHeader: 'Sm',
+            dateFormat: 'yy-mm-dd',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+         };
+   $.datepicker.setDefaults($.datepicker.regional['es']);
+            $(function () {
+            $("#miento").datepicker();
+        });
+</script>

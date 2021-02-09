@@ -3,7 +3,7 @@
 <div class="row"  >
     <div class="col-lg-12 margin-tb">
         <div class="pull-left ">
-            <h3 > Datos de la tipoInvestigacion</h3>
+            <h3 > Datos de los Tipos de Investigaciones</h3>
             <br>
         </div>
     </div>

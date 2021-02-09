@@ -31,6 +31,7 @@
     <tr>
         <td>{{$no++}}</td>
         <td>{{ $value->nombreTipo }}</td>
+        <td>{{ $value->descripcionTipo }}</td>
         <td>
           <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('tipoInvestigacion.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt"></i></a>

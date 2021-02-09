@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TipoInvestigacion extends Model
 {
     //
-     protected $fillable = ['nombreTipo'];
+    protected $fillable = ['nombreTipo','descripcionTipo'];
     protected $dates = ['created_at','updated_at'];
 
     public function scopeNombre($query, $nombreTipo)
