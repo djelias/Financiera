@@ -49,7 +49,7 @@ class RiesgoController extends Controller
         
         Riesgo::create($request->all());
          Alert::success('Riesgo agregado con éxito');
-        return redirect()->route('riesgo.index')->with('success','Riesgo creada con éxito');
+        return redirect()->route('riesgo.index');
     }
 
     /**
@@ -103,7 +103,8 @@ class RiesgoController extends Controller
     {
         try{
             Riesgo::find($idRiesgo)->delete();
-        return redirect()->route('riesgo.index')->with('success','Riesgo eliminado con exito');
+            Alert::success('Dominio eliminado con exito');
+        return redirect()->route('riesgo.index');
     		} catch  (\Illuminate\Database\QueryException $e){
                  Alert::danger('No se Puede eliminar este registro porque esta asociado con otros datos');
         return redirect()->route('riesgo.index');

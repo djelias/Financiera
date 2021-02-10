@@ -3,8 +3,8 @@
       {!! form::label('Categoria de riesgo') !!}
     </div>
      <div class="col-sm-5">
-      <div class="form-group {{ $errors->has('nombreRiesgo') ? 'has-error' : "" }}">
-       <i>{{ Form::text('nombreRiesgo',NULL, ['class'=>'form-control','id'=>'nombreRiesgo','placeholder'=>'nombre']) }} </i>
+      <div class="form-group {{ $errors->has('catRiesgo') ? 'has-error' : "" }}">
+       <i>{{ Form::text('catRiesgo',NULL, ['class'=>'form-control','id'=>'catRiesgo','placeholder'=>'nombre']) }} </i>
     </div>
   </div>
       </div>
