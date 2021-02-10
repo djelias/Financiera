@@ -104,6 +104,7 @@ class RiesgoController extends Controller
     {
         try{
             Riesgo::find($idRiesgo)->delete();
+
              Alert::success('Riesgo eliminado con exito');
         return redirect()->route('riesgo.index');
     		} catch  (\Illuminate\Database\QueryException $e){

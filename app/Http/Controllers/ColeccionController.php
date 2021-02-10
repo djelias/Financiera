@@ -106,7 +106,7 @@ class ColeccionController extends Controller
             Alert::success('Coleccion eliminada con exito');
         return redirect()->route('coleccion.index');
     		} catch  (\Illuminate\Database\QueryException $e){
-                 Alert::danger('No se Puede eliminar este registro porque esta asociado con otra asignació');
+                 Alert::danger('No se Puede eliminar este registro porque esta asociado con otra asignación');
         return redirect()->route('coleccion.index');
         }
     }

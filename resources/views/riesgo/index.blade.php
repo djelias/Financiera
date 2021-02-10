@@ -28,8 +28,8 @@
   <table class="table table-striped" style="text-align:center" >
     <tr>
       <th with="80px">No</th>
-      <th style="text-align:center">Nombre</th>
-      <th style="text-align:center">Acciones</th>
+      <th style="text-align:center">Categoria</th>
+      <th style="text-align:center">Acción</th>
     </tr>
     <?php $no=1; ?>
     @foreach ($riesgos as $key => $value)
@@ -42,7 +42,8 @@
           <a class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('riesgo.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil"></i></a>
             {!! Form::open(['method' => 'DELETE','route' => ['riesgo.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
-              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-trash" ></i></button>
+              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-lg" ><i class="glyphicon glyphicon-trash" ></i></button>
+
             {!! Form::close() !!}
         </td>
       </tr>

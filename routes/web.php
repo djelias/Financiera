@@ -22,4 +22,5 @@ Route::get('/', function () {
  Route::resource('riesgo','RiesgoController');
  Route::resource('tipoInvestigacion','TipoInvestigacionController');
  Route::resource('departamento','DepartamentoController');
+ Route::resource('reino','ReinoController');
 
