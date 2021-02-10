@@ -17,7 +17,7 @@ class SecuenciaController extends Controller
      */
     public function index(Request $request)
     {
-        $nombre = $request->get('nombre');
+        $nombre = $request->get('secuenciaObtenida');
         $secuencias = Secuencia::orderBy('id','DESC')->nombre($nombre)->paginate(10);
         return view('secuencia.index',compact('secuencias'));
     }
@@ -46,11 +46,11 @@ class SecuenciaController extends Controller
 
           'id',
           'secuenciaObtenida',
-          'metodoSecuenciacion'=>'required|alpha_spaces',
-          'lugarSec'=>'required|alpha_spaces',
+          'metodoSecuenciacion',
+          'lugarSec',
           'horaSec',
           'fechaSec',
-          'responsableSec'=>'required|alpha_spaces',
+          'responsableSec',
         ]);
         
         Secuencia::create($request->all());
@@ -94,14 +94,15 @@ class SecuenciaController extends Controller
         $this->validate($request,[
           'id',
           'secuenciaObtenida',
-          'metodoSecuenciacion'=>'required|alpha_spaces',
-          'lugarSec'=>'required|alpha_spaces',
+          'metodoSecuenciacion',
+          'lugarSec',
           'horaSec',
           'fechaSec',
-          'responsableSec'=>'required|alpha_spaces',
+          'responsableSec'
         ]);
         Secuencia::find($idSecuencia)->update($request->all());
-        return redirect()->route('secuencia.index')->with('success','Secuencia actualizado con exito');
+          Alert::success('Secuencia Actualizada con éxito');
+        return redirect()->route('secuencia.index');
     }
 
     /**
@@ -114,7 +115,8 @@ class SecuenciaController extends Controller
     {
         try{
             Secuencia::find($idSecuencia)->delete();
-        return redirect()->route('secuencia.index')->with('success','Secuencia eliminado con exito');
+              Alert::success('Secuencia eliminada con exito');
+        return redirect()->route('secuencia.index');
     		} catch  (\Illuminate\Database\QueryException $e){
                  Alert::danger('No se Puede eliminar este registro porque esta asociado con otra tabla');
         return redirect()->route('secuencia.index');

@@ -17,7 +17,7 @@ class TipoInvestigacionController extends Controller
      */
     public function index(Request $request)
     {
-        $nombre = $request->get('nombre');
+        $nombre = $request->get('nombreTipoInvestigacion');
         $tipoInvestigaciones = TipoInvestigacion::orderBy('id','DESC')->nombre($nombre)->paginate(10);
         return view('tipoInvestigacion.index',compact('tipoInvestigaciones'));
     }
@@ -50,7 +50,7 @@ class TipoInvestigacionController extends Controller
         ]);
         
         TipoInvestigacion::create($request->all());
-        Alert::success('TipoInvestigacion  agregada con éxito');
+        Alert::success('Tipo de Investigación  agregado con éxito');
         return redirect()->route('tipoInvestigacion.index');
     }
 
@@ -93,7 +93,8 @@ class TipoInvestigacionController extends Controller
           'descripcionTipo'
         ]);
         TipoInvestigacion::find($idTipoInvestigacion)->update($request->all());
-        return redirect()->route('tipoInvestigacion.index')->with('success','TipoInvestigacion actualizado con exito');
+        Alert::success('Tipo Investigación Actualizada con éxito');
+        return redirect()->route('tipoInvestigacion.index');
     }
 
     /**
@@ -106,9 +107,10 @@ class TipoInvestigacionController extends Controller
     {
         try{
             TipoInvestigacion::find($idTipoInvestigacion)->delete();
-        return redirect()->route('tipoInvestigacion.index')->with('success','TipoInvestigacion eliminado con exito');
+            Alert::success('Tipo de Investigación eliminada con exito');
+        return redirect()->route('tipoInvestigacion.index');
     		} catch  (\Illuminate\Database\QueryException $e){
-                 Alert::danger('No se Puede eliminar este registro porque esta asociado con otra asignació');
+                 Alert::danger('No se Puede eliminar este registro porque esta asociado con otros datos');
         return redirect()->route('tipoInvestigacion.index');
         }
     }

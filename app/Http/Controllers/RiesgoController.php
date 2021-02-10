@@ -16,7 +16,7 @@ class RiesgoController extends Controller
      */
     public function index(Request $request)
     {
-        $nombre = $request->get('nombre');
+        $nombre = $request->get('catRiesgo');
         $riesgos = Riesgo::orderBy('id','DESC')->nombre($nombre)->paginate(10);
         return view('riesgo.index',compact('riesgos'));
     }
@@ -90,7 +90,8 @@ class RiesgoController extends Controller
           'catRiesgo'
         ]);
         Riesgo::find($idRiesgo)->update($request->all());
-        return redirect()->route('riesgo.index')->with('success','Riesgo actualizado con exito');
+        Alert::success('Riesgo actualizado con éxito');
+        return redirect()->route('riesgo.index');
     }
 
     /**
@@ -103,7 +104,8 @@ class RiesgoController extends Controller
     {
         try{
             Riesgo::find($idRiesgo)->delete();
-            Alert::success('Dominio eliminado con exito');
+
+             Alert::success('Riesgo eliminado con exito');
         return redirect()->route('riesgo.index');
     		} catch  (\Illuminate\Database\QueryException $e){
                  Alert::danger('No se Puede eliminar este registro porque esta asociado con otros datos');

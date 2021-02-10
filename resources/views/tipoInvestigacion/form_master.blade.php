@@ -1,6 +1,6 @@
    <div class="row">
     <div class="col-sm-3">
-      {!! form::label('Nombre de coleccion') !!}
+      {!! form::label('Nombre de Tipo de Investigación') !!}
     </div>
      <div class="col-sm-5">
       <div class="form-group {{ $errors->has('nombreTipo') ? 'has-error' : "" }}">
@@ -8,6 +8,7 @@
     </div>
   </div>
       </div>
+
    <div class="row">
     <div class="col-sm-3">
       {!! form::label('Descripción Tipo de Investigación') !!}
@@ -17,7 +18,7 @@
        <i>{{ Form::text('descripcionTipo',NULL, ['class'=>'form-control','id'=>'descripcionTipo','placeholder'=>'descripcion']) }} </i>
     </div>
   </div>
-      </div>
+</div>
  
     <br>
        <div class="form-group text-center" >

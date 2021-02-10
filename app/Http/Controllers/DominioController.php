@@ -88,7 +88,8 @@ class DominioController extends Controller
           'nombreDominio'
         ]);
         Dominio::find($idDominio)->update($request->all());
-        return redirect()->route('dominio.index')->with('success','Dominio actualizado con exito');
+        Alert::success('Dominio actualizado con éxito');
+        return redirect()->route('dominio.index');
     }
 
     /**

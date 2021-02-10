@@ -24,7 +24,7 @@ class SecuenciaRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombreSecuencia'=> 'required',
+            'secuenciaSecuencia'=> 'required',
             
                 ];
     }

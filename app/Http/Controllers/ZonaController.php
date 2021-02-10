@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Zona;
 use Zona1\http\Request\ZonaRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ZonaController extends Controller
 {
@@ -16,7 +17,7 @@ class ZonaController extends Controller
      */
     public function index(Request $request)
     {
-        $nombre = $request->get('nombre');
+        $nombre = $request->get('nombreZona');
         $zonas = Zona::orderBy('id','DESC')->nombre($nombre)->paginate(10);
         return view('zona.index',compact('zonas'));
     }
@@ -43,13 +44,14 @@ class ZonaController extends Controller
     {
         $this->validate($request,[
 
-          'idZona',
+          'id',
           'nombreZona',
           'descripcionZona1'
         ]);
         
         Zona::create($request->all());
-        return redirect()->route('zona.index')->with('success','Zona creada con éxito');
+         Alert::success('Zona agregado con éxito');
+        return redirect()->route('zona.index');
     }
 
     /**
@@ -86,12 +88,13 @@ class ZonaController extends Controller
     public function update(Request $request, $idZona)
     {
         $this->validate($request,[
-          'idZona',
+          'id',
           'nombreZona',
           'descripcionZona1'
         ]);
         Zona::find($idZona)->update($request->all());
-        return redirect()->route('zona.index')->with('success','Zona actualizado con exito');
+         Alert::success('Zona  Actualizada con éxito');
+        return redirect()->route('zona.index');
     }
 
     /**
@@ -104,9 +107,12 @@ class ZonaController extends Controller
     {
         try{
             Zona::find($idZona)->delete();
-        return redirect()->route('zona.index')->with('success','Zona eliminado con exito');
+            Alert::success('Zona eliminada con exito');
+        return redirect()->route('zona.index');
     		} catch  (\Illuminate\Database\QueryException $e){
-        return redirect()->route('zona.index')->with('danger','No se Puede eliminar este registro porque esta asociado con otra asignación');
+                 Alert::danger('No se Puede eliminar este registro porque esta asociado con otros datos');
+        return redirect()->route('zona.index');
+
         }
     }
 
