@@ -17,7 +17,7 @@
        <i>{{ Form::text('descripcionZona1',NULL, ['class'=>'form-control','id'=>'descripcionZona1','placeholder'=>'descripcion de la zona']) }} </i>
     </div>
   </div>
-      </div>
+  </div>
     <br>
        <div class="form-group text-center" >
       {{ Form::button(isset($model)? 'Update' : 'Guardar' , ['class'=>'btn btn-success btn-lg','type'=>'submit']) }}

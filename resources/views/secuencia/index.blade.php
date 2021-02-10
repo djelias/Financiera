@@ -14,7 +14,7 @@
         </a>
         {!! Form::open(['route'=>'secuencia.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
         <div class="input-group"> 
-            {!! Form::text('nombreSecuencia', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
+            {!! Form::text('secuenciaObtenida', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
         </div>
          <button type="submit" class="glyphicon glyphicon-search btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar"></button>
             {!! Form::close()!!}
@@ -30,14 +30,16 @@
       <th style="text-align:center">Fecha</th>
       <th style="text-align:center">Responsable</th>
     </tr>
-    </tr>
-  
-
     <?php $no=1; ?>
     @foreach ($secuencias as $key => $value)
     <tr>
         <td>{{$no++}}</td>
-        <td>{{ $value->nombreSecuencia }}</td>
+        <td>{{ $value->secuenciaObtenida }}</td>
+        <td>{{ $value->metodoSecuenciacion }}</td>
+        <td>{{ $value->lugarSec }}</td>
+        <td>{{ $value->horaSec }}</td>
+        <td>{{ $value->fechaSec }}</td>
+        <td>{{ $value->responsableSec }}</td>
         <td>
           <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('secuencia.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt"></i></a>

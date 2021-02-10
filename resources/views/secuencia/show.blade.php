@@ -12,7 +12,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Nombre : </strong>
-            {{ $secuencias->nombreSecuencia}}
+            {{ $secuencias->secuenciaObtenida}}
         </div>
     </div>
 </div>

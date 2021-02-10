@@ -25,13 +25,13 @@
       <th with="80px">No</th>
       <th style="text-align:center">Nombre Zona</th>
       <th style="text-align:center">Descripcion de Zona</th>
-  
-
+       </tr>
     <?php $no=1; ?>
     @foreach ($zonas as $key => $value)
     <tr>
         <td>{{$no++}}</td>
         <td>{{ $value->nombreZona }}</td>
+        <td>{{ $value->descripcionZona1 }}</td>
         <td>
           <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('zona.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt"></i></a>
@@ -48,6 +48,29 @@
  <div class="text-center">
     <a class="btn btn-primary" href="#">Regresar</a>
   </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+ <script type="text/javascript">
+$('.formulario-eliminar').submit(function(e){
+     e.preventDefault();
+       Swal.fire({
+    title: '¿Está seguro de eliminar permanentemente esta Secuencia?',
+    /*text: "You won't be able to revert this!",*/
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Eliminar',
+    cancelButtonText: 'Cancelar'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+     this.submit();
+    }
+})
+});
+
+    </script>
 @endsection
 
 
