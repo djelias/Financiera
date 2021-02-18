@@ -23,4 +23,7 @@ Route::get('/', function () {
  Route::resource('tipoInvestigacion','TipoInvestigacionController');
  Route::resource('departamento','DepartamentoController');
  Route::resource('reino','ReinoController');
+ Route::resource('filum','FilumController');
+ Route::resource('clase','ClaseController');
+ Route::resource('orden','OrdenController');
 
