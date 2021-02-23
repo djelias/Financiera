@@ -26,4 +26,4 @@ Route::get('/', function () {
  Route::resource('filum','FilumController');
  Route::resource('clase','ClaseController');
  Route::resource('orden','OrdenController');
-
+ Route::resource('municipio','MunicipioController');
