@@ -28,3 +28,12 @@ Route::get('/', function () {
  Route::resource('orden','OrdenController');
  Route::resource('municipio','MunicipioController');
  Route::resource('familia','FamiliaController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles','RoleController');
+    Route::resource('users','UserController');
+});
