@@ -21,10 +21,20 @@ Route::get('/', function () {
  Route::resource('secuencia','SecuenciaController');
  Route::resource('riesgo','RiesgoController');
  Route::resource('tipoInvestigacion','TipoInvestigacionController');
- Route::resource('departamento','DepartamentoController');
  Route::resource('reino','ReinoController');
  Route::resource('filum','FilumController');
  Route::resource('clase','ClaseController');
  Route::resource('orden','OrdenController');
  Route::resource('especieAmenazada','especieAmenazadaController');
+ Route::resource('municipio','MunicipioController');
+ Route::resource('familia','FamiliaController');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles','RoleController');
+    Route::resource('users','UserController');
+    Route::resource('departamento','DepartamentoController');
+});

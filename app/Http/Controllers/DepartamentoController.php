@@ -13,6 +13,18 @@ class DepartamentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+         $this->middleware('permission:departamento-listado|departamento-create|departamento-edit|departamento-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:departamento-create', ['only' => ['create','store']]);
+         $this->middleware('permission:departamento-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:departamento-delete', ['only' => ['destroy']]);
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index(Request $request)
     {
         $nombre = $request->get('nombre');
