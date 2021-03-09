@@ -13,4 +13,6 @@ class Riesgo extends Model
 	{
 		return $query->where('catRiesgo', 'LIKE', "%$nombreRiesgo%");
 	}
+
+	 
 }

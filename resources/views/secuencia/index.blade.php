@@ -8,6 +8,15 @@
       </div>
     </div>
   </div>
+   
+  @if ($errors->any())
+   <div class="alert alert-danger">
+  
+          <p>Debe ingresar datos válidos</p>
+     
+   </div>
+  @endif
+ 
       <div>
         <a href="{{route('secuencia.create')}}" class="btn btn-success btn-lg">
             <i class="glyphicon glyphicon-plus"> NUEVO</i>

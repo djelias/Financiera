@@ -44,7 +44,7 @@ class RiesgoController extends Controller
         $this->validate($request,[
 
           'id',
-          'catRiesgo'=>'required|alpha_spaces',
+          'catRiesgo',
         ]);
         
         Riesgo::create($request->all());
