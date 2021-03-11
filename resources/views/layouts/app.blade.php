@@ -57,8 +57,15 @@
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
+
+                            @can('usuario-list')
                             <li><a class="nav-link" href="{{ route('users.index') }}">Manejar Usuarios</a></li>
+                            @endcan
+
+                            @can('role-list')
                             <li><a class="nav-link" href="{{ route('roles.index') }}">Manejar Roles</a></li>
+                            @endcan
+
                             <li><a class="nav-link" href="{{ route('departamento.index') }}">Manejar Depto</a></li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

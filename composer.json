@@ -14,7 +14,8 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.3.0",
         "realrashid/sweet-alert": "^3.2",
-        "spatie/laravel-permission": "3.17.0"
+        "spatie/laravel-permission": "3.17.0",
+        "farhanwazir/laravelgooglemaps": "^2.3"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
