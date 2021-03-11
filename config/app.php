@@ -169,6 +169,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        FarhanWazir\GoogleMaps\GMapsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -234,6 +235,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'GMaps' => FarhanWazir\GoogleMaps\Facades\GMapsFacade::class,
     ],
 
 ];

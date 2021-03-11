@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+
     return view('welcome');
 });
 
@@ -27,6 +28,7 @@ Route::get('/', function () {
  Route::resource('orden','OrdenController');
  Route::resource('municipio','MunicipioController');
  Route::resource('familia','FamiliaController');
+ Route::get('map', 'MapController@index')->name('map');
 
 Auth::routes();
 
@@ -37,3 +39,4 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users','UserController');
     Route::resource('departamento','DepartamentoController');
 });
+

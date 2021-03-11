@@ -33,6 +33,7 @@
         <td>
           <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('departamento.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt"></i></a>
+              
               @can('departamento-edit')
           <a class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('departamento.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil"></i></a>
