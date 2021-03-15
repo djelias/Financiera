@@ -8,13 +8,13 @@
        <i>{{ Form::text('secuenciaObtenida',NULL, ['class'=>'form-control','id'=>'secuenciaObtenida','placeholder'=>'Secuencia']) }} </i>
     </div>
   </div>
-      </div>
+</div>
  
    <div class="row">
     <div class="col-sm-3">
       {!! form::label('seccion','Método de Secuenciación') !!}
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-5">
      <div class="form-group {{ $errors->has('metodoSecuenciacion') ? 'has-error' : "" }}">           <select name="metodoSecuenciacion" id="metodoSecuenciacion" class="form-control" >
                 <option value="" disabled selected>Seleccione Uno </option>
                 <option>Método A</option>
