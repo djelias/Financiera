@@ -14,6 +14,13 @@ class ColeccionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     function __construct()
+    {
+         $this->middleware('permission:coleccion-listado|coleccion-create|coleccion-edit|coleccion-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:coleccion-create', ['only' => ['create','store']]);
+         $this->middleware('permission:coleccion-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:coleccion-delete', ['only' => ['destroy']]);
+    }
     public function index(Request $request)
     {
         $nombre = $request->get('nombreColeccion');

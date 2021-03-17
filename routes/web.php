@@ -41,5 +41,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users','UserController');
     Route::resource('departamento','DepartamentoController');
     Route::resource('municipio','MunicipioController');
+    Route::resource('coleccion','ColeccionController');
+    Route::resource('zona','ZonaController');
+    Route::resource('secuencia','SecuenciaController');
+    Route::resource('especieAmenazada','especieAmenazadaController');
 });
 

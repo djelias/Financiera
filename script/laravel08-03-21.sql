@@ -645,6 +645,32 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (10, 'departamento-create', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
 (11, 'departamento-edit', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
 (12, 'departamento-delete', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31');
+(13, 'coleccion-list', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(14, 'coleccion-create', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(15, 'coleccion-edit', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(16, 'coleccion-delete', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31');
+(17, 'especieAmenazada-list', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(18, 'especieAmenazada-create', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(19, 'especieAmenazada-edit', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(20, 'especieAmenazada-delete', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31');
+(17, 'zona-list', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(18, 'zona-create', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(19, 'zona-edit', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(20, 'zona-delete', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31');
+(21, 'secuencia-list', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(22, 'secuencia-create', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(23, 'secuencia-edit', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(24, 'secuencia-delete', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31');
+(25, 'tipoInvestigacion-list', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(26, 'tipoInvestigacion-create', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(27, 'tipoInvestigacion-edit', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(28, 'tipoInvestigacion-delete', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31');
+(29, 'riesgo-list', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(30, 'riesgo-create', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(31, 'riesgo-edit', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(32, 'riesgo-delete', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31');
+
+
 
 -- --------------------------------------------------------
 
@@ -652,11 +678,9 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 -- Estructura de tabla para la tabla `products`
 --
 
-
 --
 -- Estructura de tabla para la tabla `roles`
 --
-
 CREATE TABLE `roles` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
