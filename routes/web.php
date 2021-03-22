@@ -30,6 +30,9 @@ Route::get('/', function () {
  Route::resource('municipio','MunicipioController');
  Route::resource('familia','FamiliaController');
   Route::resource('genero','GeneroController');
+  Route::resource('especie','EspecieController');
+  Route::resource('especimen','EspecimenController');
+  Route::resource('taxonomia','TaxonomiaController');
  Route::get('map', 'MapController@index')->name('map');
 
 Auth::routes();

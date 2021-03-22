@@ -11,10 +11,11 @@ use App\Clase;
 use App\Orden;
 use App\Familia;
 use App\Genero;
-use Genero1\http\Request\ClaseRequest;
+use App\Especie;
+use Especie1\http\Request\ClaseRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class GeneroController extends Controller
+class EspecieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,11 +25,11 @@ class GeneroController extends Controller
     public function index(Request $request)
     {
     	
-        $familias = Familia::all();
-        $generos = Genero::all();
-        $nombre =$request->get('nombreGenero');
-        $generos = Genero::orderBy('id','DESC')->nombre($nombre)->paginate(10);
-        return view('genero.index',compact('generos','familias'));
+       $generos = Genero::all();
+       $especies = Especie::all();
+        $nombre =$request->get('nombreEspecie');
+        $especies = Especie::orderBy('id','DESC')->nombre($nombre)->paginate(10);
+        return view('especie.index',compact('especies','generos'));
     }
 
     /**
@@ -40,9 +41,9 @@ class GeneroController extends Controller
     public function create()
     {
 
+        $especies = Especie::all();
         $generos = Genero::all();
-        $familias = Familia::all();
-        return view('genero.create', compact('familias','generos'));
+        return view('especie.create', compact('generos','especies'));
     }
 
     /**
@@ -54,12 +55,12 @@ class GeneroController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-          'idFamilia'=>'required|numeric',  
-          'nombreGenero'=>'required|alpha_spaces',
+          'idGenero'=>'required|numeric',  
+          'nombreEspecie'=>'required|alpha_spaces',
           ]);
-            Genero::create($request->all());
-            Alert::success('Genero agregado con éxito');
-        return redirect()->route('genero.index');
+            Especie::create($request->all());
+            Alert::success('Especie agregado con éxito');
+        return redirect()->route('especie.index');
         
     }
 
@@ -71,8 +72,8 @@ class GeneroController extends Controller
      */
     public function show($id)
     {
-        $generos = Genero::find($id);
-      return view('genero.show',compact('generos'));
+        $especies = Especie::find($id);
+      return view('especie.show',compact('especies'));
     }
 
     /**
@@ -81,12 +82,12 @@ class GeneroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($idGenero)
+    public function edit($idEspecie)
     {
        
-        $familias = Familia::all();
-        $generos = Genero::find($idGenero);
-        return view('genero.edit',compact('generos','familias'));
+        $generos = Genero::all();
+        $especies = Especie::find($idEspecie);
+        return view('especie.edit',compact('especies','generos'));
     }
 
     /**
@@ -96,15 +97,15 @@ class GeneroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $idGenero)
+    public function update(Request $request, $idEspecie)
     {
         $this->validate($request,[
-          'idFamilia'=>'required|numeric',  
-          'nombreGenero'=>'required|alpha_spaces',
+          'idGenero'=>'required|numeric',  
+          'nombreEspecie'=>'required|alpha_spaces',
           ]);
-        Genero::find($idGenero)->update($request->all());
-        Alert::success('Genero actualizado con éxito');
-        return redirect()->route('genero.index');
+        Especie::find($idEspecie)->update($request->all());
+        Alert::success('Especie actualizada con éxito');
+        return redirect()->route('especie.index');
     }
 
     /**
@@ -113,15 +114,15 @@ class GeneroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($idGenero)
+    public function destroy($idEspecie)
     {
         try{
-             Genero::find($idGenero)->delete();
-             Alert::success('Genero eliminado con exito');
-        return redirect()->route('genero.index');
+             Especie::find($idEspecie)->delete();
+             Alert::success('Especie eliminado con exito');
+        return redirect()->route('especie.index');
     }catch (\Illuminate\Database\QueryException $e) {
     	Alert::danger('No se Puede eliminar este registro porque esta asociado a otros datos');
-        return redirect()->route('genero.index');
+        return redirect()->route('especie.index');
     }
     }
 }

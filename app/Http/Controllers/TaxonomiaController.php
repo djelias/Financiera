@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Coleccion;
+use App\Dominio;
+use App\Reino;
+use App\Filum;
+use App\Clase;
+use App\Orden;
+use App\Familia;
+use App\Genero;
 use App\Especie;
 use App\Especimen;
+use App\Taxonomia;
 use Taxonomia1\http\Request\TaxonomiaRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 class TaxonomiaController extends Controller
@@ -20,12 +27,11 @@ class TaxonomiaController extends Controller
      */
     public function index(Request $request)
     {
-    	$coleccion = Coleccion::all();
-    	$especies = Especie::all();
-    	$especimenes= Especimen::all();
-    	$nombre =$request->get('nombreTaxonomia');
+    	$especimens= Especimen::all();
+        $taxonomias = Taxonomia::all();
+    	$nombre =$request->get('nombreComun');
         $taxonomias = Taxonomia::orderBy('id','DESC')->nombre($nombre)->paginate(10);
-        return view('taxonomia.index',compact('taxonomias','coleccion','especie','especimen'));
+        return view('taxonomia.index',compact('taxonomias','especimens'));
     }
 
     /**
@@ -36,11 +42,9 @@ class TaxonomiaController extends Controller
 
     public function create()
     {
-        $coleccion = Coleccion::all();
-    	$especies = Especie::all();
-    	$especimenes= Especimen::all();
+    	$especimens= Especimen::all();
         $taxonomias = Taxonomia::all();
-        return view('taxonomia.create', compact('taxonomias','coleccion','especie','especimen'));
+        return view('taxonomia.create', compact('taxonomias','especimens'));
     }
 
     /**
@@ -51,12 +55,11 @@ class TaxonomiaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-          'idEspecie'=>'required|numeric',  
+        $this->validate($request,[ 
           'idColeccion'=>'required|numeric', 
           'idEspecimen'=>'required|numeric',   
           'NumVoucher'=>'required|numeric',  
-          'nomComun',
+          'nomComun'=>'required|alpha_spaces',
           ]);
             Taxonomia::create($request->all());
             Alert::success('Clasificación Taxonómica agregado con éxito');
@@ -84,11 +87,10 @@ class TaxonomiaController extends Controller
      */
     public function edit($idTaxonomia)
     {
-        $coleccion = Coleccion::all();
-    	$especies = Especie::all();
-    	$especimenes= Especimen::all();
+       
+    	$especimens= Especimen::all();
         $taxonomias = Taxonomia::find($idTaxonomia);
-        return view('taxonomia.edit',compact('taxonomias','coleccion','especie','especimen'));
+        return view('taxonomia.edit',compact('taxonomias','especimens'));
     }
 
     /**
@@ -100,12 +102,11 @@ class TaxonomiaController extends Controller
      */
     public function update(Request $request, $idTaxonomia)
     {
-        $this->validate($request,[
-          'idEspecie'=>'required|numeric',  
+        $this->validate($request,[ 
           'idColeccion'=>'required|numeric', 
           'idEspecimen'=>'required|numeric',   
           'NumVoucher'=>'required|numeric',  
-          'nomComun',
+          'nomComun'=>'required|alpha_spaces',
           ]);
         Taxonomia::find($idTaxonomia)->update($request->all());
         Alert::success('Taxonomia actualizado con éxito');
