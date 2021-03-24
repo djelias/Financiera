@@ -13,8 +13,8 @@
   <div class="col-sm-4" >
   <div class="form-group {{ $errors->has('idEspecimen') ? 'has-error' : "" }}">
         {!! form::label('Seleccione el código del especimen:') !!}
-      <i><datalist name="idEspecimen" id="idEspecimen">
-                @foreach($especimens as $especimen)
+      <i><datalist name="idEspecimen" id="idEspecimen" >
+                  @foreach($especimens as $especimen)
                       <option value="{{$especimen->id}}">{{$especimen->codigoEspecimen}}</option>
                  @endforeach
             </datalist></i>
