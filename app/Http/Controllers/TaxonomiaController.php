@@ -56,9 +56,9 @@ class TaxonomiaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[ 
-          'idColeccion'=>'required|numeric', 
-          'idEspecimen'=>'required|numeric',   
-          'NumVoucher'=>'required|numeric',  
+          'idColeccion'=>'required', 
+          'idEspecimen'=>'required',   
+          'NumVoucher'=>'required',  
           'nomComun'=>'required|alpha_spaces',
           ]);
             Taxonomia::create($request->all());
