@@ -15,6 +15,13 @@ class SecuenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+      function __construct()
+    {
+         $this->middleware('permission:secuencia-listado|secuencia-create|secuencia-edit|secuencia-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:secuencia-create', ['only' => ['create','store']]);
+         $this->middleware('permission:secuencia-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:secuencia-delete', ['only' => ['destroy']]);
+    }
     public function index(Request $request)
     {
         $nombre = $request->get('secuenciaObtenida');
