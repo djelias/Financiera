@@ -8,6 +8,15 @@
       </div>
     </div>
   </div>
+   
+  @if ($errors->any())
+   <div class="alert alert-danger">
+  
+          <p>Debe ingresar datos válidos</p>
+     
+   </div>
+  @endif
+ 
       <div>
         <a href="{{route('secuencia.create')}}" class="btn btn-success btn-lg">
             <i class="glyphicon glyphicon-plus"> NUEVO</i>
@@ -43,10 +52,16 @@
         <td>
           <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('secuencia.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt"></i></a>
+              @can('secuencia-edit')
           <a class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('secuencia.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil"></i></a>
+               @endcan
+
+              @can('secuencia-delete')
             {!! Form::open(['method' => 'DELETE','route' => ['secuencia.destroy', $value->id],'style'=>'display:inline']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-lg" onclick="return confirm('¿Esta seguro de eliminar este Registro?')"><i class="glyphicon glyphicon-trash" ></i></button>
+               @endcan
+
             {!! Form::close() !!}
         </td>
       </tr>

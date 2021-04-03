@@ -16,7 +16,16 @@ class MunicipioController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+
      */
+
+     function __construct()
+    {
+         $this->middleware('permission:municipio-listado|municipio-create|municipio-edit|municipio-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:municipio-create', ['only' => ['create','store']]);
+         $this->middleware('permission:municipio-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:municipio-delete', ['only' => ['destroy']]);
+    }
     public function index(Request $request)
     {
     	$departamentos = Departamento::all();

@@ -26,8 +26,13 @@ Route::get('/', function () {
  Route::resource('filum','FilumController');
  Route::resource('clase','ClaseController');
  Route::resource('orden','OrdenController');
+ Route::resource('especieAmenazada','especieAmenazadaController');
  Route::resource('municipio','MunicipioController');
  Route::resource('familia','FamiliaController');
+  Route::resource('genero','GeneroController');
+  Route::resource('especie','EspecieController');
+  Route::resource('especimen','EspecimenController');
+  Route::resource('taxonomia','TaxonomiaController');
  Route::get('map', 'MapController@index')->name('map');
  Route::get('consulta', 'MapController@consulta')->name('consulta');
 
@@ -45,5 +50,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
     Route::resource('departamento','DepartamentoController');
+    Route::resource('municipio','MunicipioController');
+    Route::resource('coleccion','ColeccionController');
+    Route::resource('zona','ZonaController');
+    Route::resource('secuencia','SecuenciaController');
+    Route::resource('especieAmenazada','especieAmenazadaController');
 });
 

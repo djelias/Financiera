@@ -14,6 +14,13 @@ class RiesgoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     function __construct()
+    {
+         $this->middleware('permission:riesgo-listado|riesgo-create|riesgo-edit|riesgo-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:riesgo-create', ['only' => ['create','store']]);
+         $this->middleware('permission:riesgo-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:riesgo-delete', ['only' => ['destroy']]);
+    }
     public function index(Request $request)
     {
         $nombre = $request->get('catRiesgo');
@@ -44,7 +51,7 @@ class RiesgoController extends Controller
         $this->validate($request,[
 
           'id',
-          'catRiesgo'=>'required|alpha_spaces',
+          'catRiesgo',
         ]);
         
         Riesgo::create($request->all());

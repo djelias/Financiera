@@ -15,6 +15,13 @@ class ZonaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     function __construct()
+    {
+         $this->middleware('permission:zona-listado|zona-create|zona-edit|zona-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:zona-create', ['only' => ['create','store']]);
+         $this->middleware('permission:zona-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:zona-delete', ['only' => ['destroy']]);
+    }
     public function index(Request $request)
     {
         $nombre = $request->get('nombreZona');
