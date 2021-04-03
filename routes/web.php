@@ -29,6 +29,13 @@ Route::get('/', function () {
  Route::resource('municipio','MunicipioController');
  Route::resource('familia','FamiliaController');
  Route::get('map', 'MapController@index')->name('map');
+ Route::get('consulta', 'MapController@consulta')->name('consulta');
+
+ Route::get('bold/{taxon}/{geo}', [
+      'uses'=> 'MapController@bold',
+      'as'  => 'bold'
+  ]);
+
 
 Auth::routes();
 
