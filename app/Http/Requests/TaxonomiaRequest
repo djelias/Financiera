@@ -23,10 +23,9 @@ class TaxonomiaRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'idColeccion'=>'required',   
+        return [   
           'idEspecimen'=>'required',
-          'numVoucher'=> 'required',
+          'numVoucher'=>'required',
           'nomComun' => 'required',
             ];
     }
