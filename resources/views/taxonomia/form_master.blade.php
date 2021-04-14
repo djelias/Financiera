@@ -2,10 +2,10 @@
     <div class="col-sm-4">
        {!! form::label('Ingrese el Número de Voucher:') !!}
    
-      <div class="form-group {{ $errors->has('NumVoucher') ? 'has-error' : "" }}">
-            <i> {{ Form::text('NumVoucher',NULL, ['class'=>'form-control','id'=>'NumVoucher','placeholder'=>'Número de Voucher ']) }}  </i> 
+      <div class="form-group {{ $errors->has('numVoucher') ? 'has-error' : "" }}">
+            <i> {{ Form::text('numVoucher',NULL, ['class'=>'form-control','id'=>'numVoucher','placeholder'=>'Número de Voucher ']) }}  </i> 
             <div class="help-block" > 
-          {{ $errors->first('NumVoucher', 'Ingrese los datos correctamente') }}
+          {{ $errors->first('numVoucher', 'Ingrese los datos correctamente') }}
        </div>
      </div>
   </div>
@@ -13,12 +13,12 @@
   <div class="col-sm-4" >
   <div class="form-group {{ $errors->has('idEspecimen') ? 'has-error' : "" }}">
         {!! form::label('Seleccione el código del especimen:') !!}
-      <i><datalist name="idEspecimen" id="idEspecimen" >
+      <i><datalist name="idEspecimen" id="idEspecimen">
                   @foreach($especimens as $especimen)
                       <option value="{{$especimen->id}}">{{$especimen->codigoEspecimen}}</option>
                  @endforeach
             </datalist></i>
-            <i>{{ Form::text('idEspecimen',NULL, ['class'=>'form-control', 'id'=>'idEspecimen', 'list'=>'idEspecimen', 'placeholder'=>'Código de Especimen']) }}</i>  
+      <i>{{ Form::text('idEspecimen',NULL, ['class'=>'form-control', 'list'=>'idEspecimen', 'placeholder'=>'Código de Especimen']) }}</i>         
             <div class="help-block" > 
           {{ $errors->first('idEspecimen', 'Debe seleccionar una opción') }}
       </div>          
