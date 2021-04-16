@@ -51,7 +51,7 @@
   </table>
   {!!$zonas->render()!!}
  <div class="text-center">
-    <a class="btn btn-primary" href="#">Regresar</a>
+    <a class="btn btn-primary" href="{{ url('/gestion') }}">Regresar</a>
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

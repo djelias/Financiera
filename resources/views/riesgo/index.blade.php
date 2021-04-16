@@ -62,7 +62,7 @@
   </table>
   {!!$riesgos->render()!!}
  <div class="text-center">
-    <a class="btn btn-primary" href="#">Regresar</a>
+    <a class="btn btn-primary" href="{{ url('/gestion') }}">Regresar</a>
   </div>
 
   <!--Script para mostrar formulario y Alerta confirmar Guardar con ajax-->

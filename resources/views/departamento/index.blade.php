@@ -50,7 +50,7 @@
   </table>
   {!!$departamentos->render()!!}
  <div class="text-center">
-    <a class="btn btn-primary" href="#">Regresar</a>
+    <a class="btn btn-primary" href="{{ url('/gestion') }}"</a>
   </div>
 @endsection
 

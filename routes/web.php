@@ -40,7 +40,10 @@ Route::get('/', function () {
       'uses'=> 'MapController@bold',
       'as'  => 'bold'
   ]);
-
+ Route::get('gestion', function()
+  {
+   return view('gestion');
+  });
 
 Auth::routes();
 
