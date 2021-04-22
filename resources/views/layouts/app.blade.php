@@ -26,10 +26,12 @@
     <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 
 
-</head><body>
+</head>
+<body>
     <div id="app" style="overflow-y: auto; overflow-x: hidden;"  >
-        <nav class="navbar navbar-default "role="navigation" style="background-color: #A9D0F5;">
+        <nav class="navbar navbar-expand-lg"role="navigation" style="background-color: #A9D0F5;">
             <div class="container">
+                <img src="{{URL::asset('/img/ues.png')}}" alt="profile Pic" height="65" width="55">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -41,21 +43,19 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/gestion') }}">Laravel</a>
+
+                    <a class="navbar-brand" href="{{ url('/gestion') }}">BIO-UES</a>
                 </div>
 
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto"></ul>
-
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('login') }}"><span class="glyphicon glyphicon-user"></span>{{ __('Entrar') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('register') }}"><span class="glyphicon glyphicon-log-in"></span>{{ __('Registrarse') }}</a></li>
                         @else
 
                         @can('usuario-list')
@@ -95,21 +95,8 @@
                     
                 </div>
             </div>
-    </nav><nav class="navbar navbar-default" role="navigation">
-  <!-- El logotipo y el icono que despliega el menú se agrupan
-       para mostrarlos mejor en los dispositivos móviles -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse"
-            data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Desplegar navegación</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="{{ url('/gestion') }}">MENU</a>
-  </div>
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
- </nav>
+    </nav>
+</div>
 <div class="container">
     @yield('content')
     @include('sweetalert::alert')
@@ -119,7 +106,7 @@
 <br>
 <br>
         <div>
-            <nav class=" navbar navbar-fixed-bottom" style="background-color: #D6EAF8 ; padding-top: 10px;">
+            <nav class=" navbar navbar-expand-lg navbar navbar-fixed-bottom" style="background-color: #A9D0F5 ; padding-top: 10px;">
             <div >&emsp;<span class="glyphicon glyphicon-copyright-mark"></span> Laravel, <span id= "fecha"></span></div>
         </div>
         </nav>
