@@ -393,10 +393,28 @@ create table ZONAS
    id                   integer                        not null		AUTO_INCREMENT,
    nombreZona           char(255)                      not null,
    descripcionZona1     char(255)                      not null,
+   lugarZona            char(255)                     not null,
+   idDepto              integer                        null,
+   idMunicipio          integer                        null,
+   latitudZona          float                          not null,
+   longitudZona         float                          not null,
+   habitatZona          char(255)                      not null,
    created_at 			timestamp					   null,
    updated_at 			timestamp					   null,
    constraint PK_ZONAS primary key (id)
 );
+
+alter table ZONAS
+   add constraint FK_ZONA_PERTENECE_A_UN_MUNICIPIO foreign key (idMunicipio)
+      references MUNICIPIOS (id)
+      on update restrict
+      on delete restrict;
+
+alter table ZONAS
+   add constraint FK_ZONA_PERTENECE_A_UN_DEPARTAMENTO foreign key (idDepto)
+      references DEPARTAMENTOS (id)
+      on update restrict
+      on delete restrict;
 
 
 alter table CLASES
@@ -668,7 +686,11 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (29, 'riesgo-list', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
 (30, 'riesgo-create', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
 (31, 'riesgo-edit', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
-(32, 'riesgo-delete', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31');
+(32, 'riesgo-delete', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(29, 'municipio-list', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(30, 'municipio-create', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(31, 'municipio-edit', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(32, 'municipio-delete', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31');
 
 
 

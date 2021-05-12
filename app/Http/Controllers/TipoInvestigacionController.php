@@ -51,9 +51,9 @@ class TipoInvestigacionController extends Controller
     {
         $this->validate($request,[
 
-          'id',
-          'nombreTipoInvestigacion',
-          'descripcionTipo'
+          'id'=>'required|numeric',
+          'nombreTipoInvestigacion'=>'required',
+          'descripcionTipo'=>'required',
         ]);
         
         TipoInvestigacion::create($request->all());

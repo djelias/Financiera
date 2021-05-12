@@ -8,6 +8,12 @@
       </div>
     </div>
   </div>
+  @if ($errors->any())
+   <div class="alert alert-danger">
+  
+          <p>Debe ingresar datos válidos</p>
+      @endif
+   </div>
       <div>
         <a href="{{route('zona.create')}}" class="btn btn-success btn-lg">
             <i class="glyphicon glyphicon-plus"> NUEVO</i>
@@ -25,6 +31,13 @@
       <th with="80px">No</th>
       <th style="text-align:center">Nombre Zona</th>
       <th style="text-align:center">Descripcion de Zona</th>
+      <th style="text-align:center">Lugar</th><
+      <th style="text-align:center">Departamento/th>
+      <th style="text-align:center">Municipio/th>
+      <th style="text-align:center">Latitud</th>
+      <th style="text-align:center">Longitud</th>
+      <th style="text-align:center">Habitat</th>
+      <th style="text-align:center">Acciones</th>
        </tr>
     <?php $no=1; ?>
     @foreach ($zonas as $key => $value)
@@ -32,6 +45,12 @@
         <td>{{$no++}}</td>
         <td>{{ $value->nombreZona }}</td>
         <td>{{ $value->descripcionZona1 }}</td>
+        <td>{{ $value->lugarZona }}</td>
+        <td>{{ $value->Municipio->Departamento->nombreDepto}}</td>
+        <td>{{ $value->Municipio->nombreMunicipio}}</td>
+         <td>{{ $value->latitudZona }}</td>
+         <td>{{ $value->longitudZona }}</td>
+         <td>{{ $value->habitatZona }}<br></td>
         <td>
           <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('zona.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt"></i></a>

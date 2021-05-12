@@ -51,13 +51,13 @@ class SecuenciaController extends Controller
     {
         $this->validate($request,[
 
-          'id',
-          'secuenciaObtenida',
-          'metodoSecuenciacion',
-          'lugarSec',
-          'horaSec',
-          'fechaSec',
-          'responsableSec',
+          'id'=>'required|numeric', 
+          'secuenciaObtenida'=>'required',
+          'metodoSecuenciacion'=>'required',
+          'lugarSec'=>'required',
+          'horaSec'=>'required',
+          'fechaSec'=>'required|date',
+          'responsableSec'=>'required',
         ]);
         
         Secuencia::create($request->all());
