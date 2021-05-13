@@ -48,11 +48,56 @@
       </tr>
     @endforeach
   </table>
-  {!!$departamentos->render()!!}
- <div class="text-center">
-    <a class="btn btn-primary" href="{{ url('/gestion') }}"</a>
+  {!!$departamentos->render()!!}<div class="text-center">
+    <a class="btn btn-primary" href="{{ url('/gestion') }}">Regresar</a>
   </div>
-@endsection
 
+  <!--Script para mostrar formulario y Alerta confirmar Guardar con ajax-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script type="text/javascript">
+      $('.agregar').hide();
+       function mostrarFormulario(){
+        $('.agregar').show();
+       }
+$('.agregar').submit(function(e){
+     e.preventDefault();Swal.fire({
+  title: '¿Está seguro de guardar este Departamento?',
+  showDenyButton: true,
+  //showCancelButton: true,
+  confirmButtonText: `Guardar`,
+  denyButtonText: `Cancelar`,
+})
+     .then((result) => {
+    if (result.isConfirmed) {
+     this.submit();
+    }
+})
+});
+</script>
+<!--Script para Alerta con ajax-->
+
+ <script type="text/javascript">
+$('.formulario-eliminar').submit(function(e){
+     e.preventDefault();
+       Swal.fire({
+    title: '¿Está seguro de eliminar permanentemente este departamento?',
+    /*text: "You won't be able to revert this!",*/
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Eliminar',
+    cancelButtonText: 'Cancelar'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+     this.submit();
+    }
+})
+});
+
+    </script>
+@endsection
 
   

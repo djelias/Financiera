@@ -50,8 +50,8 @@ class ColeccionController extends Controller
     {
         $this->validate($request,[
 
-          'id',
-          'nombreColeccion'
+          'id'=>'required|numeric', 
+          'nombreColeccion'=>'required',
         ]);
         
         Coleccion::create($request->all());

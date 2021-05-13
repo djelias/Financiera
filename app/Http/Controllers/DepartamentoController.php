@@ -54,8 +54,8 @@ class DepartamentoController extends Controller
     {
         $this->validate($request,[
 
-          'idDepto',
-          'nombreDepto'
+          'id',
+          'nombreDepto',
         ]);
         
         Departamento::create($request->all());
@@ -96,7 +96,7 @@ class DepartamentoController extends Controller
     public function update(Request $request, $idDepto)
     {
         $this->validate($request,[
-          'idDepto',
+          'id',
           'nombreDepto'
         ]);
         Departamento::find($idDepto)->update($request->all());
