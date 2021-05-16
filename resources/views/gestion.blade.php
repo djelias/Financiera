@@ -1,79 +1,95 @@
-@extends('layouts.app')
+ @extends('layout')
+ @section('container')
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="startbootstrap-clean-blog-gh-pages/assets/img/ues.svg" width="70" height="70" class="d-inline-block align-top" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-@section('content')
-    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;" role="navigation">
-  <!-- El logotipo y el icono que despliega el menú se agrupan
-       para mostrarlos mejor en los dispositivos móviles -->
-  <div class="container-fluid">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse"
-            data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Desplegar navegación</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="{{ url('/gestion') }}">MENU</a>
-  </div>
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">BIO-UES</a>
+      </li>
+
       <li class="nav-item dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Especies
         </a>
-        <ul class="dropdown-menu">
-          <li><a href="{{ route('dominio.index') }}">Gestión de Dominios </a></li>
-          <li><a href="{{ route('reino.index') }}">Gestión de Reinos </a></li>
-          <li><a href="{{ route('filum.index') }}">Gestión de Filums </a></li>
-          <li><a href="{{ route('clase.index') }}">Gestión de Clases</a></li>
-          <li><a href="{{ route('orden.index') }}">Gestión de Orden</a></li>
-          <li><a href="{{ route('familia.index') }}">Gestión de Familias</a></li>
-          <li><a href="{{ route('genero.index') }}">Gestión de Géneros</a></li>
-          <li><a href="{{ route('especie.index') }}">Gestión de Especies</a></li>
-        </ul>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ route('dominio.index') }}">Gestión de Dominios</a>
+          <a class="dropdown-item" href="{{ route('reino.index') }}">Gestión de Reinos</a>
+           <a class="dropdown-item" href="{{ route('filum.index') }}">Gestión de Filums</a>
+           <a class="dropdown-item" href="{{ route('clase.index') }}">Gestión de Clases</a>
+           <a class="dropdown-item" href="{{ route('orden.index') }}">Gestión de Orden</a>
+           <a class="dropdown-item" href="{{ route('familia.index') }}">Gestión de Familias</a>
+           <a class="dropdown-item" href="{{ route('genero.index') }}">Gestión de Géneros</a>
+           <a class="dropdown-item" href="{{ route('especie.index') }}">Gestión de Especies</a>
+        </div>
       </li>
-    </ul>
-    <ul class="nav navbar-nav">
+
       <li class="nav-item dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Colecciones
         </a>
-        <ul class="dropdown-menu">
-          <li><a href="{{ route('taxonomia.index') }}">Taxonomias</a></li>
-         <li><a href="{{ route('especimen.index') }}">Especímenes</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>  
-   </div>
- </nav>
-        <br>
-        <div class="row">
-          <div class="col-sm-5">
-             <div class="text-left">
-                <h2><strong>BIENVENIDO / A</strong></h2>
-              </div>
-              <br>
-              <br>
-              <div class="text-left">
-                <h4>Tu plataforma completa de acceso a la información sobre las especies de la Biodiversidad salvadoreña.</h4>
-                <br>
-                <h4>BIO-UES  es una plataforma para el almacenamiento de datos sobre las especies naturales administrado por la Escuela de Biología de la Universidad de El Salvador.  </h4>
-              </div>
-          </div>
-         <div class="col-sm-6">
-           <div class="text-right">
-                    <img src="{{URL::asset('/img/torogoz.jpg')}}" alt="profile Pic" height="350" width="450">
-              
-                </div>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"  href="{{ route('taxonomia.index') }}">Taxonomias</a>
+          <a class="dropdown-item" href="{{ route('especimen.index') }}">Especímenes</a>
         </div>
-         </div>
-           
-         
+      </li>
+          </ul>
+  </div>
+</nav>
 
-          
-                
+  <header class="masthead" style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/jaguar.jpg')">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="site-heading">
+                            <h1>BIENVENIDOS</h1>
+                            <span class="subheading">Tu plataforma completa de acceso a la información sobre las especies de la Biodiversidad salvadoreña.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-@endsection
-
+        </header>
+        <section id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2>Sobre BIO-UES</h2>
+                        <p class="lead">BIO-UES  es una plataforma para el almacenamiento de datos sobre las especies naturales administrado por la Escuela de Biología de la Universidad de El Salvador. Podrás encontrar la siguiente informacion:</p>
+                        <ul>
+                            <li>Clasificación taxonomica de las especies registradas de la Biodiversidad salvadoreña.</li>
+                            <li>Catalogo con las colecciones que se encuentran en la Escuela de Biología de la UES.</li>
+                            <li>Datos de barcoding de aquellas especies que ya han sido analizadas.</li>
+                            <li>Mapas de ubicaciones de las diferentes especies.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+       <!--  <section class="bg-light" id="services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2>Services we offer</h2>
+                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2>Contact us</h2>
+                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+                    </div>
+                </div>
+            </div>
+        </section>-->
+    @endsection

@@ -29,6 +29,7 @@
 </head>
 <body>
     <div id="app" style="overflow-y: auto; overflow-x: hidden;"  >
+        
         <nav class="navbar navbar-expand-lg"role="navigation" style="background-color: #A9D0F5;">
             <div class="container">
                 <img src="{{URL::asset('/img/ues.png')}}" alt="profile Pic" height="65" width="55">
