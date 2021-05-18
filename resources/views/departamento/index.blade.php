@@ -31,17 +31,17 @@
         <td>{{$no++}}</td>
         <td>{{ $value->nombreDepto }}</td>
         <td>
-          <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('departamento.show',$value->id)}}">
-              <i class="glyphicon glyphicon-list-alt"></i></a>
+          <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('departamento.show',$value->id)}}">
+              <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
               
               @can('departamento-edit')
-          <a class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('departamento.edit',$value->id)}}">
-              <i class="glyphicon glyphicon-pencil"></i></a>
+          <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('departamento.edit',$value->id)}}">
+              <i class="glyphicon glyphicon-pencil">Editar</i></a>
               @endcan
 
               @can('departamento-delete')
             {!! Form::open(['method' => 'DELETE','route' => ['departamento.destroy', $value->id],'style'=>'display:inline']) !!}
-              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-lg" onclick="return confirm('¿Esta seguro de eliminar este Registro?')"><i class="glyphicon glyphicon-trash" ></i></button>
+              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm" onclick="return confirm('¿Esta seguro de eliminar este Registro?')"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
               @endcan
             {!! Form::close() !!}
         </td>

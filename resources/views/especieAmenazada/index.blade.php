@@ -45,16 +45,16 @@
         <td>{{$value->nomEspamen }}<br></td>
         <td>{{$value->nomComEspamen }}<br></td>
         <td>
-          <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('especieAmenazada.show',$value->id)}}">
-              <i class="glyphicon glyphicon-list-alt"></i></a>
+          <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('especieAmenazada.show',$value->id)}}">
+              <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
                @can('especieAmenazada-edit')
-          <a class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('especieAmenazada.edit',$value->id)}}">
-              <i class="glyphicon glyphicon-pencil"></i></a>
+          <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('especieAmenazada.edit',$value->id)}}">
+              <i class="glyphicon glyphicon-pencil">Editar</i></a>
               @endcan
 
               @can('especieAmenazada-delete')
             {!! Form::open(['method' => 'DELETE','route' => ['especieAmenazada.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
-              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-trash" ></i></button>
+              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
                @endcan
 
             {!! Form::close() !!}
