@@ -11,26 +11,21 @@
       <br>
   <table class="table table-striped" style="text-align:center" >
     <tr>
-      <th with="80px">No</th>
-      <th style="text-align:center">Nombre</th>
-      <th style="text-align:center">Acciones</th>
+      <th style="text-align:center">Id Bold</th>
+      <th style="text-align:center">Filum</th>
+      <th style="text-align:center">Clase</th>
+      <th style="text-align:center">Orden</th>
+      <th style="text-align:center">Familia</th>
+      <th style="text-align:center">Genero</th>
+      <th style="text-align:center">Especie</th>
+      <th style="text-align:center">Pais</th>
     </tr>
     <?php
-    //var_dump($response);
-    $src = $response->bold_records->records;
-    $seq = $response->bold_records->records;
+    var_dump($otra);
+    //$src = $response->bold_records->records;
+    //$seq = $response->bold_records->records;
     ?> 
-    @foreach ($src as $value)
-    <?php
-    //$seq = $response->bold_records->records->sequences->sequence;
-    //var_dump($seq);
-    ?>    
-        <tr>
-        <td>{{ $value->record_id }}</td>
-        <td>{{ $value->specimen_identifiers->institution_storing }}</td>
-        <td>{{ $value->taxonomy->phylum->taxon->name }}</td>
-      </tr>
-    @endforeach
+    
   </table>
  <div class="text-center">
     <a class="btn btn-primary" href="#">Regresar</a>
