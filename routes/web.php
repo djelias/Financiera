@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
 
-    return view('welcome');
+    return view('home');
 });
 
  Route::resource('coleccion','ColeccionController');
@@ -37,7 +37,14 @@ Route::get('/', function () {
  Route::get('consulta', 'MapController@consulta')->name('consulta');
  Route::get('bold/{taxon}/{geo}', 'MapController@bold')->name('bold');
 
-
+ Route::get('bold/{taxon}/{geo}', [
+      'uses'=> 'MapController@bold',
+      'as'  => 'bold'
+  ]);
+ Route::get('gestion', function()
+  {
+   return view('gestion');
+  });
 
 Auth::routes();
 
@@ -53,4 +60,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('secuencia','SecuenciaController');
     Route::resource('especieAmenazada','especieAmenazadaController');
 });
-
+//RUTAS PARA REPORTERIA
+Route::get('dominioPrueba.pdf', 'DominioController@generatePDF');

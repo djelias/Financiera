@@ -56,8 +56,8 @@ class EspecieAmenazadaController extends Controller
     {
         $this->validate($request,[
           'idRiesgo'=>'required|numeric',  
-          'nomEspamen',
-          'nomComEspamen',
+          'nomEspamen'=>'required',
+          'nomComEspamen'=>'required',
           ]);
             EspecieAmenazada::create($request->all());
             Alert::success('EspecieAmenazada agregado con éxito');

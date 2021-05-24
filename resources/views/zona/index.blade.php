@@ -8,6 +8,12 @@
       </div>
     </div>
   </div>
+  @if ($errors->any())
+   <div class="alert alert-danger">
+  
+          <p>Debe ingresar datos válidos</p>
+      @endif
+   </div>
       <div>
         <a href="{{route('zona.create')}}" class="btn btn-success btn-lg">
             <i class="glyphicon glyphicon-plus"> NUEVO</i>
@@ -25,6 +31,13 @@
       <th with="80px">No</th>
       <th style="text-align:center">Nombre Zona</th>
       <th style="text-align:center">Descripcion de Zona</th>
+      <th style="text-align:center">Lugar</th><
+      <th style="text-align:center">Departamento/th>
+      <th style="text-align:center">Municipio/th>
+      <th style="text-align:center">Latitud</th>
+      <th style="text-align:center">Longitud</th>
+      <th style="text-align:center">Habitat</th>
+      <th style="text-align:center">Acciones</th>
        </tr>
     <?php $no=1; ?>
     @foreach ($zonas as $key => $value)
@@ -32,17 +45,23 @@
         <td>{{$no++}}</td>
         <td>{{ $value->nombreZona }}</td>
         <td>{{ $value->descripcionZona1 }}</td>
+        <td>{{ $value->lugarZona }}</td>
+        <td>{{ $value->Municipio->Departamento->nombreDepto}}</td>
+        <td>{{ $value->Municipio->nombreMunicipio}}</td>
+         <td>{{ $value->latitudZona }}</td>
+         <td>{{ $value->longitudZona }}</td>
+         <td>{{ $value->habitatZona }}<br></td>
         <td>
-          <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('zona.show',$value->id)}}">
-              <i class="glyphicon glyphicon-list-alt"></i></a>
+          <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('zona.show',$value->id)}}">
+              <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
                @can('zona-edit')
-          <a class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('zona.edit',$value->id)}}">
-              <i class="glyphicon glyphicon-pencil"></i></a>
+          <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('zona.edit',$value->id)}}">
+              <i class="glyphicon glyphicon-pencil">Editar</i></a>
                @endcan
 
               @can('zona-delete')
             {!! Form::open(['method' => 'DELETE','route' => ['zona.destroy', $value->id],'style'=>'display:inline']) !!}
-              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-lg" onclick="return confirm('¿Esta seguro de eliminar este Registro?')"><i class="glyphicon glyphicon-trash" ></i></button>
+              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm" onclick="return confirm('¿Esta seguro de eliminar este Registro?')"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
                @endcan
             {!! Form::close() !!}
         </td>
@@ -51,7 +70,7 @@
   </table>
   {!!$zonas->render()!!}
  <div class="text-center">
-    <a class="btn btn-primary" href="#">Regresar</a>
+    <a class="btn btn-primary" href="{{ url('/gestion') }}">Regresar</a>
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

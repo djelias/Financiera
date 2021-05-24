@@ -59,12 +59,12 @@
         <td>{{$value->Orden->nombreOrden}}</td>
         <td>{{$value->nombreFamilia }}<br></td>
         <td>
-          <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('familia.show',$value->id)}}">
-              <i class="glyphicon glyphicon-list-alt"></i></a>
-          <a class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('familia.edit',$value->id)}}">
-              <i class="glyphicon glyphicon-pencil"></i></a>
+          <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('familia.show',$value->id)}}">
+              <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
+          <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('familia.edit',$value->id)}}">
+              <i class="glyphicon glyphicon-pencil">Editar</i></a>
             {!! Form::open(['method' => 'DELETE','route' => ['familia.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
-              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-trash" ></i></button>
+              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm">Eliminar<i class="glyphicon glyphicon-trash" ></i></button>
             {!! Form::close() !!}
         </td>
       </tr>
@@ -72,7 +72,7 @@
   </table>
   {!!$familias->render()!!}
  <div class="text-center">
-    <a class="btn btn-primary" href="#">Regresar</a>
+    <a class="btn btn-primary" href="{{ url('/gestion') }}">Regresar</a>
   </div>
 
 <!--Script para mostrar formulario y Alerta confirmar Guardar con ajax-->

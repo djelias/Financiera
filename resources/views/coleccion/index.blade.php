@@ -31,12 +31,12 @@
         <td>{{$no++}}</td>
         <td>{{ $value->nombreColeccion }}</td>
         <td>
-          <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('coleccion.show',$value->id)}}">
-              <i class="glyphicon glyphicon-list-alt"></i></a>
-          <a class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('coleccion.edit',$value->id)}}">
-              <i class="glyphicon glyphicon-pencil"></i></a>
+          <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('coleccion.show',$value->id)}}">
+              <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
+          <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('coleccion.edit',$value->id)}}">
+              <i class="glyphicon glyphicon-pencil">Editar</i></a>
             {!! Form::open(['method' => 'DELETE','route' => ['coleccion.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
-              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-trash" ></i></button>
+              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm">Eliminar<i class="glyphicon glyphicon-trash" ></i></button>
             {!! Form::close() !!}
         </td>
       </tr>
@@ -44,7 +44,7 @@
   </table>
   {!!$colecciones->render()!!}
  <div class="text-center">
-    <a class="btn btn-primary" href="#">Regresar</a>
+    <a class="btn btn-primary" href="{{ url('/gestion') }}">Regresar</a>
   </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

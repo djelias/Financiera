@@ -56,10 +56,9 @@ class TaxonomiaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[ 
-          'idColeccion'=>'required', 
-          'idEspecimen'=>'required',   
-          'NumVoucher'=>'required',  
-          'nomComun'=>'required|alpha_spaces',
+          'idEspecimen'=>'required|numeric',   
+          'numVoucher'=>'required',  
+          'nombreComun'=>'required|alpha_spaces',
           ]);
             Taxonomia::create($request->all());
             Alert::success('Clasificación Taxonómica agregado con éxito');
@@ -102,11 +101,10 @@ class TaxonomiaController extends Controller
      */
     public function update(Request $request, $idTaxonomia)
     {
-        $this->validate($request,[ 
-          'idColeccion'=>'required|numeric', 
+        $this->validate($request,[  
           'idEspecimen'=>'required|numeric',   
-          'NumVoucher'=>'required|numeric',  
-          'nomComun'=>'required|alpha_spaces',
+          'numVoucher'=>'required',  
+          'nombreComun'=>'required|alpha_spaces',
           ]);
         Taxonomia::find($idTaxonomia)->update($request->all());
         Alert::success('Taxonomia actualizado con éxito');
