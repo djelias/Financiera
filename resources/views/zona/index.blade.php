@@ -52,16 +52,16 @@
          <td>{{ $value->longitudZona }}</td>
          <td>{{ $value->habitatZona }}<br></td>
         <td>
-          <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('zona.show',$value->id)}}">
-              <i class="glyphicon glyphicon-list-alt"></i></a>
+          <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('zona.show',$value->id)}}">
+              <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
                @can('zona-edit')
-          <a class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('zona.edit',$value->id)}}">
-              <i class="glyphicon glyphicon-pencil"></i></a>
+          <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('zona.edit',$value->id)}}">
+              <i class="glyphicon glyphicon-pencil">Editar</i></a>
                @endcan
 
               @can('zona-delete')
             {!! Form::open(['method' => 'DELETE','route' => ['zona.destroy', $value->id],'style'=>'display:inline']) !!}
-              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-lg" onclick="return confirm('¿Esta seguro de eliminar este Registro?')"><i class="glyphicon glyphicon-trash" ></i></button>
+              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm" onclick="return confirm('¿Esta seguro de eliminar este Registro?')"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
                @endcan
             {!! Form::close() !!}
         </td>

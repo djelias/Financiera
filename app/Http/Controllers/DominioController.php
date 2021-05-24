@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Dominio;
 use Dominio1\http\Request\DominioRequest;
 use RealRashid\SweetAlert\Facades\Alert;
+use PDF;
 
 class DominioController extends Controller
 {
@@ -109,4 +110,5 @@ class DominioController extends Controller
         return redirect()->route('dominio.index');
         }
     }
-    }
+
+}

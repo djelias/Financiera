@@ -11,32 +11,36 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> 
+   <!-- CSS only -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet"> 
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   
 
 
 </head>
 <body>
     <div id="app" style="overflow-y: auto; overflow-x: hidden;"  >
         
-        <nav class="navbar navbar-expand-lg"role="navigation" style="background-color: #A9D0F5;">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"role="navigation" style="background-color: #D7D2D1 ;">
             <div class="container">
-                <img src="{{URL::asset('/img/ues.png')}}" alt="profile Pic" height="65" width="55">
+                <img src="{{URL::asset('/img/ues.svg')}}" alt="profile Pic" height="65" width="55">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                     <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                         <span class="sr-only">Toggle Navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -52,7 +56,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}"><span class="glyphicon glyphicon-user"></span>{{ __('Entrar') }}</a></li>
@@ -106,15 +110,24 @@
 <br>
 <br>
 <br>
-        <div>
-            <nav class=" navbar navbar-expand-lg navbar navbar-fixed-bottom" style="background-color: #A9D0F5 ; padding-top: 10px;">
-            <div >&emsp;<span class="glyphicon glyphicon-copyright-mark"></span> Laravel, <span id= "fecha"></span></div>
+        
+            <style>
+    .bs-example{
+        margin: 20px;
+    }
+    body{
+        padding-bottom: 70px;
+    }
+</style>
+</head>
+<body>
+<div class="bs-example">
+    <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: #D7D2D1 ;">
+        <a class="navbar-brand">Copyright &copy; BIO-UES </a>
+            <div >&emsp;<span class="glyphicon glyphicon-copyright-mark"><span id= "fecha"></span></div>
+             </nav>
         </div>
-        </nav>
-        </div>     
-</div>
-</div>
-
+   
 
 
     

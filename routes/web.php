@@ -59,4 +59,4 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('secuencia','SecuenciaController');
     Route::resource('especieAmenazada','especieAmenazadaController');
 });
-
+Route::get('generate-pdf', 'PruebaController@generatePDF');
