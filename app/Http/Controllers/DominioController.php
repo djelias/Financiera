@@ -7,6 +7,7 @@ use App\Dominio;
 use Dominio1\http\Request\DominioRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 use PDF;
+use Carbon\Carbon;
 
 class DominioController extends Controller
 {
@@ -110,5 +111,21 @@ class DominioController extends Controller
         return redirect()->route('dominio.index');
         }
     }
+
+    public function generatePDF(Request $request)
+
+    {
+        $nombre = $request->get('nombreDominio');
+        $dominios = Dominio::orderBy('id','DESC')->nombre($nombre)->paginate(10);
+        //$data = ['title' => 'Esta es una página de Prueba'];
+        $date=new Carbon();
+        $fecha = $date->format('d-m-Y');
+
+        $pdf = PDF::loadView('dominio.reporteDominio',compact('dominios','fecha'));
+        $pdf->getDomPDF()->set_option("enable_php", TRUE);
+        return $pdf->stream('dominio.pdf');
+
+    }
+
 
 }
