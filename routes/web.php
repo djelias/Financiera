@@ -35,11 +35,8 @@ Route::get('/', function () {
   Route::resource('taxonomia','TaxonomiaController');
  Route::get('map', 'MapController@index')->name('map');
  Route::get('consulta', 'MapController@consulta')->name('consulta');
+ Route::get('bold/{taxon}/{geo}', 'MapController@bold')->name('bold');
 
- Route::get('bold/{taxon}/{geo}', [
-      'uses'=> 'MapController@bold',
-      'as'  => 'bold'
-  ]);
 
 
 Auth::routes();
