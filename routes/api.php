@@ -19,6 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 */
 Route::post('login', 'API\LoginController@login');
 Route::resource('coleccion','API\ColeccionController');
+Route::resource('especimen','API\EspecimenController');
+Route::resource('investigacion','API\InvestigacionController');
+Route::resource('taxonomia','API\TaxonomiaController');
 
 
 Route::middleware('auth:api')->group( function () {
