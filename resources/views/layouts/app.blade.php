@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,21 +58,28 @@
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
 
-                            @can('usuario-list')
+                        @can('usuario-list')
                             <li><a class="nav-link" href="{{ route('users.index') }}">Manejar Usuarios</a></li>
-                            @endcan
+                        @endcan
 
-                            @can('role-list')
+                        @can('role-list')   
                             <li><a class="nav-link" href="{{ route('roles.index') }}">Manejar Roles</a></li>
-                            @endcan
-
+                        @endcan
+                        
                             <li><a class="nav-link" href="{{ route('departamento.index') }}">Manejar Depto</a></li>
+                            
+
+                        <li><a class="nav-link" href="{{ route('municipio.index') }}">
+                            Manejar Municipio</a></li>
+                    
+
+                        <li><a class="nav-link" href="{{ route('zona.index') }}">
+                            Manejar Zona</a></li>
+                           
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
-
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

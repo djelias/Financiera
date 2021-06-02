@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Zona;
+use App\Municipio;
 use Zona1\http\Request\ZonaRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -15,11 +16,20 @@ class ZonaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+      function __construct()
+    {
+         $this->middleware('permission:zona-listado|zona-create|zona-edit|zona-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:zona-create', ['only' => ['create','store']]);
+         $this->middleware('permission:zona-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:zona-delete', ['only' => ['destroy']]);
+    }
+
     public function index(Request $request)
     {
+        $municipios = Municipio::all();
         $nombre = $request->get('nombreZona');
         $zonas = Zona::orderBy('id','DESC')->nombre($nombre)->paginate(10);
-        return view('zona.index',compact('zonas'));
+        return view('zona.index',compact('municipios','zonas'));
     }
 
     /**
@@ -30,8 +40,9 @@ class ZonaController extends Controller
 
     public function create()
     {
+        $municipios = Municipio::all();
         $zonas = Zona::all();
-        return view('zona.create', compact('zonas'));
+        return view('zona.create', compact('municipios','zonas'));
     }
 
     /**
@@ -45,8 +56,13 @@ class ZonaController extends Controller
         $this->validate($request,[
 
           'id',
-          'nombreZona',
-          'descripcionZona1'
+          'idMunicipio',
+          'nombreZona'=>'required|alpha_spaces',
+          'lugarZona'=>'required|alpha_spaces',
+          'latitudZona'=>'required|alpha_spaces',
+          'longitudZona'=>'required|alpha_spaces',
+          'habitatZona'=>'required|alpha_spaces',
+          'descripcionZona1'=>'required|alpha_spaces',
         ]);
         
         Zona::create($request->all());
@@ -75,7 +91,8 @@ class ZonaController extends Controller
     public function edit($idZona)
     {
         $zonas = Zona::find($idZona);
-        return view('zona.edit',compact('zonas'));
+        $municipios = Municipio::all();
+        return view('zona.edit',compact('zonas','municipios'));
     }
 
     /**
@@ -87,10 +104,16 @@ class ZonaController extends Controller
      */
     public function update(Request $request, $idZona)
     {
-        $this->validate($request,[
+       $this->validate($request,[
+
           'id',
-          'nombreZona',
-          'descripcionZona1'
+          'idMunicipio',
+          'nombreZona'=>'required|alpha_spaces',
+          'lugarZona'=>'required|alpha_spaces',
+          'latitudZona'=>'required|alpha_spaces',
+          'longitudZona'=>'required|alpha_spaces',
+          'habitatZona'=>'required|alpha_spaces',
+          'descripcionZona1'=>'required|alpha_spaces',
         ]);
         Zona::find($idZona)->update($request->all());
          Alert::success('Zona  Actualizada con éxito');
@@ -109,7 +132,7 @@ class ZonaController extends Controller
             Zona::find($idZona)->delete();
             Alert::success('Zona eliminada con exito');
         return redirect()->route('zona.index');
-    		} catch  (\Illuminate\Database\QueryException $e){
+            } catch  (\Illuminate\Database\QueryException $e){
                  Alert::danger('No se Puede eliminar este registro porque esta asociado con otros datos');
         return redirect()->route('zona.index');
 

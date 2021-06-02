@@ -12,7 +12,16 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Nombre : </strong>
-            {{ $tipoInvestigaciones->nombreColeccion}}
+            {{ $tipoInvestigaciones->nombreTipo}}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Descripcion : </strong>
+            {{ $tipoInvestigaciones->descripcionTipo}}
         </div>
     </div>
 </div>

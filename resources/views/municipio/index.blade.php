@@ -53,10 +53,16 @@
         <td>
           <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('municipio.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt"></i></a>
+              
+              @can('municipio-edit')
           <a class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('municipio.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil"></i></a>
+              @endcan
+
+              @can('municipio-delete')
             {!! Form::open(['method' => 'DELETE','route' => ['municipio.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-trash" ></i></button>
+              @endcan
             {!! Form::close() !!}
         </td>
       </tr>

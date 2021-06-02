@@ -24,14 +24,28 @@
     <tr>
       <th with="80px">No</th>
       <th style="text-align:center">Nombre Zona</th>
-      <th style="text-align:center">Descripcion de Zona</th>
-       </tr>
+      <th style="text-align:center">Lugar Zona</th>
+      <th style="text-align:center">Municipio Zona</th>
+      <th style="text-align:center">Departamento Zona</th>
+      <th style="text-align:center">Latitud Zona</th>
+      <th style="text-align:center">Longitud Zona</th>
+      <th style="text-align:center">Habitat Zona</th>
+     <!-- <th style="text-align:center">Descripcion de Zona</th> --> 
+      <th style="text-align:center">Acciones</th>
+
+      </tr>
     <?php $no=1; ?>
     @foreach ($zonas as $key => $value)
     <tr>
         <td>{{$no++}}</td>
         <td>{{ $value->nombreZona }}</td>
-        <td>{{ $value->descripcionZona1 }}</td>
+        <td>{{ $value->lugarZona }}</td>
+        <td>{{ $value->Municipio->nombreMunicipio }}</td>
+        <td>{{ $value->Municipio->Departamento->nombreDepto }}</td>
+        <td>{{ $value->latitudZona }}</td>
+        <td>{{ $value->longitudZona }}</td>
+        <td>{{ $value->habitatZona }}</td>
+    <!--    <td>{{ $value->descripcionZona1 }}</td>-->
         <td>
           <a class="btn btn-info btn-lg" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('zona.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt"></i></a>

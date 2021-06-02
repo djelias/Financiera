@@ -30,14 +30,17 @@ Route::get('/', function () {
  Route::resource('municipio','MunicipioController');
  Route::resource('familia','FamiliaController');
  Route::get('map', 'MapController@index')->name('map');
-
+Route::resource('investigacion','InvestigacionController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
     Route::resource('departamento','DepartamentoController');
+    Route::resource('municipio','MunicipioController');
+    Route::resource('zona','ZonaController');
 });
 

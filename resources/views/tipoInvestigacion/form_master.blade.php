@@ -23,7 +23,7 @@
     <br>
        <div class="form-group text-center" >
       {{ Form::button(isset($model)? 'Update' : 'Guardar' , ['class'=>'btn btn-success btn-lg','type'=>'submit']) }}
-      <a class="btn btn-danger btn-lg" href="{{ route('coleccion.index') }}">Cancelar</a>
+      <a class="btn btn-danger btn-lg" href="{{ route('tipoInvestigacion.index') }}">Cancelar</a>
     </div>
 
     <!--Script para Colocar guion automatico en numero de DUI-->

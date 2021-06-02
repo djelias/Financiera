@@ -41,12 +41,20 @@ return [
     |
     */
 
+    'document' => [
+        'driver' => 'local',
+        'root' => public_path().'/proyecto/documentos/documentacion',
+    ],
+
     'disks' => [
 
         'local' => [
-            'driver' => 'local',
-            'root' => storage_path('app'),
-        ],
+
+'driver' => 'local',
+
+'root' => public_path().'/storage',
+
+],
 
         'public' => [
             'driver' => 'local',
@@ -67,3 +75,4 @@ return [
     ],
 
 ];
+

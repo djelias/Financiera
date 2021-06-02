@@ -25,6 +25,8 @@ class ZonaRequest extends FormRequest
     {
         return [
             'nombreZona'=> 'required',
+            'idMunicipio'=> 'required',
+            
                 ];
     }
 }
