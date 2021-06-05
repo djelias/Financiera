@@ -1,71 +1,47 @@
 <div class="row">
-    <div class="col-sm-7">
+    <div class="col-sm-4">
        {!! form::label('Ingrese el Número de Voucher:') !!}
-   </div>
-   <div class="col-sm-7">
-      <div class="form-group {{ $errors->has('NumVoucher') ? 'has-error' : "" }}">
-            <i> {{ Form::text('NumVoucher',NULL, ['class'=>'form-control','id'=>'NumVoucher','placeholder'=>'Número de Voucher ']) }}  </i> 
+   
+      <div class="form-group {{ $errors->has('numVoucher') ? 'has-error' : "" }}">
+            <i> {{ Form::text('numVoucher',NULL, ['class'=>'form-control','id'=>'numVoucher','placeholder'=>'Número de Voucher ']) }}  </i> 
             <div class="help-block" > 
-          {{ $errors->first('NumVoucher', 'Ingrese los datos correctamente') }}
+          {{ $errors->first('numVoucher', 'Ingrese los datos correctamente') }}
        </div>
      </div>
   </div>
- </div>
 
- <div class="row">
-  <div class="col-sm-7" >
-  <div class="form-group {{ $errors->has('idDominio') ? 'has-error' : "" }}">
-        {!! form::label('Seleccione el Dominio:') !!}
-      <select name="idDominio" class="form-control">
-                <option disabled selected>Seleccione Dominio</option>
-                @foreach($dominios as $dominio)
-                      <option value="{{$dominio->id}}">{{$dominio->nombreDominio}}</option>
+  <div class="col-sm-4" >
+  <div class="form-group {{ $errors->has('idEspecimen') ? 'has-error' : "" }}">
+        {!! form::label('Seleccione el código del especimen:') !!}
+      <i><datalist name="idEspecimen" id="idEspecimen">
+                  @foreach($especimens as $especimen)
+                      <option value="{{$especimen->id}}">{{$especimen->codigoEspecimen}}</option>
                  @endforeach
-            </select>
+            </datalist></i>
+      <i>{{ Form::text('idEspecimen',NULL, ['class'=>'form-control', 'list'=>'idEspecimen', 'placeholder'=>'Código de Especimen']) }}</i>         
             <div class="help-block" > 
-          {{ $errors->first('idDominio', 'Debe seleccionar una opción') }}
+          {{ $errors->first('idEspecimen', 'Debe seleccionar una opción') }}
       </div>          
     </div>
   </div>
-</div>
 
-
- <div class="row">
-           <div class="col-sm-7" >
-       {!! form::label('Ingrese Nombre Común de la Especie:') !!}
-      <div class="form-group {{ $errors->has('nomComEspamen') ? 'has-error' : "" }}">
-            <i> {{ Form::text('nomComEspamen',NULL, ['class'=>'form-control','id'=>'nomComEspamen','placeholder'=>'Nombre Común de la especie amenazada']) }}  </i> 
+           <div class="col-sm-4" >
+       {!! form::label('Nombre Común de la especie:') !!}
+      <div class="form-group {{ $errors->has('nombreComun') ? 'has-error' : "" }}">
+            <i> {{ Form::text('nombreComun',NULL, ['class'=>'form-control','id'=>'nombreComun','placeholder'=>'Nombre Común de la especie']) }}  </i> 
             <div class="help-block" > 
-          {{ $errors->first('nomComEspamen', 'Ingrese los datos correctamente') }}
+          {{ $errors->first('nombreComun', 'Ingrese los datos correctamente') }}
           </div>
         </div>
       </div>
-  </div>
-
-<div class="row">
-  <div class="col-sm-7" >
-  <div class="form-group {{ $errors->has('idRiesgo') ? 'has-error' : "" }}">
-        {!! form::label('Seleccione el Riesgo:') !!}
-      <select name="idRiesgo" class="form-control">
-                <option disabled selected>Seleccione Riesgo</option>
-                @foreach($riesgos as $riesgo)
-                      <option value="{{$riesgo->id}}">{{$riesgo->catRiesgo}}</option>
-                 @endforeach
-            </select>
-            <div class="help-block" > 
-          {{ $errors->first('idRiesgo', 'Debe seleccionar una opción') }}
-      </div>          
-    </div>
-  </div>
-</div>
-
+  
 
       <br>
-      <div class="form-group text-center" >
+     </div>  
+      <div class="form-group" >
         {{ Form::button(isset($model)? 'Update' : 'Guardar' , ['class'=>'btn btn-success btn-default','type'=>'submit']) }}
-        <a class="btn btn-danger btn-default" href="{{ route('especieAmenazada.index') }}">Cancelar</a>
+        <a class="btn btn-danger btn-default" href="{{ route('taxonomia.index') }}">Cancelar</a>
       </div> 
-      
     
      
      

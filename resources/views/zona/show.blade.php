@@ -3,7 +3,7 @@
 <div class="row"  >
     <div class="col-lg-12 margin-tb">
         <div class="pull-left ">
-            <h3 > Datos de la zona</h3>
+            <h3 > Datos de la Zona Geográfica</h3>
             <br>
         </div>
     </div>

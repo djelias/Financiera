@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Zona;
 use App\Municipio;
+use App\Departamento;
 use Zona1\http\Request\ZonaRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -16,7 +17,7 @@ class ZonaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-      function __construct()
+     function __construct()
     {
          $this->middleware('permission:zona-listado|zona-create|zona-edit|zona-delete', ['only' => ['index','show']]);
          $this->middleware('permission:zona-create', ['only' => ['create','store']]);
@@ -28,8 +29,11 @@ class ZonaController extends Controller
     {
         $municipios = Municipio::all();
         $nombre = $request->get('nombreZona');
+        $municipios = Municipio::all();
+        $departamentos=Departamento::all();
         $zonas = Zona::orderBy('id','DESC')->nombre($nombre)->paginate(10);
-        return view('zona.index',compact('municipios','zonas'));
+        return view('zona.index',compact('zonas','municipios','departamentos'));
+
     }
 
     /**
@@ -42,7 +46,10 @@ class ZonaController extends Controller
     {
         $municipios = Municipio::all();
         $zonas = Zona::all();
-        return view('zona.create', compact('municipios','zonas'));
+         $municipios = Municipio::all();
+         $departamentos=Departamento::all();
+        return view('zona.create', compact('zonas','municipios','departamentos'));
+
     }
 
     /**
@@ -91,8 +98,9 @@ class ZonaController extends Controller
     public function edit($idZona)
     {
         $zonas = Zona::find($idZona);
-        $municipios = Municipio::all();
-        return view('zona.edit',compact('zonas','municipios'));
+         $municipios = Municipio::all();
+         $departamentos=Departamento::all();
+        return view('zona.edit',compact('zonas','municipios','departamentos'));
     }
 
     /**

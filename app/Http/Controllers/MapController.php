@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GMaps;
+use GuzzleHttp\Client;
 
 class MapController extends Controller
 {
@@ -25,7 +26,7 @@ class MapController extends Controller
 
         $map = GMaps::create_map();
 
-        return view('map')->with('map',$map);
+        return view('control/map')->with('map',$map);
     
         
         /*********** Marker Setup 
@@ -47,5 +48,36 @@ class MapController extends Controller
 
         return view('map', ['map' => $map]);
         */
-}
+    }
+
+    public function consulta()
+    {
+        return view('control/consulta');
+    }
+
+    public function bold(Request $request, $taxon, $geo)
+    {
+        $taxonomia = $taxon;
+        $geografia = $geo;
+        $url = "http://www.boldsystems.org/index.php/API_Public/combined?taxon=vulpes vulpes&geo=Canada&format=json";
+        $client = new \GuzzleHttp\Client();
+        //$request = $client->get('http://www.boldsystems.org/index.php/API_Public/combined?taxon='.$taxon.'&geo='.$geo.'&format=json');
+        $request = $client->get($url);
+        $responses = json_decode((string) $request->getBody());
+        $src = $responses->bold_records->records;
+
+        foreach ($src as $key => $value) {
+            $otra = $value->collection_event->coordinates->lat;
+        }
+
+
+        $config['center'] = '13.681872879287369, -88.99022359507697';
+        $config['zoom'] = '5';
+        $config['map_height'] = '500px';
+        $config['scrollwheel'] = true;
+        GMaps::initialize($config);
+
+        return view('control/bold')->with('otra',$otra);
+    }
+
 }

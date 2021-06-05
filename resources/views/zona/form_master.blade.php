@@ -63,7 +63,7 @@
     </div>
      <div class="col-sm-5">
       <div class="form-group {{ $errors->has('descripcionZona1') ? 'has-error' : "" }}">
-       <i>{{ Form::text('descripcionZona1',NULL, ['class'=>'form-control','id'=>'descripcionZona1','placeholder'=>'descripcion de la zona']) }} </i>
+       <i>{{ Form::textarea('descripcionZona1',NULL, ['class'=>'form-control','id'=>'descripcionZona1','placeholder'=>'descripcion de la zona']) }} </i>
     </div>
   </div>
   </div>
