@@ -1,3 +1,4 @@
+
 @extends('auth.loginApp')
  @section('container')
 
@@ -19,31 +20,58 @@
 			      			<h3 class="mb-4">Ingrese los datos</h3>
 			      		</div>
 			      	</div>
-							<form action="#" class="signin-form">
-			      		<div class="form-group mb-3">
-			      			<label class="label" for="name">Nombre de Usuario</label>
-			      			<input type="text" class="form-control" placeholder="Usuario" required>
-			      		</div>
-		            <div class="form-group mb-3">
-		            	<label class="label" for="password">Contraseña</label>
-		              <input type="password" class="form-control" placeholder="Contraseña" required>
-		            </div>
-		            <div class="form-group mb-3">
-		            	<label class="label" for="password">Confirmar Contraseña</label>
-		              <input type="password" class="form-control" placeholder="Confirmar Contraseña" required>
-		            </div>
-		             <div class="form-group mb-3">
-		            	<label class="label" for="email">Correo Electrónico</label>
-		              <input type="email" class="form-control" placeholder="Correo electrónico" required>
-		            </div>
-		            <div class="form-group">
+						 <form method="POST" action="{{ route('register') }}">
+                        @csrf
+
+                        <div class="form-group mb-3">
+                            <label class="label" for="name">Nombre</label>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                           
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="email" class="label">Correo Electrónico</label>
+
+                   <input id="email" type="email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" email required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                          
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="password" class="label">Contraseña</label>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="password-confirm" class="label">Confirmar contraseña</label>
+
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+
+                      <div class="form-group">
 		            	<button type="submit" class="form-control btn btn-primary rounded submit px-3">Registrarse</button>
 		            </div>
-                    <div class="form-group">
+                         <div class="form-group">
                         <a href="{{ url('/') }}" class="form-control btn btn-danger rounded submit px-3">Cancelar</a>
                     </div>
-		            
-		          </form>
+                    </form>
 		        </div>
 		      </div>
 				</div>

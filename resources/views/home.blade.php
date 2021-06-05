@@ -13,7 +13,18 @@
                         <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">Quienes somos</a></li>
                         <li class="nav-item"><a class="nav-link" href="post.html">Contactenos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/home') }}">Entrar</a></li>
+                        @if (Auth::guest())
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Entrar</a></li>                   
+                         @else
+                          <li class="nav-item"><a class="nav-link" href="{{ url('/gestion') }}">Gestiones BIO-UES</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url('/home') }}" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Cerrar Sesión </a>
+                                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                        </li>
+                        @endif
                     </ul>
                 </div>
             </div>
