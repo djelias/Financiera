@@ -56,9 +56,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                  <!--   <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
+                         <!--@guest
                             <li><a class="nav-link" href="{{ route('login') }}"><span class="glyphicon glyphicon-user"></span>{{ __('Entrar') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}"><span class="glyphicon glyphicon-log-in"></span>{{ __('Registrarse') }}</a></li>
                         @else
@@ -95,7 +95,7 @@
                                 </div>
                             </li>
                         @endguest
-                    </ul>
+                    </ul>-->
 
                     
                 </div>
