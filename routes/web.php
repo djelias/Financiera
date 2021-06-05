@@ -34,6 +34,7 @@ Route::get('/', function () {
   Route::resource('especimen','EspecimenController');
   Route::resource('taxonomia','TaxonomiaController');
  Route::get('map', 'MapController@index')->name('map');
+Route::resource('investigacion','InvestigacionController');
  Route::get('consulta', 'MapController@consulta')->name('consulta');
  Route::get('bold/{taxon}/{geo}', 'MapController@bold')->name('bold');
 
@@ -49,6 +50,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');

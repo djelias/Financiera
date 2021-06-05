@@ -61,7 +61,8 @@
 
               @can('municipio-delete')
             {!! Form::open(['method' => 'DELETE','route' => ['municipio.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
-              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
+              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-trash" ></i></button>
+
               @endcan
             {!! Form::close() !!}
         </td>

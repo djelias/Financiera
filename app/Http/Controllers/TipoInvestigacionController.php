@@ -116,7 +116,7 @@ class TipoInvestigacionController extends Controller
             TipoInvestigacion::find($idTipoInvestigacion)->delete();
             Alert::success('Tipo de Investigación eliminada con exito');
         return redirect()->route('tipoInvestigacion.index');
-    		} catch  (\Illuminate\Database\QueryException $e){
+            } catch  (\Illuminate\Database\QueryException $e){
                  Alert::danger('No se Puede eliminar este registro porque esta asociado con otros datos');
         return redirect()->route('tipoInvestigacion.index');
         }

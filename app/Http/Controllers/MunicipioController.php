@@ -28,7 +28,7 @@ class MunicipioController extends Controller
     }
     public function index(Request $request)
     {
-    	$departamentos = Departamento::all();
+        $departamentos = Departamento::all();
         $nombre =$request->get('nombreMunicipio');
         $municipios = Municipio::orderBy('id','DESC')->nombre($nombre)->paginate(10);
         return view('municipio.index',compact('municipios','departamentos'));
@@ -121,7 +121,7 @@ class MunicipioController extends Controller
              Alert::success('Municipio eliminado con exito');
         return redirect()->route('municipio.index');
     }catch (\Illuminate\Database\QueryException $e) {
-    	Alert::danger('No se Puede eliminar este registro porque esta asociado con otra asignación');
+        Alert::danger('No se Puede eliminar este registro porque esta asociado con otra asignación');
         return redirect()->route('municipio.index');
     }
     }
