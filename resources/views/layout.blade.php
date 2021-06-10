@@ -10,19 +10,95 @@
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
+
         <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
+
+
         <link href="{{ asset('startbootstrap-clean-blog-gh-pages/css/styles.css')}}" rel="stylesheet" />
         <link href="{{ asset('startbootstrap-scrolling-nav-gh-pages/css/styles.css')}}" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     </head>
     <body>
-      
-        
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{{ url('/home') }}">
+    <img src="startbootstrap-clean-blog-gh-pages/assets/img/ues.svg" width="70" height="70" class="d-inline-block align-top" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">BIO-UES</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Especies
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ route('dominio.index') }}">Gestión de Dominios</a>
+          <a class="dropdown-item" href="{{ route('reino.index') }}">Gestión de Reinos</a>
+           <a class="dropdown-item" href="{{ route('filum.index') }}">Gestión de Filums</a>
+           <a class="dropdown-item" href="{{ route('clase.index') }}">Gestión de Clases</a>
+           <a class="dropdown-item" href="{{ route('orden.index') }}">Gestión de Orden</a>
+           <a class="dropdown-item" href="{{ route('familia.index') }}">Gestión de Familias</a>
+           <a class="dropdown-item" href="{{ route('genero.index') }}">Gestión de Géneros</a>
+           <a class="dropdown-item" href="{{ route('especie.index') }}">Gestión de Especies</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Colecciones
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"  href="{{ route('taxonomia.index') }}">Taxonomias</a>
+          <a class="dropdown-item" href="{{ route('especimen.index') }}">Especímenes</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <ul class="navbar-nav mr-nav">
+  @if (Auth::guest())
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Entrar</a></li>                   
+  @else
+            <li class="nav-item dropdown"> 
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Usuario: {{ Auth::user()->name }}</a>
+               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                   <a class="dropdown-item" href="{{ url('/home') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+               </div>
+               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+            </form>
+                
+            </li>
+           
+            
+@endif
+</ul>
+</nav>
+     
+    @yield("header")
         <!-- Main Content-->
-       @yield("container")
+    
+      <div class="container">
+         @yield("container")
+          @include('sweetalert::alert')
         <hr />
+</div>
         <!-- Footer-->
         <footer>
             <div class="container">
@@ -58,11 +134,25 @@
                     </div>
                 </div>
             </div>
+            <div>
+                <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: #D7D2D1 ;">
+        <a class="navbar-brand"> BIO-UES </a>
+            <div >&emsp;<span class="glyphicon glyphicon-copyright-mark"><span id= "fecha"></span></div>
+             </nav>
+            </div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+         <script>
+        var f=new Date();
+        var fecha = f.getDate() + '-' + (f.getMonth() + 1) + '-' +f.getFullYear();
+        var hora = f.getHours() + ':' + f.getMinutes();
+        var fechaYhora = fecha + ' , '+hora;
+        document.getElementById('fecha').innerHTML = fechaYhora;
+
+</script>
     </body>
 </html>

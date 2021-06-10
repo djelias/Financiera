@@ -1,13 +1,10 @@
-@extends ('layouts.app')
-@section('content')
-  <div class="row">
-    <div class ="col-sm-12">
-      <div class="full.right">
-      <h2>Dominios</h2>
-      <br>
-      </div>
-    </div>
-  </div>
+@extends ('layout')
+@section('header')
+<header style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/titulos.jpg'); opacity: 0.8;"><h2 style="color: white; font-family: sans-serif; font-size: 58px; text-align: center;">Dominios</h2>
+  </header>
+@endsection
+@section('container')
+ <br>
   @if ($errors->any())
    <div class="alert alert-danger">
   
@@ -15,13 +12,8 @@
      
    </div>
   @endif
-  <div>
-          {!! Form::open(['route'=>'dominio.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
-          {!! Form::text('nombreDominio', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
-         <button type="submit" class="glyphicon glyphicon-search btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar"></button>
-            {!! Form::close()!!}
-        </div>
-      <div>
+  <div class="row">
+     <div class="col-md-8">
         <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
             Nuevo Dominio
         </button>
@@ -31,6 +23,18 @@
              {{ form::close() }}
         
       </div>
+    <div class="col-md-4">
+        {!! Form::open(['route'=>'dominio.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
+        <div class="input-group"> 
+            {!! Form::text('nombreDominio', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
+           <button type="submit" class="btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar">Buscar</button>
+        {!! Form::close()!!}
+        </div>
+        <br>
+      
+      </div>    
+  </div>
+ 
       <br>
   <table class="table table-striped" style="text-align:center" >
     <tr>
