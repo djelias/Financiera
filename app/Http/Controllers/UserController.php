@@ -16,7 +16,7 @@ class UserController extends Controller
 {
     function __construct()
     {
-         $this->middleware(['isAdmin'])->only('index');
+         //$this->middleware(['isAdmin'])->only('index');
          $this->middleware('permission:usuario-list|usuario-create|usuario-edit|usuario-delete', ['only' => ['index','store']]);
          $this->middleware('permission:usuario-create', ['only' => ['create','store']]);
          $this->middleware('permission:usuario-edit', ['only' => ['edit','update']]);
@@ -29,8 +29,9 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::all(); 
-        return response()->json(['users' => $users], $this-> successStatus); 
+        $usuarios = User::all();
+        $users = User::orderBy('id','DESC')->paginate(10); 
+        return view('users.index',compact('users')); 
     }
 
 

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+{!! $map['js'] !!}
 <div class="row"  >
     <div class="col-lg-12 margin-tb">
         <div class="pull-left ">
@@ -113,8 +114,10 @@
         </div>
     </div> 
 </div>
+{!! $map['html'] !!}
             <br/>
             <a class="btn btn-primary" href="{{ route('especimen.index') }}"> <i class="glyphicon glyphicon-arrow-left"> Regresar</i></a>
+            <a class="btn btn-primary" href="{{ route('map', $especimens->id) }}"> <i class="glyphicon glyphicon-arrow-left"> Mapas</i></a>
     </div>
 
 @endsection
