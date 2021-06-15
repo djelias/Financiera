@@ -1,13 +1,9 @@
-@extends ('layouts.app')
-@section('content')
-  <div class="row">
-    <div class ="col-sm-12">
-      <div class="full.right">
-      <h2>Especímenes</h2>
-      <br>
-      </div>
-    </div>
-  </div>
+@extends ('layout')
+@section('header')
+<header style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/titulos.jpg'); opacity: 0.8;"> <h2 style="color: white; font-family: sans-serif; font-size: 58px; text-align: center;">Especímenes</h2>
+  </header>
+@endsection
+@section('container')
    @if ($errors->any())
    <div class="alert alert-danger">
   
@@ -15,17 +11,26 @@
      
    </div>
   @endif
-      <div>
+  <br>
+    <div class="row">
+       <div class="col-md-8">
         <a href="{{route('especimen.create')}}" class="btn btn-success btn-lg">
             <i class="glyphicon glyphicon-plus"> NUEVO</i>
         </a>
-        {!! Form::open(['route'=>'especimen.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
-        <div class="input-group"> 
-            {!! Form::text('codigoEspecimen', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
         </div>
-         <button type="submit" class="glyphicon glyphicon-search btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar"></button>
+        <div class="col-md-4">
+         {!! Form::open(['route'=>'especimen.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
+        <div class="input-group"> 
+           {!! Form::text('codigoEspecimen', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
+           <button type="submit" class="btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar">Buscar</button>
         {!! Form::close()!!}
+        </div>
+        <br>
+      
       </div>
+      </div>
+
+     
       <br>
   <table class="table table-striped" style="text-align:center" >
     <tr>
