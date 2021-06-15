@@ -29,7 +29,10 @@
    <th>Roles</th>
    <th width="280px">Action</th>
  </tr>
- @foreach ($data as $key => $user)
+ <<?php 
+$i=0;
+  ?>
+ @foreach ($users as $key => $user)
   <tr>
     <td>{{ ++$i }}</td>
     <td>{{ $user->name }}</td>
@@ -53,6 +56,6 @@
 </table>
 
 
-{!! $data->render() !!}
+{!! $users->render() !!}
 
 @endsection

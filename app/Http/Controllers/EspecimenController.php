@@ -14,6 +14,7 @@ use App\Genero;
 use App\Especie;
 use App\Especimen;
 use App\Taxonomia;
+use GMaps;
 use Especimen1\http\Request\TaxonomiaRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 class EspecimenController extends Controller
@@ -88,7 +89,23 @@ class EspecimenController extends Controller
     public function show($id)
     {
         $especimens = Especimen::find($id);
-      return view('especimen.show',compact('especimens'));
+
+        $latitud = $especimens->latitud;
+        $longitud = $especimens->longitud;
+
+        $config['center'] = ''.$latitud.',' .$longitud.'';
+        $config['zoom'] = '10';
+        $config['map_height'] = '500px';
+        $config['scrollwheel'] = true;
+        GMaps::initialize($config);
+
+        $marker['position'] = ''.$latitud.',' .$longitud.'';
+        $marker['infowindow_content'] = $latitud;
+        GMaps::add_marker($marker);
+
+        $map = GMaps::create_map();
+
+      return view('especimen.show',compact('especimens'))->with('map',$map);
     }
 
     /**
