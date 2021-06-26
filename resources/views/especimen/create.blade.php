@@ -4,7 +4,7 @@
     <div class="col-md-7 col-md-offset-2">
     	<h3 style="text-align: center"> DATOS DEL ESPECIMEN</h3>
     	<br>
-      {{ Form::open(['route'=>'especimen.store', 'method'=>'POST', 'class'=>'agregar']) }}
+      {{ Form::open(['route'=>'especimen.store', 'method'=>'POST', 'class'=>'agregar', 'files'=>'true']) }}
         @include('especimen.form_master')
       {{ form::close() }}
     </div>

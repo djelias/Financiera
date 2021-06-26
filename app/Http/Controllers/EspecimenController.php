@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use App\Dominio;
 use App\Reino;
 use App\Filum;
@@ -17,6 +18,7 @@ use App\Taxonomia;
 use GMaps;
 use Especimen1\http\Request\TaxonomiaRequest;
 use RealRashid\SweetAlert\Facades\Alert;
+use Image;
 class EspecimenController extends Controller
 {
     //
@@ -71,11 +73,33 @@ class EspecimenController extends Controller
           'tamano'=>'required',
           'tecnicaRecoleccion'=>'required',
           'tipoMuestra'=>'required',
+          'imagen'=>'required',
 
 
           ]);
-            Especimen::create($request->all());
-            Alert::success('Especimne agregado con éxito');
+            /*$ruta = public_path().'/especimens/';
+            $imagenOriginal = $request->file('imagen'); 
+            $imagen = Image::make($imagenOriginal);
+            $name = time().$request->file('imagen')->getClientOriginalName();
+            $imagen->save($ruta . $name); 
+            $especimens->imagen=$name;*/
+            $data = $request->all();
+            if($request->hasFile('imagen')){
+                   // $destination_path = 'public/especimens';
+                     $imagen = $request->file('imagen');
+                     $img_name = time().$request->file('imagen')->getClientOriginalName();
+                    $imagen->move(public_path().'/especimens/',$img_name);
+                     $data['imagen'] = $img_name;
+                    }
+            $especimens = Especimen::create($data);
+            //Especimen::create($request->all());
+            
+            /*if($request->hasFile('imagen')){
+            $file=$request->file('imagen');
+            $name = time().$request->file('imagen')->getClientOriginalName();
+            $file->move(public_path().'/especimens/',$name);
+            }*/
+            Alert::success('Especimen agregado con éxito');
         return redirect()->route('especimen.index');
         
     }

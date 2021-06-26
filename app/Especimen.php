@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Especimen extends Model
 {
-    protected $fillable = ['idEspecie', 'cantidad', 'caracteristicas','codigoEspecimen','colector','fechaColecta','habitat','horaSecuenciacion1','idTaxonomia','latitud','longitud','peso','tamano','tecnicaRecoleccion','tipoMuestra'];
+    protected $fillable = ['idEspecie', 'cantidad', 'caracteristicas','codigoEspecimen','colector','fechaColecta','habitat','horaSecuenciacion1','idTaxonomia','latitud','longitud','peso','tamano','tecnicaRecoleccion','tipoMuestra', 'imagen'];
     protected $dates = ['created_at','updated_at'];
 
     public function scopeNombre($query, $codigoEspecimen)
