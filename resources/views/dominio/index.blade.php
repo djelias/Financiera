@@ -23,6 +23,7 @@
              {{ form::close() }}
         
       </div>
+      
     <div class="col-md-4">
         {!! Form::open(['route'=>'dominio.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
         <div class="input-group"> 
@@ -32,6 +33,9 @@
         </div>
         <br>
       
+      </div>
+      <div class="col-md-12" style="text-align:right;">
+          <a href="dominioPrueba.pdf" class="btn-info btn-sm" target="_blank" >Generar PDF</a>
       </div>    
   </div>
  

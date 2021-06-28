@@ -30,7 +30,7 @@
  </div>
   </div>
 </div>
-
+<br>
   <div class="row">
     <div class="col-sm-2">
       {!! form::label('cantidad','Cantidad') !!}
@@ -198,6 +198,21 @@
       </div>
     </div>
     </div>
+ <div class="row">
+    <div class="col-sm-2">
+      {!! form::label('imagen','Seleccionar imágenes') !!}
+    </div>
+    <div class="col-sm-10">
+      <div class="form-group {{ $errors->has('imagen') ? 'has-error' : "" }}">
+        <input type="file" name="imagen"  id="imagen" enctype="multipart/form-data" accept=".jpg, .jpeg, .png">
+       
+        <div class="help-block" >
+        <strong>{{ $errors->first('imagen', '**Ingrese una imagen válida') }}</strong> 
+      </div>
+      </div>
+    </div>
+    </div>
+
 
    <br>
        <div class="form-group text-center" >

@@ -13,6 +13,7 @@
         "farhanwazir/laravelgooglemaps": "^2.3",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "6.3",
+        "intervention/image": "^2.5",
         "laravel/framework": "5.8.*",
         "laravel/passport": "7.5.1",
         "laravel/tinker": "^1.0",
