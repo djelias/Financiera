@@ -144,7 +144,11 @@
             <br/>
 
 
-
+  <br>
+    <div>
+        <strong>Imágenes de la Muestra: </strong>
+    </div>
+   
 
 
 

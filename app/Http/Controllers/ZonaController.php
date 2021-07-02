@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Zona;
 use App\Municipio;
 use App\Departamento;
 use Zona1\http\Request\ZonaRequest;
 use RealRashid\SweetAlert\Facades\Alert;
+
 
 class ZonaController extends Controller
 {
@@ -28,9 +30,8 @@ class ZonaController extends Controller
     public function index(Request $request)
     {
         $municipios = Municipio::all();
-        $nombre = $request->get('nombreZona');
-        $municipios = Municipio::all();
         $departamentos=Departamento::all();
+        $nombre = $request->get('nombreZona');
         $zonas = Zona::orderBy('id','DESC')->nombre($nombre)->paginate(10);
         return view('zona.index',compact('zonas','municipios','departamentos'));
 
@@ -64,12 +65,12 @@ class ZonaController extends Controller
 
           'id',
           'idMunicipio',
-          'nombreZona'=>'required|alpha_spaces',
-          'lugarZona'=>'required|alpha_spaces',
-          'latitudZona'=>'required|alpha_spaces',
-          'longitudZona'=>'required|alpha_spaces',
-          'habitatZona'=>'required|alpha_spaces',
-          'descripcionZona1'=>'required|alpha_spaces',
+          'nombreZona'=>'required',
+          'lugarZona'=>'required',
+          'latitudZona'=>'required',
+          'longitudZona'=>'required',
+          'habitatZona'=>'required',
+          'descripcionZona1'=>'required',
         ]);
         
         Zona::create($request->all());
@@ -116,12 +117,12 @@ class ZonaController extends Controller
 
           'id',
           'idMunicipio',
-          'nombreZona'=>'required|alpha_spaces',
-          'lugarZona'=>'required|alpha_spaces',
-          'latitudZona'=>'required|alpha_spaces',
-          'longitudZona'=>'required|alpha_spaces',
-          'habitatZona'=>'required|alpha_spaces',
-          'descripcionZona1'=>'required|alpha_spaces',
+          'nombreZona'=>'required',
+          'lugarZona'=>'required',
+          'latitudZona'=>'required',
+          'longitudZona'=>'required',
+          'habitatZona'=>'required',
+          'descripcionZona1'=>'required',
         ]);
         Zona::find($idZona)->update($request->all());
          Alert::success('Zona  Actualizada con éxito');

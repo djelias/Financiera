@@ -1,4 +1,4 @@
-   <div class="row">
+    <div class="row">
     <div class="col-sm-5">
       <br>
       {!! form::label('Ingrese el nombre del riesgo:') !!}
@@ -21,4 +21,6 @@
     
      
       <br>
+ 
+
  

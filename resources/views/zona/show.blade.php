@@ -80,8 +80,8 @@
     </div>
             <br/>
 
-            <br/>
-            <a class="btn btn-primary" href="{{ route('zona.index') }}"> <i class="glyphicon glyphicon-arrow-left"> Regresar</i></a>
+         <br/>
+            <a class="btn btn-primary" href="{{ route('municipio.index') }}"> <i class="glyphicon glyphicon-arrow-left"> Regresar</i></a>
     </div>
 
 @endsection

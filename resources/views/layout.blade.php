@@ -68,6 +68,40 @@
           <a class="dropdown-item" href="{{ route('especimen.index') }}">Especímenes</a>
         </div>
       </li>
+
+ <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Investigaciones
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"  href="{{ route('investigacion.index') }}"> Gestión de Investigaciones</a>
+         <a class="dropdown-item"  href="{{ route('tipoInvestigacion.index') }}"> Gestión Tipo de Investigaciones</a>
+          </div>
+      </li>
+
+ <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Datos Estadisticos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"  href="{{ route('especieAmenazada.index') }}"> Especies Amenazadas</a>
+          <a class="dropdown-item"  href="{{ route('riesgo.index') }}"> Gestión de Riesgos</a>
+          <a class="dropdown-item"  href="{{ route('zona.index') }}"> Gestión de Zonas</a>
+         <a class="dropdown-item"  href="{{ route('departamento.index') }}"> Gestión de Departamentos</a>
+         <a class="dropdown-item"  href="{{ route('municipio.index') }}"> Gestión de Municipios</a>
+          </div>
+      </li>
+
+<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Barcoding
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"  href="{{ route('secuencia.index') }}"> Secuenciación</a>
+          </div>
+      </li>
+
+      
     </ul>
   </div>
   <ul class="navbar-nav mr-nav">

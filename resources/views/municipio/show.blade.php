@@ -10,20 +10,21 @@
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Departamento : </strong>
-            {{ $municipios->Departamentos->nombreDepto}} 
+            <strong>Municipio : </strong>
+            {{ $municipios->nombreMunicipio}} 
         </div>
     </div>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Nombre : </strong>
-            {{ $municipios->nombreMunicipio}}
+            <strong>Departamento : </strong>
+            {{ $municipios->Departamento->nombreDepto}}
         </div>
     </div>
 </div>
             <br/>
-            <a class="btn btn-primary" href="{{ route('Municipio.index') }}"> <i class="glyphicon glyphicon-arrow-left"> Regresar</i></a>
+            <a class="btn btn-primary" href="{{ route('municipio.index') }}"> <i class="glyphicon glyphicon-arrow-left"> Regresar</i></a>
     </div>
 
 @endsection
+
