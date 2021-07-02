@@ -1,29 +1,47 @@
-@extends ('layouts.app')
-@section('content')
+@extends ('layout')
+@section('header')
+<header style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/titulos.jpg'); opacity: 0.8;"><h2 style="color: white; font-family: sans-serif; font-size: 58px; text-align: center;">Departamentos</h2>
+  </header>
+@endsection
+@section('container')
+ <br>
+  @if ($errors->any())
+   <div class="alert alert-danger">
+  
+          <p>Debe ingresar datos válidos</p>
+     
+   </div>
+  @endif
   <div class="row">
-    <div class ="col-sm-12">
-      <div class="full.right">
-      <h2>Departamento</h2>
-      <br>
+     <div class="col-md-8">
+        <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
+            Nuevo Departamento
+        </button>
+      
+        {{ Form::open(['route'=>'departamento.store', 'method'=>'POST', 'class'=>'agregar']) }}
+             @include('departamento.form_master')
+             {{ form::close() }}
+        
       </div>
-    </div>
-  </div>
-      <div>
-        <a href="{{route('departamento.create')}}" class="btn btn-success btn-lg">
-            <i class="glyphicon glyphicon-plus"> NUEVO</i>
-        </a>
+
+    <div class="col-md-4">
         {!! Form::open(['route'=>'departamento.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
         <div class="input-group"> 
             {!! Form::text('nombreDepto', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
+           <button type="submit" class="btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar">Buscar</button>
+        {!! Form::close()!!}
         </div>
-         <button type="submit" class="glyphicon glyphicon-search btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar"></button>
-            {!! Form::close()!!}
-      </div>
+        <br>
+      
+      </div>    
+  </div>
+ 
       <br>
   <table class="table table-striped" style="text-align:center" >
     <tr>
       <th with="80px">No</th>
       <th style="text-align:center">Nombre</th>
+      <th style="text-align:center">Acciones</th>
     </tr>
     <?php $no=1; ?>
     @foreach ($departamentos as $key => $value)
@@ -33,22 +51,17 @@
         <td>
           <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('departamento.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
-              
-              @can('departamento-edit')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('departamento.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
-              @endcan
-
-              @can('departamento-delete')
-            {!! Form::open(['method' => 'DELETE','route' => ['departamento.destroy', $value->id],'style'=>'display:inline']) !!}
-              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm" onclick="return confirm('¿Esta seguro de eliminar este Registro?')"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
-              @endcan
+            {!! Form::open(['method' => 'DELETE','route' => ['departamento.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
+              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
             {!! Form::close() !!}
         </td>
       </tr>
     @endforeach
   </table>
-  {!!$departamentos->render()!!}<div class="text-center">
+  {!!$departamentos->render()!!}
+ <div class="text-center">
     <a class="btn btn-primary" href="{{ url('/gestion') }}">Regresar</a>
   </div>
 
@@ -99,5 +112,3 @@ $('.formulario-eliminar').submit(function(e){
 
     </script>
 @endsection
-
-  

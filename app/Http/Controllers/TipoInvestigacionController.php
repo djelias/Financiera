@@ -22,7 +22,7 @@ class TipoInvestigacionController extends Controller
          $this->middleware('permission:tipoInvestigacion-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:tipoInvestigacion-delete', ['only' => ['destroy']]);
     }
-    public function index(Request $request)
+   public function index(Request $request)
     {
         $nombre = $request->get('nombreTipoInvestigacion');
         $tipoInvestigaciones = TipoInvestigacion::orderBy('id','DESC')->nombre($nombre)->paginate(10);
@@ -51,9 +51,9 @@ class TipoInvestigacionController extends Controller
     {
         $this->validate($request,[
 
-          'id'=>'required|numeric',
-          'nombreTipoInvestigacion'=>'required',
-          'descripcionTipo'=>'required',
+          'id',
+          'nombreTipoInvestigacion',
+          'descripcionTipo'
         ]);
         
         TipoInvestigacion::create($request->all());

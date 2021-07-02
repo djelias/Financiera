@@ -11,7 +11,7 @@
       </div>
       
      <div class="col-sm-5">
-      <div class="form-horizontal {{ $errors->has('idDepto') ? 'has-error' : "" }}">
+      <div class="form-horizontal {{ $errors->has('idDominio') ? 'has-error' : "" }}">
         {!! form::label('Seleccione el Departamento:') !!}
       <select name="idDepto" class="form-control">
                 <option disabled selected>Seleccione departamento</option>
@@ -33,4 +33,3 @@
     </div>
      
       <br>
-      

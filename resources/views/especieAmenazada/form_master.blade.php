@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-sm-7">
+      <br>
        {!! form::label('Ingrese Nombre Científico de la Especie:') !!}
    </div>
    <div class="col-sm-7">
@@ -51,4 +52,3 @@
     
      
      
-      

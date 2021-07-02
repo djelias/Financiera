@@ -67,7 +67,7 @@
      </div>
    </div>
   </div>
-
+<!--
    <div class="row">
     <div class="col-sm-5">
       {!! form::label('Seleccione el Usuario:') !!}
@@ -86,7 +86,7 @@
      </div>
    </div>
   </div>
-
+!-- -->
    <div class="row">
     <div class="col-sm-5">
       {!! form::label('Lugar de la investigacion:') !!}
@@ -171,7 +171,7 @@
   </div>
 
     
-
+<!-- 
 <div class="row">
   <div class="col-sm-5">
       {!! form::label('Documentacion') !!}
@@ -182,8 +182,21 @@
     </div>
    </div>
   </div>
-     
-
+  <!-- -->   
+<div class="row">
+    <div class="col-sm-2">
+      {!! form::label('imagen','Seleccionar Documentacion') !!}
+    </div>
+    <div class="col-sm-10">
+      <div class="form-group {{ $errors->has('documentacion') ? 'has-error' : "" }}">
+        <input type="file" name="documentacion"  id="documentacion" enctype="multipart/form-data" accept=".pdf">
+       
+        <div class="help-block" >
+        <strong>{{ $errors->first('imagen', '**Ingrese una imagen válida') }}</strong> 
+      </div>
+      </div>
+    </div>
+    </div>
 <div class="row">
   <div class="col-sm-5">
       {!! form::label('Descripcion Investigacion') !!}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use App\Investigacion;
 use App\Zona;
 use App\Municipio;
@@ -12,6 +13,7 @@ use App\TipoInvestigacion;
 use App\User;
 use Investigacion1\http\Request\InvestigacionRequest;
 use RealRashid\SweetAlert\Facades\Alert;
+use Image;
 
 class InvestigacionController extends Controller
 {
@@ -70,13 +72,25 @@ class InvestigacionController extends Controller
           'contacto'=>'required|alpha_spaces',
           'unidadEncargada'=>'required|alpha_spaces',
           'otrasInstit'=>'required|alpha_spaces',
-          'documentacion'=>'required|alpha_spaces',
+          'documentacion'=>'required',
           'descripcionInvestigacion'=>'required|alpha_spaces',
           'correoElectronico'=>'required|alpha_spaces',
 
           ]);
+
+
+       $data = $request->all();
+            if($request->hasFile('documentacion')){
+                   // $destination_path = 'public/especimens';
+                     $data = $request->file('documentacion');
+                     $doc_name = time().$request->file('documentacion')->getClientOriginalName();
+                    $documentacion->move(public_path().'/investigacion/',$doc_name);
+                     $data['documentacion'] = $doc_name;
+                    }
+            $investigaciones = Investigacion::create($data);
+            
             Investigacion::create($request->all());
-            Alert::success('Investigacion agregada con éxito');
+        //    Alert::success('Investigacion agregada con éxito');
       return redirect()->route('investigacion.index');
       
 

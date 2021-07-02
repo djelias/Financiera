@@ -1,13 +1,10 @@
-@extends ('layouts.app')
-@section('content')
-  <div class="row">
-    <div class ="col-sm-12">
-      <div class="full.right">
-      <h2>Riesgos</h2>
-      <br>
-      </div>
-    </div>
-  </div>
+@extends ('layout')
+@section('header')
+<header style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/titulos.jpg'); opacity: 0.8;"><h2 style="color: white; font-family: sans-serif; font-size: 58px; text-align: center;">Riesgos</h2>
+  </header>
+@endsection
+@section('container')
+ <br>
   @if ($errors->any())
    <div class="alert alert-danger">
   
@@ -15,15 +12,10 @@
      
    </div>
   @endif
-  <div>
-          {!! Form::open(['route'=>'riesgo.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
-          {!! Form::text('catRiesgo', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
-         <button type="submit" class="glyphicon glyphicon-search btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar"></button>
-            {!! Form::close()!!}
-        </div>
-      <div>
+  <div class="row">
+     <div class="col-md-8">
         <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
-            Nuevo Riesgo
+            Nuevo riesgo
         </button>
       
         {{ Form::open(['route'=>'riesgo.store', 'method'=>'POST', 'class'=>'agregar']) }}
@@ -31,6 +23,19 @@
              {{ form::close() }}
         
       </div>
+
+    <div class="col-md-4">
+        {!! Form::open(['route'=>'riesgo.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
+        <div class="input-group"> 
+            {!! Form::text('nombreRiesgo', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
+           <button type="submit" class="btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar">Buscar</button>
+        {!! Form::close()!!}
+        </div>
+        <br>
+      
+      </div>    
+  </div>
+ 
       <br>
   <table class="table table-striped" style="text-align:center" >
     <tr>
@@ -46,15 +51,10 @@
         <td>
           <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('riesgo.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
-               @can('riesgo-edit')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('riesgo.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
-              @endcan
-
-              @can('riesgo-delete')
             {!! Form::open(['method' => 'DELETE','route' => ['riesgo.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
-               @endcan
             {!! Form::close() !!}
         </td>
       </tr>
@@ -75,7 +75,7 @@
        }
 $('.agregar').submit(function(e){
      e.preventDefault();Swal.fire({
-  title: '¿Está seguro de guardar este Riesgo?',
+  title: '¿Está seguro de guardar este riesgo?',
   showDenyButton: true,
   //showCancelButton: true,
   confirmButtonText: `Guardar`,

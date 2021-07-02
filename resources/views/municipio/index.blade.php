@@ -1,13 +1,9 @@
-@extends ('layouts.app')
-@section('content')
-  <div class="row">
-    <div class ="col-sm-12">
-      <div class="full.right">
-      <h2>Municipios</h2>
-      <br>
-      </div>
-    </div>
-  </div>
+@extends ('layout')
+@section('header')
+<header style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/titulos.jpg'); opacity: 0.8;"> <h2 style="color: white; font-family: sans-serif; font-size: 58px; text-align: center;">Municipios</h2>
+  </header>
+@endsection
+@section('container')
  
   @if ($errors->any())
    <div class="alert alert-danger">
@@ -16,26 +12,32 @@
      
    </div>
   @endif
- 
-       <div>
-        {!! Form::open(['route'=>'municipio.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
-        <div class="input-group"> 
-            {!! Form::text('nombreMunicipio', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
-        </div>
-         <button type="submit" class="glyphicon glyphicon-search btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar"></button>
-        {!! Form::close()!!}
-      </div>
-      <div>
+  <br>
+   <div class="row">
+     <div class="col-md-8">
         <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
             Nuevo Municipio
         </button>
         <br>
         <br>
-              {{ Form::open(['route'=>'municipio.store', 'method'=>'POST', 'class'=>'agregar']) }}
+      
+         {{ Form::open(['route'=>'municipio.store', 'method'=>'POST', 'class'=>'agregar']) }}
              @include('municipio.form_master')
              {{ form::close() }}
         
       </div>
+    <div class="col-md-4">
+         {!! Form::open(['route'=>'municipio.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
+        <div class="input-group"> 
+           {!! Form::text('nombreMunicipio', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
+           <button type="submit" class="btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar">Buscar</button>
+        {!! Form::close()!!}
+        </div>
+        <br>
+      
+      </div>    
+  </div>
+ 
       <br>
   <table class="table table-striped" style="text-align:center" >
     <tr>
@@ -53,17 +55,10 @@
         <td>
           <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('municipio.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
-              
-              @can('municipio-edit')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('municipio.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
-              @endcan
-
-              @can('municipio-delete')
             {!! Form::open(['method' => 'DELETE','route' => ['municipio.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
-              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-trash" ></i></button>
-
-              @endcan
+              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
             {!! Form::close() !!}
         </td>
       </tr>
