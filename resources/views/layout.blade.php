@@ -100,7 +100,15 @@
           <a class="dropdown-item"  href="{{ route('secuencia.index') }}"> Secuenciación</a>
           </div>
       </li>
-
+<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Roles y Usuarios
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"  href="{{ route('roles.index') }}"> Gestion de Roles</a>
+          <a class="dropdown-item"  href="{{ route('users.index') }}"> Gestion de Usuarios</a>
+          </div>
+      </li>
       
     </ul>
   </div>
