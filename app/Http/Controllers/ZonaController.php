@@ -21,10 +21,10 @@ class ZonaController extends Controller
      */
      function __construct()
     {
-         $this->middleware('permission:zona-listado|zona-create|zona-edit|zona-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:zona-create', ['only' => ['create','store']]);
-         $this->middleware('permission:zona-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:zona-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:Zonas|Crear Zona|Editar Zona|eliminar Zona', ['only' => ['index','show']]);
+         $this->middleware('permission:Crear Zona', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Zona', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Zona', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)

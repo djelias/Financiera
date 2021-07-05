@@ -14,9 +14,11 @@
   @endif
   <div class="row">
      <div class="col-md-8">
+        @can('Crear Dominio')
         <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
             Nuevo Dominio
         </button>
+        @endcan
       
         {{ Form::open(['route'=>'dominio.store', 'method'=>'POST', 'class'=>'agregar']) }}
              @include('dominio.form_master')
@@ -54,11 +56,15 @@
         <td>
           <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('dominio.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
+          @can('Editar Dominio')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('dominio.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
+          @endcan
+          @can('Eliminar Dominio')
             {!! Form::open(['method' => 'DELETE','route' => ['dominio.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
             {!! Form::close() !!}
+          @endcan
         </td>
       </tr>
     @endforeach

@@ -17,11 +17,12 @@ class SecuenciaController extends Controller
      */
       function __construct()
     {
-         $this->middleware('permission:secuencia-listado|secuencia-create|secuencia-edit|secuencia-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:secuencia-create', ['only' => ['create','store']]);
-         $this->middleware('permission:secuencia-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:secuencia-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:Secuencias|Crear Secuencia|Editar Secuencia|Eliminar Secuencia', ['only' => ['index','show']]);
+         $this->middleware('permission:Crear Secuencia', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Secuencia', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Secuencia', ['only' => ['destroy']]);
     }
+    
     public function index(Request $request)
     {
         $nombre = $request->get('secuenciaObtenida');

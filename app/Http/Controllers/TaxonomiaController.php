@@ -16,9 +16,22 @@ use App\Especimen;
 use App\Taxonomia;
 use Taxonomia1\http\Request\TaxonomiaRequest;
 use RealRashid\SweetAlert\Facades\Alert;
+use GMaps;
 class TaxonomiaController extends Controller
 {
-    //
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+     function __construct()
+    {
+         $this->middleware('permission:Taxonomias|Crear Taxonomia|Editar Taxonomia|Eliminar Taxonomia', ['only' => ['index','show']]);
+         $this->middleware('permission:Crear Taxonomia', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Taxonomia', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Taxonomia', ['only' => ['destroy']]);
+    }
     //
      /**
      * Display a listing of the resource.
@@ -30,7 +43,12 @@ class TaxonomiaController extends Controller
     	$especimens= Especimen::all();
         $taxonomias = Taxonomia::all();
     	$nombre =$request->get('nombreComun');
-        $taxonomias = Taxonomia::orderBy('id','DESC')->nombre($nombre)->paginate(10);
+        //$taxonomias = DB::table('taxonomias')->distinct()->get();
+        $taxono = Taxonomia::orderBy('id','DESC')->nombre($nombre)->paginate(10);
+        $taxonomias = $taxono->unique('idEspecie');
+
+        //$alumnos = Alumnos::orderBy('id','ASC')->pluck('nombre','id');
+
         return view('taxonomia.index',compact('taxonomias','especimens'));
     }
 
@@ -74,8 +92,29 @@ class TaxonomiaController extends Controller
      */
     public function show($id)
     {
-        $taxonomias = Taxonomia::find($id);
-      return view('taxonomia.show',compact('taxonomias'));
+        $especies = Especie::find($id);
+        $taxonomias = Taxonomia::all();
+
+            $config['center'] = '13.7177,-89.2027';
+                $config['zoom'] = '10';
+                $config['map_height'] = '500px';
+                $config['scrollwheel'] = true;
+                GMaps::initialize($config);
+
+        foreach ($taxonomias as $key => $value) {
+            if ($value->Especie->id == $especies->id) {       
+
+                $marker['position'] = ''.$value->Especimen->latitud.',' .$value->Especimen->longitud.'';
+                $marker['infowindow_content'] = $value->Especimen->latitud;
+                GMaps::add_marker($marker);
+
+                
+            }
+}
+
+$map = GMaps::create_map();
+
+      return view('taxonomia.show',compact('taxonomias','especies'))->with('map',$map);
     }
 
     /**

@@ -13,6 +13,20 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class ClaseController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
+    {
+         $this->middleware('permission:Clases|Crear Clase|Editar Clase|Eliminar Clase', ['only' => ['index','store']]);
+         $this->middleware('permission:Crear Clase', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Clase', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Clase', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

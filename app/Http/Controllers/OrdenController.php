@@ -14,6 +14,20 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class OrdenController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
+    {
+         $this->middleware('permission:Ordenes|Crear Orden|Editar Orden|Eliminar Orden', ['only' => ['index','store']]);
+         $this->middleware('permission:Crear Orden', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Orden', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Orden', ['only' => ['destroy']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *

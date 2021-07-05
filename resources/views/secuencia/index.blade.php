@@ -18,9 +18,11 @@
   @endif
  
       <div>
+        @can('Crear Secuencia')
         <a href="{{route('secuencia.create')}}" class="btn btn-success btn-lg">
             <i class="glyphicon glyphicon-plus"> NUEVO</i>
         </a>
+        @endcan
         {!! Form::open(['route'=>'secuencia.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
         <div class="input-group"> 
             {!! Form::text('secuenciaObtenida', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
@@ -52,17 +54,16 @@
         <td>
           <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('secuencia.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
-              @can('secuencia-edit')
+              @can('Editar Secuencia')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('secuencia.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
                @endcan
 
-              @can('secuencia-delete')
+              @can('Eliminar Secuencia')
             {!! Form::open(['method' => 'DELETE','route' => ['secuencia.destroy', $value->id],'style'=>'display:inline']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm" onclick="return confirm('¿Esta seguro de eliminar este Registro?')"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
-               @endcan
-
             {!! Form::close() !!}
+            @endcan
         </td>
       </tr>
     @endforeach

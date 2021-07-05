@@ -11,6 +11,20 @@ use Carbon\Carbon;
 
 class DominioController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
+    {
+         $this->middleware('permission:Dominios|Crear Dominio|Editar Dominio|Eliminar Dominio', ['only' => ['index','store']]);
+         $this->middleware('permission:Crear Dominio', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Dominio', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Dominio', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

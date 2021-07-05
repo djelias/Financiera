@@ -17,6 +17,20 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class EspecieController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
+    {
+         $this->middleware('permission:Especies|Crear Especie|Editar Especie|Eliminar Especie', ['only' => ['index','store']]);
+         $this->middleware('permission:Crear Especie', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Especie', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Especie', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

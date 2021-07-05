@@ -17,11 +17,12 @@ class TipoInvestigacionController extends Controller
      */
       function __construct()
     {
-         $this->middleware('permission:tipoInvestigacion-listado|tipoInvestigacion-create|tipoInvestigacion-edit|tipoInvestigacion-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:tipoInvestigacion-create', ['only' => ['create','store']]);
-         $this->middleware('permission:tipoInvestigacion-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:tipoInvestigacion-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:TiposInvestigaciones|Crear TipoInvestigacion|Editar TipoInvestigacion|Eliminar TipoInvestigacion', ['only' => ['index','show']]);
+         $this->middleware('permission:Crear TipoInvestigacion', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar TipoInvestigacion', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar TipoInvestigacion', ['only' => ['destroy']]);
     }
+    
    public function index(Request $request)
     {
         $nombre = $request->get('nombreTipoInvestigacion');
