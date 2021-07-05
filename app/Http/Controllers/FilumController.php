@@ -12,6 +12,20 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class FilumController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
+    {
+         $this->middleware('permission:Filums|Crear Filum|Editar Filum|Eliminar Filum', ['only' => ['index','store']]);
+         $this->middleware('permission:Crear Filum', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Filum', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Filum', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

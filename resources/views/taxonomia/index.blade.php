@@ -14,10 +14,13 @@
   @endif
   <br>
     <div class="row">
+        
        <div class="col-md-9">
+        @can('Crear Taxonomia')
         <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
             Nueva Taxonomía
         </button>
+        @endcan
         <br>
         <br>
               {{ Form::open(['route'=>'taxonomia.store', 'method'=>'POST', 'class'=>'agregar']) }}
@@ -25,6 +28,7 @@
              {{ form::close() }}
         
       </div>
+      
           <div class="col-md-3">
          {!! Form::open(['route'=>'taxonomia.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
         <div class="input-group"> 
@@ -51,23 +55,26 @@
     @foreach ($taxonomias as $key => $value)
     <tr>
         <td>{{$no++}}</td>
-        <td>{{$value->numVoucher}}</td>
+        <td>{{$value->Especimen->idEspecie}}</td>
         <td>{{$value->Especimen->codigoEspecimen}}</td>
         <td>{{$value->Especimen->Especie->nombreEspecie }}<br></td>
         <td>{{$value->nombreComun }}<br></td>
         <td>
-          <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('taxonomia.show',$value->id)}}">
+          <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('taxonomia.show',$value->Especimen->idEspecie)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
+          @can('Editar Taxonomia')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('taxonomia.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
+          @endcan
+          @can('Eliminar Taxonomia')
             {!! Form::open(['method' => 'DELETE','route' => ['taxonomia.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
             {!! Form::close() !!}
+          @endcan
         </td>
       </tr>
     @endforeach
   </table>
-  {!!$taxonomias->render()!!}
  <div class="text-center">
     <a class="btn btn-primary" href="{{ url('/gestion') }}">Regresar</a>
   </div>

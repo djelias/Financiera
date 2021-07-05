@@ -16,10 +16,11 @@ class ColeccionController extends Controller
      */
      function __construct()
     {
-         $this->middleware('permission:coleccion-listado|coleccion-create|coleccion-edit|coleccion-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:coleccion-create', ['only' => ['create','store']]);
-         $this->middleware('permission:coleccion-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:coleccion-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:Colecciones|Crear Coleccion|Editar Coleccion|Eliminar Coleccion', ['only' => ['index','show']]);
+         $this->middleware('permission:Colecciones', ['only' => ['index']]);
+         $this->middleware('permission:Crear Coleccion', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Coleccion', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Coleccion', ['only' => ['destroy']]);
     }
     public function index(Request $request)
     {

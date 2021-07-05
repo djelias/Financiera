@@ -12,11 +12,13 @@
    </div>
   @endif
   <br>
-    <div class="row">
+    <div class="row"> 
        <div class="col-md-8">
+        @can('Especimenes')
         <a href="{{route('especimen.create')}}" class="btn btn-success btn-lg">
             <i class="glyphicon glyphicon-plus"> NUEVO</i>
         </a>
+        @endcan
         </div>
         <div class="col-md-4">
          {!! Form::open(['route'=>'especimen.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
@@ -50,11 +52,15 @@
         <td>
           <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('especimen.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
+          @can('Editar Especimen')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('especimen.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
+          @endcan
+          @can('Eliminar Especimen')
             {!! Form::open(['method' => 'DELETE','route' => ['especimen.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm">Eliminar<i class="glyphicon glyphicon-trash" ></i></button>
             {!! Form::close() !!}
+          @endcan
         </td>
       </tr>
     @endforeach

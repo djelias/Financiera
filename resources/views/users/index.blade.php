@@ -8,12 +8,12 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <br>
-          </div>
+            <h2>Manejo de Usuarios</h2>
+        </div>
         <div class="pull-right">
-        @can('role-create')
-            <a class="btn btn-success" href="{{ route('roles.create') }}"> Crear Nuevo Usuario</a>
-            @endcan
+        @can('Crear Usuario')
+            <a class="btn btn-success" href="{{ route('users.create') }}"> Crear Usuario</a>
+        @endcan
         </div>
     </div>
 </div>
@@ -29,7 +29,7 @@
  <tr>
    <th>No</th>
    <th>Nombre</th>
-   <th>Correo Electronico</th>
+   <th>Correo</th>
    <th>Roles</th>
    <th width="340px">Acciones</th>
  </tr>
@@ -49,11 +49,15 @@ $i=0;
       @endif
     </td>
     <td>
-       <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Detalles</a>
+       <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Detalle</a>
+       @can('Editar Usuario')
        <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Editar</a>
+       @endcan
+       @can('Eliminar Usuario')
         {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Eliminar', ['class' => 'btn btn-danger']) !!}
         {!! Form::close() !!}
+       @endcan
     </td>
   </tr>
  @endforeach

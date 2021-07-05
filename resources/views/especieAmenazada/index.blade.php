@@ -14,9 +14,11 @@
   @endif
   <div class="row">
      <div class="col-md-8">
+      @can('Crear EspecieAmenzada')
         <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
             Nueva Especie Amenazada
         </button>
+        @endcan
       
         {{ Form::open(['route'=>'especieAmenazada.store', 'method'=>'POST', 'class'=>'agregar']) }}
              @include('especieAmenazada.form_master')
@@ -56,12 +58,12 @@
         <td>
           <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('especieAmenazada.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
-               @can('especieAmenazada-edit')
+               @can('Editar EspecieAmenazada')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('especieAmenazada.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
               @endcan
 
-              @can('especieAmenazada-delete')
+              @can('Eliminar EspecieAmenazada')
             {!! Form::open(['method' => 'DELETE','route' => ['especieAmenazada.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
                @endcan

@@ -14,9 +14,11 @@
   @endif
   <div class="row">
      <div class="col-md-8">
+      @can('Crear Riesgo')
         <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
             Nuevo riesgo
         </button>
+        @endcan
       
         {{ Form::open(['route'=>'riesgo.store', 'method'=>'POST', 'class'=>'agregar']) }}
              @include('riesgo.form_master')
@@ -51,11 +53,15 @@
         <td>
           <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('riesgo.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
+          @can('Editar Riesgo')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('riesgo.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
+          @endcan
+          @can('Eliminar Riesgo')
             {!! Form::open(['method' => 'DELETE','route' => ['riesgo.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
             {!! Form::close() !!}
+          @endcan
         </td>
       </tr>
     @endforeach

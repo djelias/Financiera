@@ -21,7 +21,18 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Image;
 class EspecimenController extends Controller
 {
-    //
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+     function __construct()
+    {
+         $this->middleware('permission:Especimenes|Crear Especimen|Editar Especimen|Eliminar Especimen', ['only' => ['index','show']]);
+         $this->middleware('permission:Crear Especimen', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Especimen', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Especimen', ['only' => ['destroy']]);
+    }
     //
      /**
      * Display a listing of the resource.

@@ -15,6 +15,20 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class FamiliaController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
+    {
+         $this->middleware('permission:Familias|Crear Familia|Editar Familia|Eliminar Familia', ['only' => ['index','store']]);
+         $this->middleware('permission:Crear Familia', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Familia', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Familia', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

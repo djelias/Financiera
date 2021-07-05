@@ -16,6 +16,20 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class GeneroController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
+    {
+         $this->middleware('permission:Generos|Crear Genero|Editar Genero|Eliminar Genero', ['only' => ['index','store']]);
+         $this->middleware('permission:Crear Genero', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Genero', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Genero', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

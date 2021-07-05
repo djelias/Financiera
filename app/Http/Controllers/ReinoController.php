@@ -11,6 +11,20 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class ReinoController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
+    {
+         $this->middleware('permission:Reinos|Crear Reino|Editar Reino|Eliminar Reino', ['only' => ['index','store']]);
+         $this->middleware('permission:Crear Reino', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Reino', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Reino', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

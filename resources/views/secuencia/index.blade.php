@@ -12,6 +12,13 @@
      
    </div>
   @endif
+ 
+      <div>
+        @can('Crear Secuencia')
+        <a href="{{route('secuencia.create')}}" class="btn btn-success btn-lg">
+            <i class="glyphicon glyphicon-plus"> NUEVO</i>
+        </a>
+        @endcan
   <div class="row">
      <div class="col-md-8">
         <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
@@ -60,11 +67,15 @@
         <td>
           <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('secuencia.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
+              @can('Editar Secuencia')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('secuencia.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
-            {!! Form::open(['method' => 'DELETE','route' => ['secuencia.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
-              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
+               @endcan
+              @can('Eliminar Secuencia')
+            {!! Form::open(['method' => 'DELETE','route' => ['secuencia.destroy', $value->id],'style'=>'display:inline']) !!}
+              <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm" onclick="return confirm('¿Esta seguro de eliminar este Registro?')"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
             {!! Form::close() !!}
+            @endcan
         </td>
       </tr>
     @endforeach

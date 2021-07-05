@@ -64,8 +64,15 @@
           Colecciones
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @can('Colecciones')
+          <a class="dropdown-item"  href="{{ route('coleccion.index') }}">Colecciones</a>
+          @endcan
+          @can('Taxonomias')
           <a class="dropdown-item"  href="{{ route('taxonomia.index') }}">Taxonomias</a>
+          @endcan
+          @can('Especimenes')
           <a class="dropdown-item" href="{{ route('especimen.index') }}">Especímenes</a>
+          @endcan
         </div>
       </li>
 
@@ -100,15 +107,22 @@
           <a class="dropdown-item"  href="{{ route('secuencia.index') }}"> Secuenciación</a>
           </div>
       </li>
-<li class="nav-item dropdown">
+
+      @can('Usuarios')
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Roles y Usuarios
+          Gestion Usuarios
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item"  href="{{ route('roles.index') }}"> Gestion de Roles</a>
-          <a class="dropdown-item"  href="{{ route('users.index') }}"> Gestion de Usuarios</a>
+          @can('Usuarios')
+          <a class="dropdown-item"  href="{{ route('users.index') }}"> Usuarios</a>
+          @endcan
+          @can('Roles')
+          <a class="dropdown-item"  href="{{ route('roles.index') }}"> Roles</a>
+          @endcan
           </div>
       </li>
+      @endcan
       
     </ul>
   </div>

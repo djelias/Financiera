@@ -17,6 +17,20 @@ use Image;
 
 class InvestigacionController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
+    {
+         $this->middleware('permission:Investigaciones|Crear Investigacion|Editar Investigacion|Eliminar Investigacion', ['only' => ['index','store']]);
+         $this->middleware('permission:Crear Investigacion', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Investigacion', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Investigacion', ['only' => ['destroy']]);
+    }
+
       /**
      * Display a listing of the resource.
      *

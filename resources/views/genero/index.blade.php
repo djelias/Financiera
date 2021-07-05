@@ -14,9 +14,11 @@
   <br>
      <div class="row">
            <div class="col-md-8">
+            @can('Crear Genero')
             <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
             Nuevo Genero
         </button>
+        @endcan
         <br>
         <br>
               {{ Form::open(['route'=>'genero.store', 'method'=>'POST', 'class'=>'agregar']) }}
@@ -65,11 +67,15 @@
         <td>
           <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('genero.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
+          @can('Editar Genero')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('genero.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
+          @endcan
+          @can('Eliminar Genero')
             {!! Form::open(['method' => 'DELETE','route' => ['genero.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm">Eliminar<i class="glyphicon glyphicon-trash" ></i></button>
             {!! Form::close() !!}
+          @endcan
         </td>
       </tr>
     @endforeach

@@ -21,10 +21,10 @@ class MunicipioController extends Controller
 
      function __construct()
     {
-         $this->middleware('permission:municipio-listado|municipio-create|municipio-edit|municipio-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:municipio-create', ['only' => ['create','store']]);
-         $this->middleware('permission:municipio-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:municipio-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:Municipios|Crear Municipio|Editar Municipio|Eliminar Municipio', ['only' => ['index','show']]);
+         $this->middleware('permission:Crear Municipio', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Municipio', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Municipio', ['only' => ['destroy']]);
     }
     public function index(Request $request)
     {

@@ -20,11 +20,12 @@ class EspecieAmenazadaController extends Controller
      */
      function __construct()
     {
-         $this->middleware('permission:especieAmenazada-listado|especieAmenazada-create|especieAmenazada-edit|especieAmenazada-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:especieAmenazada-create', ['only' => ['create','store']]);
-         $this->middleware('permission:especieAmenazada-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:especieAmenazada-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:EspeciesAmenazadas|Crear EspecieAmenazada|Editar EspecieAmenazada|Eliminar EspecieAmenazada', ['only' => ['index','show']]);
+         $this->middleware('permission:Crear EspecieAmenazada', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar EspecieAmenazada', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar EspecieAmenazada', ['only' => ['destroy']]);
     }
+    
     public function index(Request $request)
     {
     	$riesgos = Riesgo::all();

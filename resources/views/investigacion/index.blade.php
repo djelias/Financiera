@@ -15,10 +15,13 @@
   <br>
    <div class="row">
      <div class="col-md-8">
+      @can('Crear Investigacion')
         <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
             Nueva Investigacion
         </button>
-       
+        @endcan
+        <br>
+        <br>
          {{ Form::open(['route'=>'investigacion.store', 'method'=>'POST', 'class'=>'agregar']) }}
              @include('investigacion.form_master')
              {{ form::close() }}
@@ -77,11 +80,15 @@
          <td>
           <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('investigacion.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
+          @can('Editar Investigacion')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('investigacion.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
+          @endcan
+          @can('Eliminar Investigacion')
             {!! Form::open(['method' => 'DELETE','route' => ['investigacion.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
             {!! Form::close() !!}
+          @endcan
         </td>
       </tr>
     @endforeach

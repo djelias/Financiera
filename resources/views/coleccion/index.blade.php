@@ -9,9 +9,11 @@
     </div>
   </div>
       <div>
+        @can('Crear Coleccion')
         <a href="{{route('coleccion.create')}}" class="btn btn-success btn-lg">
-            <i class="glyphicon glyphicon-plus"> NUEVO</i>
+            <i class="glyphicon glyphicon-plus"> Nueva Coleccion</i>
         </a>
+        @endcan
         {!! Form::open(['route'=>'coleccion.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
         <div class="input-group"> 
             {!! Form::text('nombreColeccion', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
@@ -33,11 +35,17 @@
         <td>
           <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('coleccion.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
+
+          @can('Editar Coleccion')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('coleccion.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
+          @endcan
+
+          @can('Eliminar Coleccion')
             {!! Form::open(['method' => 'DELETE','route' => ['coleccion.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm">Eliminar<i class="glyphicon glyphicon-trash" ></i></button>
             {!! Form::close() !!}
+          @endcan
         </td>
       </tr>
     @endforeach
