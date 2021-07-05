@@ -18,22 +18,25 @@
         <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
             Nueva Investigacion
         </button>
-        <br>
-        <br>
-      
+       
          {{ Form::open(['route'=>'investigacion.store', 'method'=>'POST', 'class'=>'agregar']) }}
              @include('investigacion.form_master')
              {{ form::close() }}
         
       </div>
-    <div class="col-md-4">        {!! Form::open(['route'=>'investigacion.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
+
+    <div class="col-md-4">
+        {!! Form::open(['route'=>'investigacion.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
         <div class="input-group"> 
             {!! Form::text('nombreInv', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
+           <button type="submit" class="btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar">Buscar</button>
+        {!! Form::close()!!}
         </div>
-         <button type="submit" class="glyphicon glyphicon-search btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar"></button>
-            {!! Form::close()!!}
-      </div>
-      <br>
+       
+      
+      </div>    
+  </div>
+      
   <table class="table table-striped" style="text-align:center" >
     <tr>
      <th with="80px">No</th>
