@@ -1,12 +1,15 @@
-@extends('layouts.app')
+@extends ('layout')
+@section('header')
+<header style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/titulos.jpg'); opacity: 0.8;"><h2 style="color: white; font-family: sans-serif; font-size: 58px; text-align: center;">Gestion de Roles</h2>
+  </header>
+@endsection
+@section('container')
 
-
-@section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Role Management</h2>
-        </div>
+            <br>
+          </div>
         <div class="pull-right">
         @can('Crear Rol')
             <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
@@ -22,7 +25,7 @@
     </div>
 @endif
 
-
+<br>
 <table class="table table-bordered">
   <tr>
      <th>No</th>
@@ -40,7 +43,7 @@
             @endcan
             @can('Eliminar Rol')
                 {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                    {!! Form::submit('Eliminar', ['class' => 'btn btn-danger']) !!}
                 {!! Form::close() !!}
             @endcan
         </td>
@@ -50,5 +53,7 @@
 
 
 {!! $roles->render() !!}
-
+ <div class="text-center">
+    <a class="btn btn-primary" href="{{ url('/gestion') }}">Regresar</a>
+  </div>
 @endsection

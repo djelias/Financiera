@@ -52,7 +52,7 @@ class SecuenciaController extends Controller
     {
         $this->validate($request,[
 
-          'id'=>'required|numeric', 
+          'id', 
           'secuenciaObtenida'=>'required',
           'metodoSecuenciacion'=>'required',
           'lugarSec'=>'required',

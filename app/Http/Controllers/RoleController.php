@@ -12,12 +12,12 @@ use DB;
 
 
 class RoleController extends Controller
-{
-    /**
+{ /**
+    
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+      */
     function __construct()
     {
          $this->middleware('permission:Roles|Crear Rol|Editar Rol|Eliminar Rol', ['only' => ['index','store']]);
