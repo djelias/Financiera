@@ -48,14 +48,30 @@
           Especies
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @can('Dominios')
           <a class="dropdown-item" href="{{ route('dominio.index') }}">Gestión de Dominios</a>
+          @endcan
+          @can('Reinos')
           <a class="dropdown-item" href="{{ route('reino.index') }}">Gestión de Reinos</a>
+          @endcan
+          @can('Filums')
            <a class="dropdown-item" href="{{ route('filum.index') }}">Gestión de Filums</a>
+           @endcan
+           @can('Clases')
            <a class="dropdown-item" href="{{ route('clase.index') }}">Gestión de Clases</a>
+           @endcan
+           @can('Ordenes')
            <a class="dropdown-item" href="{{ route('orden.index') }}">Gestión de Orden</a>
+           @endcan
+           @can('Familias')
            <a class="dropdown-item" href="{{ route('familia.index') }}">Gestión de Familias</a>
+           @endcan
+           @can('Generos')
            <a class="dropdown-item" href="{{ route('genero.index') }}">Gestión de Géneros</a>
+           @endcan
+           @can('Especies')
            <a class="dropdown-item" href="{{ route('especie.index') }}">Gestión de Especies</a>
+           @endcan
         </div>
       </li>
 
@@ -75,16 +91,19 @@
           @endcan
         </div>
       </li>
-
+@can('Investigaciones')
  <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Investigaciones
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item"  href="{{ route('investigacion.index') }}"> Gestión de Investigaciones</a>
+        @can('TiposInvestigaciones')
          <a class="dropdown-item"  href="{{ route('tipoInvestigacion.index') }}"> Gestión Tipo de Investigaciones</a>
+         @endcan
           </div>
       </li>
+@endcan
 
  <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -104,7 +123,9 @@
           Barcoding
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @can('Secuencias')
           <a class="dropdown-item"  href="{{ route('secuencia.index') }}"> Secuenciación</a>
+          @endcan
           </div>
       </li>
 
