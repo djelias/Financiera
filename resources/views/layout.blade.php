@@ -43,6 +43,7 @@
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">BIO-UES</a>
       </li>
 
+      @can('Dominios')
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Especies
@@ -74,6 +75,7 @@
            @endcan
         </div>
       </li>
+      @endcan
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

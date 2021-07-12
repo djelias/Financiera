@@ -17,10 +17,11 @@ class UserController extends Controller
     function __construct()
     {
          //$this->middleware(['isAdmin'])->only('index');
-         $this->middleware('permission:Usuarios|Crear Usuario|Editar Usuario|Eliminar Usuario', ['only' => ['index','store']]);
-         $this->middleware('permission:Crear Usuario', ['only' => ['create','store']]);
-         $this->middleware('permission:Editar Usuario', ['only' => ['edit','update']]);
-         $this->middleware('permission:Eliminar Usuario', ['only' => ['destroy']]);
+         $this->middleware('permission:Usuarios|Crear Usuarios|Editar Usuarios|Eliminar Usuarios', ['only' => ['index','store']]);
+         $this->middleware('permission:Usuarios', ['only' => ['index']]);
+         $this->middleware('permission:Crear Usuarios', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Usuarios', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Usuarios', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
