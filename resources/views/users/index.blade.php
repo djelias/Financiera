@@ -11,7 +11,7 @@
             <h2>Manejo de Usuarios</h2>
         </div>
         <div class="pull-right">
-        @can('Crear Usuario')
+        @can('Crear Usuarios')
             <a class="btn btn-success" href="{{ route('users.create') }}"> Crear Usuario</a>
         @endcan
         </div>
@@ -50,10 +50,10 @@ $i=0;
     </td>
     <td>
        <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Detalle</a>
-       @can('Editar Usuario')
+       @can('Editar Usuarios')
        <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Editar</a>
        @endcan
-       @can('Eliminar Usuario')
+       @can('Eliminar Usuarios')
         {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Eliminar', ['class' => 'btn btn-danger']) !!}
         {!! Form::close() !!}
