@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Taxonomia;
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 
 class TaxonomiaController extends BaseController
@@ -19,7 +20,13 @@ class TaxonomiaController extends BaseController
      */
     public function index()
     {
-        $taxonomias = Taxonomia::all();
+
+
+        $taxonomias = DB::table('taxonomias')
+                        ->join('especimens', 'especimens.id', '=', 'taxonomias.idEspecimen')
+                        ->join('especies','especies.id','=','taxonomias.idEspecie')
+                        ->get();
+        //$taxonomias = Taxonomia::all();
 
 
         return $this->sendResponse($taxonomias->toArray(), 'Taxonomias retrieved successfully.');
