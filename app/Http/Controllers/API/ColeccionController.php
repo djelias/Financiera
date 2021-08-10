@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Coleccion;
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 
 class ColeccionController extends BaseController
@@ -19,6 +20,8 @@ class ColeccionController extends BaseController
      */
     public function index()
     {
+
+
         $coleccions = Coleccion::all();
 
 

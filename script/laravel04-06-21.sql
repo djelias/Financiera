@@ -156,6 +156,7 @@ create table ESPECIMENS
    idTaxonomia          integer                        null,
    idSecuencia          integer                        null,
    idEspecie            integer                        null,
+   idInvestigacion      integer                        null,
    fechaColecta         date                           not null,
    horaSecuenciacion1   time                           not null,
    colector             char(255)                      not null,
@@ -477,6 +478,12 @@ alter table ESPECIMENS
 alter table ESPECIMENS
    add constraint FK_SECUENCI_TIENE_____SECUENCIA foreign key (idSecuencia)
       references SECUENCIAS (id)
+      on update restrict
+      on delete restrict;
+
+alter table ESPECIMENS
+   add constraint FK_ESPECIMEN_PERTENECE_INVESTIGACION foreign key (idInvestigacion)
+      references INVESTIGACIONS (id)
       on update restrict
       on delete restrict;
 

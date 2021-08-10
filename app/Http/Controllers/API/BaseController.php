@@ -18,13 +18,12 @@ class BaseController extends Controller
     public function sendResponse($result, $message)
     {
     	$response = [
-            'success' => true,
-            'data'    => $result,
-            'message' => $message,
+            'data'    => $result
         ];
+        $respuesta = $result;
 
 
-        return response()->json($response, 200);
+        return response()->json($respuesta, 200);
     }
 
 
