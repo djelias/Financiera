@@ -408,6 +408,22 @@ create table ZONAS
    constraint PK_ZONAS primary key (id)
 );
 
+create table PUBLICACIONES 
+(
+   id                   integer                        not null      AUTO_INCREMENT,
+   nombrePublicacion    char(255)                      not null,
+   descripcionPub       char(255)                      not null,
+   url                  char(255)                     not null,
+   idDepto              integer                        null,
+   idMunicipio          integer                        null,
+   latitudZona          float                          not null,
+   longitudZona         float                          not null,
+   habitatZona          char(255)                      not null,
+   created_at        timestamp                  null,
+   updated_at        timestamp                  null,
+   constraint PK_ZONAS primary key (id)
+);
+
 alter table ZONAS
    add constraint FK_ZONA_PERTENECE_A_UN_MUNICIPIO foreign key (idMunicipio)
       references MUNICIPIOS (id)

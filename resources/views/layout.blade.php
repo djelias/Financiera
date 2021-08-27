@@ -128,6 +128,7 @@
           @can('Secuencias')
           <a class="dropdown-item"  href="{{ route('secuencia.index') }}"> Secuenciación</a>
           @endcan
+          <a class="dropdown-item"  href="https://www.boldsystems.org/index.php/Public_BINSearch?searchtype=records"> Bold System</a>
           </div>
       </li>
 
@@ -143,6 +144,7 @@
           @can('Roles')
           <a class="dropdown-item"  href="{{ route('roles.index') }}"> Roles</a>
           @endcan
+          <a class="dropdown-item"  href="{{ route('bitacoras') }}"> Bitacoras</a>
           </div>
       </li>
       @endcan

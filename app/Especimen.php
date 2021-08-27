@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Especimen extends Model
 {
+
+  use LogsActivity;
+  
     protected $fillable = ['idEspecie', 'cantidad', 'caracteristicas','codigoEspecimen','colector','fechaColecta','habitat','horaSecuenciacion1','idTaxonomia','latitud','longitud','peso','tamano','tecnicaRecoleccion','tipoMuestra', 'imagen'];
     protected $dates = ['created_at','updated_at'];
 

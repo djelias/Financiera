@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Zona extends Model
 {
+
+  use LogsActivity;
+  
 
     protected $fillable = ['nombreZona','descripcionZona1','lugarZona','idDepto','idMunicipio','latitudZona','longitudZona','habitatZona',];
     protected $dates = ['created_at','updated_at'];
