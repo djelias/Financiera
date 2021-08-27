@@ -4,8 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GMaps;
-use Especimen;
+use App\User;
+use App\Dominio;
+use App\Clase;
+use App\Coleccion;
+use App\Genero;
+use App\Especie;
+use App\Especimen;
+use App\Filum;
+use App\Familia;
+use App\EspecieAmenazada;
+use App\Departamento;
+use App\Zona;
+use App\TipoInvestigacion;
+use App\Taxonomia;
+use App\Secuencia;
+use App\Riesgo;
+use App\Role;
+use App\Reino;
+use App\Orden;
+use App\Municipio;
+use App\Investigacion;
 use GuzzleHttp\Client;
+use Spatie\Activitylog\Models\Activity;
 
 class MapController extends Controller
 {
@@ -67,9 +88,9 @@ class MapController extends Controller
         $responses = json_decode((string) $request->getBody());
         $src = $responses->bold_records->records;
 
-        foreach ($src as $key => $value) {
-            $otra = $value->collection_event->coordinates->lat;
-        }
+        //foreach ($src as $key => $value) {
+          //  $otra = $value->collection_event->coordinates->lat;
+        //}
 
 
         $config['center'] = '13.681872879287369, -88.99022359507697';
@@ -78,7 +99,7 @@ class MapController extends Controller
         $config['scrollwheel'] = true;
         GMaps::initialize($config);
 
-        return view('control/bold')->with('otra',$otra);
+        return view('control/bold')->with('src',$src);
     }
 
     public function EspecimenUbicacion(Request $request,$id)
@@ -121,6 +142,189 @@ class MapController extends Controller
 
         return view('map', ['map' => $map]);
         */
+    }
+
+    public function Bitacoras()
+    {
+        //$activity = Activity::all();
+        $activitys = Activity::all();
+        $users = User::all();
+
+        foreach ($activitys as $key => $value) {
+            if ($value->resgistroModificado == null) {
+                $registros = $value->subject_type;
+                $registro = strval($value->subject_type);
+                switch ($registro) {
+                case ('App\Dominio'):
+                    $val = Dominio::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreDominio;
+                    $activity2->save();
+                    break;
+
+                case ('App\Clase'):
+                    $val = Clase::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreClase;
+                    $activity2->save();
+                    break;
+
+                case ('App\Coleccion'):
+                    $val = Coleccion::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreColeccion;
+                    $activity2->save();
+                    break;
+                
+                case ('App\Departamento'):
+                    $val = Departamento::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreDepto;
+                    $activity2->save();
+                    break;
+
+                case ('App\Especieamenazada'):
+                    $val = EspecieAmenazada::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreDepto;
+                    $activity2->save();
+                    break;
+
+                case ('App\Familia'):
+                    $val = Familia::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreFamilia;
+                    $activity2->save();
+                    break;
+
+                case ('App\Especie'):
+                    $val = Especie::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreEspecie;
+                    $activity2->save();
+                    break;
+
+                case ('App\Especimen'):
+                    $val = Especimen::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->codigoEspecimen;
+                    $activity2->save();
+                    break;
+
+                    case ('App\Filum'):
+                    $val = Filum::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreFilum;
+                    $activity2->save();
+                    break;
+
+                case ('App\Genero'):
+                    $val = Genero::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreGenero;
+                    $activity2->save();
+                    break;
+
+                case ('App\Investigacion'):
+                    $val = Investigacion::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreInv;
+                    $activity2->save();
+                    break;
+
+                case ('App\Municipio'):
+                    $val = Municipio::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreMunicipio;
+                    $activity2->save();
+                    break;
+
+                case ('App\Orden'):
+                    $val = Orden::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreOrden;
+                    $activity2->save();
+                    break;
+
+                case ('App\Reino'):
+                    $val = Reino::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreReino;
+                    $activity2->save();
+                    break;
+
+                case ('App\genero'):
+                    $val = Genero::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreGenero;
+                    $activity2->save();
+                    break;
+
+                case ('App\Riesgo'):
+                    $val = Riesgo::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->catRiesgo;
+                    $activity2->save();
+                    break;
+
+                case ('App\Role'):
+                    $val = Role::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->name;
+                    $activity2->save();
+                    break;
+
+                case ('App\Secuencia'):
+                    $val = Secuencia::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->secuenciaObtenida;
+                    $activity2->save();
+                    break;
+
+                case ('App\Taxonomia'):
+                    $val = Taxonomia::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreComun;
+                    $activity2->save();
+                    break;
+
+                case ('App\TipoInvestigacion'):
+                    $val = TipoInvestigacion::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreTipo;
+                    $activity2->save();
+                    break;
+
+                case ('App\User'):
+                    $val = User::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->email;
+                    $activity2->save();
+                    break;
+
+                case ('App\Zona'):
+                    $val = Zona::find($value->subject_id);
+                    $activity2 = Activity::find($value->id);
+                    $activity2->registroModificado = $val->nombreZona;
+                    $activity2->save();
+                    break;
+
+
+                default:
+                    # code...
+                    break;
+                }
+            }
+            
+        }
+
+        $activity = Activity::orderBy('id','DESC')->paginate(10);
+
+        return view('control/bitacoras')->with('activity',$activity)->with('users',$users)->with('registro',$registro);
+    }
+
+    public function publicaciones(){
+        
     }
 
 }

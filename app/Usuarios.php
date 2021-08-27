@@ -7,10 +7,14 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 
 class Usuarios extends Authenticatable
 {
+
+  use LogsActivity;
+  
     use Notifiable;
     use HasRoles;
     use HasApiTokens;

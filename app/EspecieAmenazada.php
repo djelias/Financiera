@@ -3,10 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 
 class EspecieAmenazada extends Model
 {
+
+  use LogsActivity;
+  
      protected $fillable = ['idRiesgo', 'nomEspamen','nomComEspamen'];
     protected $dates = ['created_at','updated_at'];
 

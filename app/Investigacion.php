@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Investigacion extends Model
 {
+
+  use LogsActivity;
+  
         
     protected $fillable = ['idZona','idMunicipio','idTipo','idUsuario','nombreInv','fechaIngreso','lugarInv','responsableInv','objetivo','contacto','unidadEncargada','otrasInstit','documentacion','descripcionInvestigacion','correoElectronico'];
     protected $dates = ['created_at','updated_at'];
