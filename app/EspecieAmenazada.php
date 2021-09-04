@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class EspecieAmenazada extends Model
 {
+	 public $table = "especieAmenazadas";
      protected $fillable = ['idRiesgo', 'nomEspamen','nomComEspamen'];
     protected $dates = ['created_at','updated_at'];
 

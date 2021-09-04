@@ -41,7 +41,7 @@ class InvestigacionController extends Controller
     
     	$zonas = Zona::all();
       $municipios = Municipio::all();
-      $tipoInvestigaciones = TipoInvestigacion::all();
+      $tipoInvestigaciones = Investigacion::all();
       $users = User::all();
       $nombre =$request->get('nombreInv');
       $investigaciones = Investigacion::orderBy('id','DESC')->nombre($nombre)->paginate(10);

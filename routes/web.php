@@ -29,6 +29,10 @@ Route::get('/', function () {
   {
    return view('gestion');
   });
+  Route::get('quienes_somos', function()
+  {
+   return view('somos');
+  });
 
 Auth::routes();
 
@@ -43,7 +47,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('coleccion','ColeccionController');
     Route::resource('zona','ZonaController');
     Route::resource('secuencia','SecuenciaController');
-    Route::resource('especieAmenazada','especieAmenazadaController');
      Route::resource('coleccion','ColeccionController');
  Route::resource('zona','ZonaController');
  Route::resource('dominio','DominioController');
@@ -54,7 +57,7 @@ Route::group(['middleware' => ['auth']], function() {
  Route::resource('filum','FilumController');
  Route::resource('clase','ClaseController');
  Route::resource('orden','OrdenController');
- Route::resource('especieAmenazada','especieAmenazadaController');
+ Route::resource('especieAmenazada','EspecieAmenazadaController');
  Route::resource('municipio','MunicipioController');
  Route::resource('familia','FamiliaController');
   Route::resource('genero','GeneroController');
@@ -62,6 +65,16 @@ Route::group(['middleware' => ['auth']], function() {
   Route::resource('especimen','EspecimenController');
   Route::resource('taxonomia','TaxonomiaController');
 Route::resource('investigacion','InvestigacionController');
-});
+
 //RUTAS PARA REPORTERIA
 Route::get('dominioPrueba.pdf', 'DominioController@generatePDF');
+Route::get('especieAmenazada.pdf', 'EspecieAmenazadaController@generatePDF');
+Route::get('reporteTaxonomia.pdf', 'TaxonomiaController@generatePDF');
+Route::get('/reportePDF.pdf/{id}', 'EspecimenController@generatePDF');
+Route::get('/reporteEspecie/{idReino}', 'EspecieController@reportePDF')->name('reporte2');
+Route::get('index_filter', 'EspecieController@index');
+//Route::get('reporte2.pdf', 'EspecieController@reportePDF');
+});
+
+
+

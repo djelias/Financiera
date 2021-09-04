@@ -1,5 +1,3 @@
-@extends ('layouts.app')
-
    <div class="row">
     <div class="col-sm-3">
       {!! form::label('Nombre de zona') !!}

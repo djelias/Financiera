@@ -14,18 +14,18 @@
 
   <div class="row">
     <div class="col-sm-2">
-      {!! form::label('idEspecie','Especie') !!}
+      {!! form::label('idInvestigacion','Investigacion') !!}
     </div>
-    <div class="col-sm-5">
-      <div class="form-horizontal {{ $errors->has('idEspecie') ? 'has-error' : "" }}">
+    <div class="col-sm-10">
+      <div class="form-horizontal {{ $errors->has('idInvestigacion') ? 'has-error' : "" }}">
       <select name="idEspecie" class="form-control">
-                <option disabled selected>Seleccione especie </option>
-                @foreach($especies as $especie)
-                      <option value="{{$especie->id}}">{{$especie->nombreEspecie}}</option>
+                <option disabled selected>Seleccione investigacion a la que pertenece </option>
+                @foreach($investigaciones as $investigacion)
+                      <option value="{{$investigacion->id}}">{{$investigacion->nombreInv}}</option>
                  @endforeach
             </select>
             <div class="help-block" > 
-          {{ $errors->first('idEspecie', 'Debe seleccionar una opción') }}
+          {{ $errors->first('idInvestigacion', 'Debe seleccionar una opción') }}
       </div>          
  </div>
   </div>

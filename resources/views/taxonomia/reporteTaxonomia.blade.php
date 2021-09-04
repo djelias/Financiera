@@ -6,7 +6,7 @@
 
 <head>
 
-	<title>dominio.pdf</title>
+	<title>taxonomia.pdf</title>
 
 </head>
 
@@ -16,7 +16,7 @@
 	<div class="header">
 								<h5>Fecha: {{$fecha}}</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<br>
-								<h5>Reporte de dominios</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<h5>Reporte de Clasificación Taxonómica</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							</div>
 	<div style="text-align: center;">
 		<img src="{{ public_path('img/ues.jpg')}}" width="50" height="60" >
@@ -27,26 +27,36 @@
 								<h5 style="text-align: center;">ESCUELA DE BIOLOGIA</h5>
 							</div>
 	<div>
-		<h4>Dominios de especies</h4>
-		
+		<h4>Clasificación Taxonomica</h4>
 	</div>
 
 	<table class="table table-striped" style="text-align:center" >
     	<tr>
       		<th with="40px">No</th>
-      		<th style="text-align:center">Nombre</th>
+      		<th style="text-align:center">Número de Voucher</th>
+      		<th style="text-align:center">Código de especimen</th>
+      		<th style="text-align:center">Especie</th>
+      		<th style="text-align:center">Nombre Común</th>
    		 </tr>
     <?php $no=1; ?>
-    @foreach ($dominios as $key => $value)
+    @foreach ($taxonomias as $key => $value)
     	<tr>
         	<td>{{$no++}}</td>
-        	<td style="text-align: center;">{{ $value->nombreDominio }}</td>
+        <td style="text-align: center;">{{$value->NumVoucher}}</td>
+        <td style="text-align: center;">{{$value->Especimen->codigoEspecimen}}</td>
+        <td style="text-align: center;">{{$value->Especimen->Especie->nombreEspecie }}<br></td>
+        <td style="text-align: center;">{{$value->nombreComun }}<br></td>
       	</tr>
+      </table>
+      	 		<div>
+      		<h4 style="text-align:left;">Imágenes:</h4>
+      	</div>
+       <img src="{{ public_path('especimens/'.$value->Especimen->imagen)}}" alt="" width="350px" height="350px">
     @endforeach
-  	</table>
+
   	<div class="footer">
 					<?php date_default_timezone_set('America/El_Salvador');?>
-					<p>http://BIO-UES/reporteDominios/{{$fecha}} <?=date('g:ia');?></p>
+					<p>http://BIO-UES/reporteTaxonomia/{{$fecha}} <?=date('g:ia');?></p>
 	</div>
 	</div>
 

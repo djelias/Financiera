@@ -14,9 +14,9 @@
   @endif
   <div class="row">
      <div class="col-md-8">
-      @can('Crear EspecieAmenzada')
+      @can('Crear EspecieAmenazada')
         <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
-            Nueva Especie Amenazada
+           Nuevo
         </button>
         @endcan
       
@@ -37,7 +37,9 @@
       
       </div>    
   </div>
- 
+ <div class="col-md-12" style="text-align:right;">
+          <a href="especieAmenazada.pdf" class="btn-info btn-sm" target="_blank" >Generar PDF</a>
+      </div> 
       <br>
  
   <table class="table table-striped" style="text-align:center" >

@@ -41,6 +41,9 @@
         <br>
       
       </div>
+       <div class="col-md-12" style="text-align:right;">
+          <a href="reporteTaxonomia.pdf" class="btn-info btn-sm" target="_blank" >Generar PDF</a>
+      </div> 
       <br>
   <table class="table table-striped" style="text-align:center" >
     <tr>
@@ -55,7 +58,7 @@
     @foreach ($taxonomias as $key => $value)
     <tr>
         <td>{{$no++}}</td>
-        <td>{{$value->Especimen->idEspecie}}</td>
+        <td>{{$value->NumVoucher}}</td>
         <td>{{$value->Especimen->codigoEspecimen}}</td>
         <td>{{$value->Especimen->Especie->nombreEspecie }}<br></td>
         <td>{{$value->nombreComun }}<br></td>

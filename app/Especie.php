@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Especie extends Model
 {
-    protected $fillable = ['idGenero', 'nombreEspecie'];
+    protected $fillable = ['idGenero', 'nombreEspecie', 'idReino'];
     protected $dates = ['created_at','updated_at'];
 
     public function scopeNombre($query, $nombreEspecie)

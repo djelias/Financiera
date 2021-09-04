@@ -1,25 +1,33 @@
-@extends ('layouts.app')
-@section('content')
-  <div class="row">
-    <div class ="col-sm-12">
-      <div class="full.right">
-      <h2>Coleccion</h2>
-      <br>
-      </div>
-    </div>
-  </div>
-      <div>
-        @can('Crear Colecciones')
-        <a href="{{route('coleccion.create')}}" class="btn btn-success btn-lg">
-            <i class="glyphicon glyphicon-plus"> Nueva Coleccion</i>
-        </a>
+@extends ('layout')
+@section('header')
+<header style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/titulos.jpg'); opacity: 0.8;"> <h2 style="color: white; font-family: sans-serif; font-size: 58px; text-align: center;">Colecciones</h2>
+  </header>
+@endsection
+@section('container')
+ <br>
+      <div class="row">
+        <div class="col-md-8">
+           @can('Crear Colecciones')
+         <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
+            Nueva Colección
+        </button>
         @endcan
+         {{ Form::open(['route'=>'coleccion.store', 'method'=>'POST', 'class'=>'agregar']) }}
+             @include('coleccion.form_master')
+             {{ form::close() }}
+      </div>
+         <div class="col-md-4">
         {!! Form::open(['route'=>'coleccion.index', 'method'=>'GET', 'class'=>'navbar-form pull-right', 'role'=>'search'])!!}
         <div class="input-group"> 
             {!! Form::text('nombreColeccion', null, ['class'=>'form-control', 'placeholder'=>'Buscar'])!!}
+           <button type="submit" class="btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar">Buscar</button>
+        {!! Form::close()!!}
         </div>
-         <button type="submit" class="glyphicon glyphicon-search btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar"></button>
-            {!! Form::close()!!}
+        <br>
+      
+      </div>
+        </div>
+       
       </div>
       <br>
   <table class="table table-striped" style="text-align:center" >
@@ -56,6 +64,26 @@
   </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+ <script type="text/javascript">
+      $('.agregar').hide();
+       function mostrarFormulario(){
+        $('.agregar').show();
+       }
+$('.agregar').submit(function(e){
+     e.preventDefault();Swal.fire({
+  title: '¿Está seguro de guardar esta Colección?',
+  showDenyButton: true,
+  //showCancelButton: true,
+  confirmButtonText: `Guardar`,
+  denyButtonText: `Cancelar`,
+})
+     .then((result) => {
+    if (result.isConfirmed) {
+     this.submit();
+    }
+})
+});
+</script>
  <script type="text/javascript">
 $('.formulario-eliminar').submit(function(e){
      e.preventDefault();

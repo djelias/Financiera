@@ -1,7 +1,6 @@
-@extends('home_layout')
-
+@extends('home')
 @section('container')
- <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 
             <div class="container">
                             <a class="navbar-brand" href="{{ url('/home') }}">
@@ -34,14 +33,14 @@
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/home-bg.jpg')">
+        <header class="masthead" style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/Maquilishuat.jpg')">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-10 mx-auto">
                         <div class="site-heading">
-                            <h1>Biodiversidad de El Salvador</h1>
-                            <span class="subheading">Universidad de El Salvador</span>
+                            <h1>Quienes Somos</h1>
+                            <span class="subheading">BIO UES</span>
                         </div>
                     </div>
                 </div>
@@ -51,14 +50,17 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Desarrollado para la gestión de las especies naturales de la biodiversidad salvadoreña</h2>
-                            <h3 class="post-subtitle">Más de dos mil especies registradas. </h3>
+                        <a >
+                            <h2 class="post-title">BIO-UES  es una plataforma para el almacenamiento de datos sobre las especies naturales administrado por la Escuela de Biología de la Universidad de El Salvador. Podrás encontrar la siguiente informacion:</h2>
+                        
                         </a>
                         <p class="post-meta">
-                            Sitio creado para la
-                            <a href="#!">Escuela de Biologia</a>
-                            de la Universidad de El Salvador
+                              <ul>
+                            <li>Clasificación taxonomica de las especies registradas de la Biodiversidad salvadoreña.</li>
+                            <li>Catalogo con las colecciones que se encuentran en la Escuela de Biología de la UES.</li>
+                            <li>Datos de barcoding de aquellas especies que ya han sido analizadas.</li>
+                            <li>Mapas de ubicaciones de las diferentes especies.</li>
+                        </ul>
                         </p>
                     </div>
                     <hr />
