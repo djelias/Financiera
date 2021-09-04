@@ -323,8 +323,4 @@ class MapController extends Controller
         return view('control/bitacoras')->with('activity',$activity)->with('users',$users)->with('registro',$registro);
     }
 
-    public function publicaciones(){
-        
-    }
-
 }

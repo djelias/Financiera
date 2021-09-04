@@ -17,7 +17,8 @@ class TipoInvestigacionController extends Controller
      */
       function __construct()
     {
-         $this->middleware('permission:TiposInvestigaciones|Crear TipoInvestigacion|Editar TipoInvestigacion|Eliminar TipoInvestigacion', ['only' => ['index','show']]);
+         $this->middleware('permission:TiposInvestigaciones|Crear TipoInvestigacion|Editar TipoInvestigacion|Eliminar TipoInvestigacion', ['only' => ['index','store']]);
+         $this->middleware('permission:TiposInvestigaciones', ['only' => ['index']]);
          $this->middleware('permission:Crear TipoInvestigacion', ['only' => ['create','store']]);
          $this->middleware('permission:Editar TipoInvestigacion', ['only' => ['edit','update']]);
          $this->middleware('permission:Eliminar TipoInvestigacion', ['only' => ['destroy']]);
