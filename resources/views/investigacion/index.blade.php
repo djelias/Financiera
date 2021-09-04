@@ -58,6 +58,7 @@
     <!--  <th style="text-align:center">Correo Electronico</th>--> 
     
       <th style="text-align:center">Acciones</th>
+      <th style="text-align:center">Solicitar Aprobacion</th>
     </tr>
     <?php $no=1; ?>
     @foreach ($investigaciones as $key => $value)
@@ -88,6 +89,20 @@
             {!! Form::open(['method' => 'DELETE','route' => ['investigacion.destroy', $value->id],'style'=>'display:inline', 'class'=>'formulario-eliminar']) !!}
               <button type="submit" data-toggle="tooltip" data-placement="top" title="Eliminar" style="display: inline;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" >Eliminar</i></button>
             {!! Form::close() !!}
+          @endcan
+        </td>
+        <td>
+          @can('Crear Aprobacion')
+        <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
+            Crear
+        </button>
+        <br>
+        <br>
+         {{ Form::open(['route'=>'aprobacion.store', 'method'=>'POST', 'class'=>'agregar']) }}
+             @include('aprobacion.form_master')
+             {{ form::close() }}
+        
+      </div>
           @endcan
         </td>
       </tr>
