@@ -441,11 +441,71 @@ create table APROBACIONS
    constraint PK_APROBACIONES primary key (id)
 );
 
-alter table APROBACIONES
-   add constraint FK_APROBACION_PERTENECE_A_UNA_INVESTIGACION foreign key (idInvestigacion)
-      references INVESTIGACIONS (id)
-      on update restrict
-      on delete restrict;
+CREATE TABLE `activity_log` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `log_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `subject_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `registroModificado` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `causer_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `causer_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `properties` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`properties`)),
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `activity_log`
+--
+
+INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_id`, `subject_type`, `registroModificado`, `causer_id`, `causer_type`, `properties`, `created_at`, `updated_at`) VALUES
+(2, 'default', 'created', 2, 'App\\Clase', 'clasep', 1, 'App\\User', '[]', '2021-08-16 10:42:58', '2021-08-23 02:39:12'),
+(3, 'default', 'deleted', 2, 'App\\Clase', 'clasep', 1, 'App\\User', '[]', '2021-08-16 10:45:12', '2021-08-23 02:39:13'),
+(4, 'default', 'created', 3, 'App\\Dominio', 'Dominios1', 1, 'App\\User', '[]', '2021-08-16 10:50:18', '2021-08-23 02:05:23'),
+(5, 'default', 'updated', 2, 'App\\Dominio', 'prueba', 1, 'App\\User', '[]', '2021-08-16 10:51:06', '2021-08-23 02:40:12'),
+(6, 'default', 'deleted', 2, 'App\\Dominio', 'prueba', 1, 'App\\User', '[]', '2021-08-16 10:52:00', '2021-08-23 02:40:12'),
+(7, 'default', 'updated', 3, 'App\\Dominio', 'Dominios1', 1, 'App\\User', '[]', '2021-08-16 10:57:02', '2021-08-23 02:05:23'),
+(8, 'default', 'created', 4, 'App\\Dominio', 'archeas', 1, 'App\\User', '[]', '2021-08-16 10:57:50', '2021-08-23 02:40:12'),
+(9, 'default', 'created', 5, 'App\\Dominio', 'Dominios', 1, 'App\\User', '[]', '2021-08-20 09:39:15', '2021-08-23 02:21:13'),
+(10, 'default', 'created', 6, 'App\\Dominio', 'domin', 1, 'App\\User', '[]', '2021-08-21 05:33:09', '2021-08-21 05:33:09'),
+(11, 'default', 'created', 3, 'App\\Clase', 'Clase', 1, 'App\\User', '[]', '2021-08-23 02:20:01', '2021-08-23 02:39:13'),
+(12, 'default', 'created', 1, 'App\\TipoInvestigacion', 'Prueba tipo', 1, 'App\\User', '[]', '2021-08-23 04:13:09', '2021-08-23 04:14:27'),
+(13, 'default', 'created', 1, 'App\\Municipio', 'Tonacatepeque', 1, 'App\\User', '[]', '2021-08-23 04:16:38', '2021-08-23 04:19:01'),
+(14, 'default', 'updated', 1, 'App\\Municipio', 'Tonacatepeque', 1, 'App\\User', '[]', '2021-08-23 04:18:01', '2021-08-23 04:19:01'),
+(15, 'default', 'updated', 1, 'App\\Municipio', 'Tonacatepeque', 1, 'App\\User', '[]', '2021-08-23 04:18:57', '2021-08-23 04:19:01'),
+(16, 'default', 'deleted', 1, 'App\\Municipio', 'Tonacatepeque', 1, 'App\\User', '[]', '2021-08-23 04:19:39', '2021-08-23 04:20:20'),
+(17, 'default', 'created', 1, 'App\\Publicacion', NULL, 1, 'App\\User', '[]', '2021-08-30 04:27:01', '2021-08-30 04:27:01'),
+(18, 'default', 'created', 2, 'App\\Publicacion', NULL, 1, 'App\\User', '[]', '2021-08-30 04:42:51', '2021-08-30 04:42:51'),
+(19, 'default', 'created', 3, 'App\\Publicacion', NULL, 1, 'App\\User', '[]', '2021-08-30 04:46:26', '2021-08-30 04:46:26'),
+(20, 'default', 'created', 1, 'App\\Aprobacion', NULL, 1, 'App\\User', '[]', '2021-09-03 05:28:16', '2021-09-03 05:28:16'),
+(21, 'default', 'updated', 1, 'App\\Aprobacion', NULL, 1, 'App\\User', '[]', '2021-09-03 05:28:40', '2021-09-03 05:28:40');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `activity_log`
+--
+ALTER TABLE `activity_log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `activity_log_log_name_index` (`log_name`),
+  ADD KEY `subject` (`subject_id`,`subject_type`),
+  ADD KEY `causer` (`causer_id`,`causer_type`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `activity_log`
+--
+ALTER TABLE `activity_log`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+COMMIT;
+
+
 
 alter table ZONAS
    add constraint FK_ZONA_PERTENECE_A_UN_MUNICIPIO foreign key (idMunicipio)
@@ -642,6 +702,11 @@ alter table USUARIOS
       on update restrict
       on delete restrict;
 
+alter table APROBACIONS
+   add constraint FK_APROBACION_PERTENECE_A_UNA_INVESTIGACION foreign key (idInvestigacion)
+      references INVESTIGACIONS (id)
+      on update restrict
+      on delete restrict;
 
 CREATE TABLE `model_has_permissions` (
   `permission_id` int(10) UNSIGNED NOT NULL,
