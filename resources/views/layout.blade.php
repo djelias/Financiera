@@ -103,6 +103,9 @@
         @can('TiposInvestigaciones')
          <a class="dropdown-item"  href="{{ route('tipoInvestigacion.index') }}"> Gestión Tipo de Investigaciones</a>
          @endcan
+         @can('Publicaciones')
+         <a class="dropdown-item"  href="{{ route('publicacion.index') }}"> Gestión Publicaciones</a>
+         @endcan
           </div>
       </li>
 @endcan

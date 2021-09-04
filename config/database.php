@@ -93,6 +93,12 @@ return [
 
     ],
 
+    'dump' => [
+        'dump_binary_path' => 'C:\xampp\mysql\bin',
+        'use_single_transaction',
+        'timeout' => 60 * 5,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Migration Repository Table
