@@ -54,7 +54,7 @@ class TipoInvestigacionController extends Controller
         $this->validate($request,[
 
           'id',
-          'nombreTipoInvestigacion',
+          'nombreTipo',
           'descripcionTipo'
         ]);
         
@@ -98,7 +98,7 @@ class TipoInvestigacionController extends Controller
     {
         $this->validate($request,[
           'id',
-          'nombreTipoInvestigacion',
+          'nombreTipo',
           'descripcionTipo'
         ]);
         TipoInvestigacion::find($idTipoInvestigacion)->update($request->all());

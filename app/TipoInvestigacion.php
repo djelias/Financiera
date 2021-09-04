@@ -11,6 +11,7 @@ class TipoInvestigacion extends Model
   use LogsActivity;
   
     //
+    public $table = "tipo_investigacions";
     protected $fillable = ['nombreTipo','descripcionTipo'];
     protected $dates = ['created_at','updated_at'];
 
