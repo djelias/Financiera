@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +21,7 @@ Route::get('/', function () {
 
  Route::get('map', 'MapController@index')->name('map');
  Route::get('consulta', 'MapController@consulta')->name('consulta');
+ Route::get('bitacoras', 'MapController@bitacoras')->name('bitacoras');
  Route::get('bold/{taxon}/{geo}', 'MapController@bold')->name('bold');
 
  Route::get('bold/{taxon}/{geo}', [
@@ -45,6 +48,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('departamento','DepartamentoController');
     Route::resource('municipio','MunicipioController');
     Route::resource('coleccion','ColeccionController');
+    Route::resource('publicacion','PublicacionController');
+    Route::resource('aprobacion','AprobacionController');
     Route::resource('zona','ZonaController');
     Route::resource('secuencia','SecuenciaController');
      Route::resource('coleccion','ColeccionController');

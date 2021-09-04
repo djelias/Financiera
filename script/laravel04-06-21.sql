@@ -6,6 +6,8 @@
 
 drop table if exists CLASES;
 
+drop table if exists PUBLICACIONES;
+
 drop table if exists COLECCIONS;
 
 drop table if exists DEPARTAMENTOS;
@@ -25,6 +27,8 @@ drop table if exists FAMILIAS;
 drop table if exists FILUMS;
 
 drop table if exists GENEROS;
+
+drop table if exists APROBACIONES;
 
 drop table if exists INVESTIGACIONS;
 
@@ -156,6 +160,7 @@ create table ESPECIMENS
    idTaxonomia          integer                        null,
    idSecuencia          integer                        null,
    idEspecie            integer                        null,
+   idInvestigacion      integer                        null,
    fechaColecta         date                           not null,
    horaSecuenciacion1   time                           not null,
    colector             char(255)                      not null,
@@ -407,6 +412,41 @@ create table ZONAS
    constraint PK_ZONAS primary key (id)
 );
 
+create table PUBLICACIONS 
+(
+   id                   integer                        not null      AUTO_INCREMENT,
+   nombrePublicacion    char(255)                      not null,
+   descripcionPub       char(255)                      not null,
+   url                  char(255)                      null,
+   imagen               char(255)                      null,
+   fechaInicio          date                           null,
+   fechaFin             date                           null,
+   estado               integer                        null,
+   created_at        timestamp                  null,
+   updated_at        timestamp                  null,
+   constraint PK_PUBLICACIONES primary key (id)
+);
+
+create table APROBACIONS 
+(
+   id                   integer                        not null      AUTO_INCREMENT,
+   idInvestigacion      integer                        null,
+   descripcion          char(255)                      not null,
+   observacion          char(255)                      null,
+   fecha                date                           null,
+   estado               integer                        null,
+   estado2              integer                        null,
+   created_at        timestamp                  null,
+   updated_at        timestamp                  null,
+   constraint PK_APROBACIONES primary key (id)
+);
+
+alter table APROBACIONES
+   add constraint FK_APROBACION_PERTENECE_A_UNA_INVESTIGACION foreign key (idInvestigacion)
+      references INVESTIGACIONS (id)
+      on update restrict
+      on delete restrict;
+
 alter table ZONAS
    add constraint FK_ZONA_PERTENECE_A_UN_MUNICIPIO foreign key (idMunicipio)
       references MUNICIPIOS (id)
@@ -477,6 +517,12 @@ alter table ESPECIMENS
 alter table ESPECIMENS
    add constraint FK_SECUENCI_TIENE_____SECUENCIA foreign key (idSecuencia)
       references SECUENCIAS (id)
+      on update restrict
+      on delete restrict;
+
+alter table ESPECIMENS
+   add constraint FK_ESPECIMEN_PERTENECE_INVESTIGACION foreign key (idInvestigacion)
+      references INVESTIGACIONS (id)
       on update restrict
       on delete restrict;
 
@@ -682,7 +728,7 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (26, 'Crear Secuencia', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
 (27, 'Editar Secuencia', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
 (28, 'Eliminar Secuencia', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
-(29, 'TipoInvestigaciones', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(29, 'TiposInvestigaciones', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
 (30, 'Crear TipoInvestigacion', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
 (31, 'Editar TipoInvestigacion', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
 (32, 'Eliminar TipoInvestigacion', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
@@ -741,7 +787,15 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (85, 'Secuencias', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
 (86, 'Crear Secuencia', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
 (87, 'Editar Secuencia', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
-(88, 'Eliminar Secuencia', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31');
+(88, 'Eliminar Secuencia', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(89, 'Publicaciones', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(90, 'Crear Publicacion', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(91, 'Editar Publicacion', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(92, 'Eliminar Publicacion', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(93, 'Aprobaciones', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(94, 'Crear Aprobacion', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(95, 'Editar Aprobacion', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31'),
+(96, 'Eliminar Aprobacion', 'web', '2021-02-24 10:24:31', '2021-02-24 10:24:31');
 
 
 

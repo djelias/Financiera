@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Genero extends Model
 {
+
+  use LogsActivity;
+  
     protected $fillable = ['idFamilia', 'nombreGenero'];
     protected $dates = ['created_at','updated_at'];
 

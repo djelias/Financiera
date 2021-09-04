@@ -14,16 +14,15 @@
   @endif
  
       <div>
-        @can('Crear Secuencia')
-        <a href="{{route('secuencia.create')}}" class="btn btn-success btn-lg">
-            <i class="glyphicon glyphicon-plus"> NUEVO</i>
-        </a>
-        @endcan
+        
+        
   <div class="row">
      <div class="col-md-8">
+      @can('Crear Secuencia')
         <button id='btnAgregar' onclick="mostrarFormulario()" class="btn btn-success btn-lg">
             Nueva Secuencia
         </button>
+        @endcan
       
         {{ Form::open(['route'=>'secuencia.store', 'method'=>'POST', 'class'=>'agregar']) }}
              @include('secuencia.form_master')

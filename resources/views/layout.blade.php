@@ -103,6 +103,9 @@
         @can('TiposInvestigaciones')
          <a class="dropdown-item"  href="{{ route('tipoInvestigacion.index') }}"> Gestión Tipo de Investigaciones</a>
          @endcan
+         @can('Publicaciones')
+         <a class="dropdown-item"  href="{{ route('publicacion.index') }}"> Gestión Publicaciones</a>
+         @endcan
           </div>
       </li>
 @endcan
@@ -128,6 +131,7 @@
           @can('Secuencias')
           <a class="dropdown-item"  href="{{ route('secuencia.index') }}"> Secuenciación</a>
           @endcan
+          <a class="dropdown-item"  href="https://www.boldsystems.org/index.php/Public_BINSearch?searchtype=records"> Bold System</a>
           </div>
       </li>
 
@@ -143,6 +147,7 @@
           @can('Roles')
           <a class="dropdown-item"  href="{{ route('roles.index') }}"> Roles</a>
           @endcan
+          <a class="dropdown-item"  href="{{ route('bitacoras') }}"> Bitacoras</a>
           </div>
       </li>
       @endcan

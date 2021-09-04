@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Orden extends Model
 {
+
+  use LogsActivity;
+  
     protected $fillable = ['idClase', 'nombreOrden'];
     protected $dates = ['created_at','updated_at'];
 

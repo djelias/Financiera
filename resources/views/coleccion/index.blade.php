@@ -63,7 +63,30 @@
     <a class="btn btn-primary" href="{{ url('/gestion') }}">Regresar</a>
   </div>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!--Script para mostrar formulario y Alerta confirmar Guardar con ajax-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script type="text/javascript">
+      $('.agregar').hide();
+       function mostrarFormulario(){
+        $('.agregar').show();
+       }
+$('.agregar').submit(function(e){
+     e.preventDefault();Swal.fire({
+  title: '¿Está seguro de guardar esta Coleccion?',
+  showDenyButton: true,
+  //showCancelButton: true,
+  confirmButtonText: `Guardar`,
+  denyButtonText: `Cancelar`,
+})
+     .then((result) => {
+    if (result.isConfirmed) {
+     this.submit();
+    }
+})
+});
+</script>
+
  <script type="text/javascript">
       $('.agregar').hide();
        function mostrarFormulario(){
