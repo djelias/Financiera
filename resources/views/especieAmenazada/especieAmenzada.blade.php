@@ -6,7 +6,7 @@
 
 <head>
 
-	<title>dominio.pdf</title>
+	<title>especieAmenazada.pdf</title>
 
 </head>
 
@@ -16,7 +16,7 @@
 	<div class="header">
 								<h5>Fecha: {{$fecha}}</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<br>
-								<h5>Reporte de dominios</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<h5>Reporte de Especies Amenzadas</h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							</div>
 	<div style="text-align: center;">
 		<img src="{{ public_path('img/ues.jpg')}}" width="50" height="60" >
@@ -27,26 +27,29 @@
 								<h5 style="text-align: center;">ESCUELA DE BIOLOGIA</h5>
 							</div>
 	<div>
-		<h4>Dominios de especies</h4>
-		
+		<h4>Especies Amenazadas</h4>
 	</div>
 
 	<table class="table table-striped" style="text-align:center" >
     	<tr>
       		<th with="40px">No</th>
       		<th style="text-align:center">Nombre</th>
+      		<th style="text-align:center">Nombre común</th>
+      		<th style="text-align:center">Riesgo</th>
    		 </tr>
     <?php $no=1; ?>
-    @foreach ($dominios as $key => $value)
+    @foreach ($especieAmenazadas as $key => $value)
     	<tr>
         	<td>{{$no++}}</td>
-        	<td style="text-align: center;">{{ $value->nombreDominio }}</td>
+        	<td style="text-align: center;">{{ $value->nomEspamen }}</td>
+        	<td style="text-align: center;">{{ $value->nomComEspamen }}</td>
+        	<td style="text-align: center;">{{ $value->Riesgo->catRiesgo }}</td>
       	</tr>
     @endforeach
   	</table>
   	<div class="footer">
 					<?php date_default_timezone_set('America/El_Salvador');?>
-					<p>http://BIO-UES/reporteDominios/{{$fecha}} <?=date('g:ia');?></p>
+					<p>http://BIO-UES/reporteEspeciesAmenazadas/{{$fecha}} <?=date('g:ia');?></p>
 	</div>
 	</div>
 

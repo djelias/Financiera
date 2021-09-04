@@ -15,37 +15,37 @@ use App\Genero;
 use App\Especie;
 use App\Especimen;
 use App\Taxonomia;
+use App\Investigacion;
 use GMaps;
 use Especimen1\http\Request\TaxonomiaRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 use Image;
+use PDF;
+use Carbon\Carbon;
+
 class EspecimenController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-     function __construct()
-    {
-         $this->middleware('permission:Especimenes|Crear Especimen|Editar Especimen|Eliminar Especimen', ['only' => ['index','show']]);
-         $this->middleware('permission:Crear Especimen', ['only' => ['create','store']]);
-         $this->middleware('permission:Editar Especimen', ['only' => ['edit','update']]);
-         $this->middleware('permission:Eliminar Especimen', ['only' => ['destroy']]);
-    }
+    //
     //
      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+         $this->middleware('permission:Especimens|Crear Especimen|Editar Especimen|Eliminar Especimen', ['only' => ['index','store']]);
+         $this->middleware('permission:Crear Especimen', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Especimen', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Especimen', ['only' => ['destroy']]);
+    }
     public function index(Request $request)
     {
     	$especimens= Especimen::all();
-        $especies = Especie::all();
+        $investigaciones = Investigacion::all();
     	$codigo =$request->get('codigoEspecimen');
         $especimens = Especimen::orderBy('id','DESC')->nombre($codigo)->paginate(10);
-        return view('especimen.index',compact('especimens','especies'));
+        return view('especimen.index',compact('especimens','investigaciones'));
     }
 
     /**
@@ -57,8 +57,8 @@ class EspecimenController extends Controller
     public function create()
     {
     	$especimens= Especimen::all();
-        $especies = Especie::all();
-        return view('especimen.create', compact('especimens','especies'));
+        $investigaciones = Especie::all();
+        return view('especimen.create', compact('especimens','investigaciones'));
     }
 
     /**
@@ -71,7 +71,7 @@ class EspecimenController extends Controller
     {
         $this->validate($request,[ 
           'codigoEspecimen'=>'required',
-          'idEspecie'=>'required|numeric', 
+          'idInvestigacion'=>'required|numeric', 
           'cantidad'=>'required|numeric',      
           'caracteristicas'=>'required',
           'colector' =>'required',
@@ -88,12 +88,6 @@ class EspecimenController extends Controller
 
 
           ]);
-            /*$ruta = public_path().'/especimens/';
-            $imagenOriginal = $request->file('imagen'); 
-            $imagen = Image::make($imagenOriginal);
-            $name = time().$request->file('imagen')->getClientOriginalName();
-            $imagen->save($ruta . $name); 
-            $especimens->imagen=$name;*/
             $data = $request->all();
             if($request->hasFile('imagen')){
                    // $destination_path = 'public/especimens';
@@ -103,13 +97,7 @@ class EspecimenController extends Controller
                      $data['imagen'] = $img_name;
                     }
             $especimens = Especimen::create($data);
-            //Especimen::create($request->all());
-            
-            /*if($request->hasFile('imagen')){
-            $file=$request->file('imagen');
-            $name = time().$request->file('imagen')->getClientOriginalName();
-            $file->move(public_path().'/especimens/',$name);
-            }*/
+           
             Alert::success('Especimen agregado con éxito');
         return redirect()->route('especimen.index');
         
@@ -152,7 +140,7 @@ class EspecimenController extends Controller
     public function edit($idEspecimen)
     {
        
-    	$especies= Especie::all();
+    	$investigaciones= Investigacion::all();
         $especimens = Especimen::find($idEspecimen);
         return view('especimen.edit',compact('especimens','especies'));
     }
@@ -167,7 +155,7 @@ class EspecimenController extends Controller
     public function update(Request $request, $idEspecimen)
     {
         $this->validate($request,[ 
-          'idEspecie'=>'required|numeric', 
+          'idInvestigacion'=>'required|numeric', 
           'cantidad'=>'required|numeric',   
           'codigoEspecimen'=>'required',  
           'caracteristicas'=>'required',
@@ -204,4 +192,16 @@ class EspecimenController extends Controller
         return redirect()->route('especimen.index');
     }
     }
+
+     public function generatePDF($id)
+    {
+       $especimens = Especimen::find($id);
+        $date=new Carbon();
+        $fecha = $date->format('d-m-Y');
+
+        $pdf = PDF::loadView('especimen.reportePDF',compact('especimens','fecha'));
+        $pdf->getDomPDF()->set_option("enable_php", TRUE);
+        return $pdf->stream('reportePDF.pdf');
+    }
+
 }

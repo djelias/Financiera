@@ -10,7 +10,7 @@ class Especie extends Model
 
   use LogsActivity;
   
-    protected $fillable = ['idGenero', 'nombreEspecie'];
+    protected $fillable = ['idGenero', 'nombreEspecie', 'idReino'];
     protected $dates = ['created_at','updated_at'];
 
     public function scopeNombre($query, $nombreEspecie)

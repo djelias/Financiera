@@ -17,6 +17,9 @@ use App\Taxonomia;
 use Taxonomia1\http\Request\TaxonomiaRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 use GMaps;
+use PDF;
+use Carbon\Carbon;
+
 class TaxonomiaController extends Controller
 {
     
@@ -166,5 +169,20 @@ $map = GMaps::create_map();
     	Alert::danger('No se Puede eliminar este registro porque esta asociado con otra asignación');
         return redirect()->route('taxonomia.index');
     }
+    }
+    
+        public function generatePDF(Request $request)
+
+    {
+        $nombre = $request->get('numVoucher');
+        $taxonomias = Taxonomia::orderBy('id','DESC')->nombre($nombre)->paginate(10);
+        //$data = ['title' => 'Esta es una página de Prueba'];
+        $date=new Carbon();
+        $fecha = $date->format('d-m-Y');
+
+        $pdf = PDF::loadView('taxonomia.reporteTaxonomia',compact('taxonomias','fecha'));
+        $pdf->getDomPDF()->set_option("enable_php", TRUE);
+        return $pdf->stream('reporteTaxonomia.pdf');
+
     }
 }

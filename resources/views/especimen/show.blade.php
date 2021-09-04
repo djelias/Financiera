@@ -21,7 +21,7 @@
 
         <div class="form-group">
             <strong>Especie : </strong>
-            {{ $especimens->Especie->nombreEspecie}} 
+            {{ $especimens->Investigacion->nombreInv}} 
         </div>
 
         <div class="form-group">

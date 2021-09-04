@@ -1,5 +1,6 @@
 @extends ('layout')
 @section('header')
+
 <header style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/titulos.jpg'); opacity: 0.8;"> <h2 style="color: white; font-family: sans-serif; font-size: 58px; text-align: center;">Especímenes</h2>
   </header>
 @endsection
@@ -38,7 +39,7 @@
     <tr>
       <th with="80px">No</th>
       <th style="text-align:center">Código de Especímen</th>
-      <th style="text-align:center">Especie</th>
+      <th style="text-align:center">Investigación</th>
       <th style="text-align:center">Colector</th>
       <th style="text-align:center">Acciones</th>
     </tr>
@@ -47,11 +48,12 @@
     <tr>
         <td>{{$no++}}</td>
         <td>{{$value->codigoEspecimen}}</td>
-        <td>{{$value->Especie->nombreEspecie}}</td>
+        <td>{{$value->Investigacion->nombreInv}}</td>
         <td>{{$value->colector }}<br></td>
         <td>
           <a class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Detalles" href="{{route('especimen.show',$value->id)}}">
               <i class="glyphicon glyphicon-list-alt">Detalles</i></a>
+          <i>{!! link_to_action('EspecimenController@generatePDF','Reporte PDF',[$value->id], $attributes = array('class' => 'btn btn-success btn-sm', 'target' =>'_blank')) !!} </i>
           @can('Editar Especimen')
           <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{route('especimen.edit',$value->id)}}">
               <i class="glyphicon glyphicon-pencil">Editar</i></a>
@@ -65,17 +67,14 @@
       </tr>
     @endforeach
   </table>
-  {!!$especimens->render()!!}
+  {!! $especimens->render() !!} 
+  
  <div class="text-center">
     <a class="btn btn-primary" href="{{ url('/gestion') }}">Regresar</a>
   </div>
-
-
-    </script>
-
   
 <!--Script para Alerta confirmar eliminar con ajax-->
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
  <script type="text/javascript">
 $('.formulario-eliminar').submit(function(e){
      e.preventDefault();

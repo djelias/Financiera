@@ -16,10 +16,10 @@ class DepartamentoController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:departamento-listado|departamento-create|departamento-edit|departamento-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:departamento-create', ['only' => ['create','store']]);
-         $this->middleware('permission:departamento-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:departamento-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:Departamentos|Crear Departamentos|Editar Departamentos|Eliminar Departamentos', ['only' => ['index','store']]);
+         $this->middleware('permission:Crear Departamentos', ['only' => ['create','store']]);
+         $this->middleware('permission:Editar Departamentos', ['only' => ['edit','update']]);
+         $this->middleware('permission:Eliminar Departamentos', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -60,7 +60,8 @@ class DepartamentoController extends Controller
         ]);
         
         Departamento::create($request->all());
-        return redirect()->route('departamento.index')->with('success','Departamento creada con éxito');
+        Alert::success('Departamento agregado con éxito');
+        return redirect()->route('departamento.index');
     }
 
     /**

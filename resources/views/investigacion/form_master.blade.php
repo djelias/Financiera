@@ -237,8 +237,8 @@
   
     <br>
        <div class="form-group text-center" >
-      {{ Form::button(isset($model)? 'Update' : 'Guardar' , ['class'=>'btn btn-success btn-lg','type'=>'submit']) }}
-      <a class="btn btn-danger btn-lg" href="{{ route('investigacion.index') }}">Cancelar</a>
+      {{ Form::button(isset($model)? 'Update' : 'Guardar' , ['class'=>'btn btn-success btn-sm','type'=>'submit']) }}
+      <a class="btn btn-danger btn-sm" href="{{ route('investigacion.index') }}">Cancelar</a>
     </div> 
 
 

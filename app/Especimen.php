@@ -9,8 +9,7 @@ class Especimen extends Model
 {
 
   use LogsActivity;
-  
-    protected $fillable = ['idEspecie', 'cantidad', 'caracteristicas','codigoEspecimen','colector','fechaColecta','habitat','horaSecuenciacion1','idTaxonomia','latitud','longitud','peso','tamano','tecnicaRecoleccion','tipoMuestra', 'imagen'];
+    protected $fillable = ['idInvestigacion', 'cantidad', 'caracteristicas','codigoEspecimen','colector','fechaColecta','habitat','horaSecuenciacion1','idTaxonomia','latitud','longitud','peso','tamano','tecnicaRecoleccion','tipoMuestra', 'imagen'];  
     protected $dates = ['created_at','updated_at'];
 
     public function scopeNombre($query, $codigoEspecimen)
@@ -23,7 +22,7 @@ class Especimen extends Model
    }
 
   public function Especie(){
-    return $this->belongsTo('App\Especie', 'idEspecie');
+    return $this->belongsTo('App\Investigacion', 'idInvestigacion');
    }
 
    public function Genero(){

@@ -4,7 +4,6 @@
   </header>
 @endsection
 @section('container')
- 
   @if ($errors->any())
    <div class="alert alert-danger">
   

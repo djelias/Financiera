@@ -8,6 +8,8 @@ use App\Riesgo;
 use App\EspecieAmenazada;
 use EspecieAmenazada1\http\Request\EspecieAmenazadaRequest;
 use RealRashid\SweetAlert\Facades\Alert;
+use PDF;
+use Carbon\Carbon;
 
 
 class EspecieAmenazadaController extends Controller
@@ -29,6 +31,7 @@ class EspecieAmenazadaController extends Controller
     public function index(Request $request)
     {
     	$riesgos = Riesgo::all();
+        $especieAmenazadas = EspecieAmenazada::all();
         $nombre =$request->get('nomEspamen');
         $especieAmenazadas = EspecieAmenazada::orderBy('id','DESC')->nombre($nombre)->paginate(10);
         return view('especieAmenazada.index',compact('especieAmenazadas','riesgos'));
@@ -126,5 +129,20 @@ class EspecieAmenazadaController extends Controller
     	Alert::danger('No se Puede eliminar este registro porque esta asociado con otra asignación');
         return redirect()->route('especieAmenazada.index');
     }
+    }
+
+    public function generatePDF(Request $request)
+
+    {
+        $nombre = $request->get('nomEspamen');
+        $especieAmenazadas = EspecieAmenazada::orderBy('id','DESC')->nombre($nombre)->paginate(10);
+        //$data = ['title' => 'Esta es una página de Prueba'];
+        $date=new Carbon();
+        $fecha = $date->format('d-m-Y');
+
+        $pdf = PDF::loadView('especieAmenazada.especieAmenzada',compact('especieAmenazadas','fecha'));
+        $pdf->getDomPDF()->set_option("enable_php", TRUE);
+        return $pdf->stream('especieAmenzada.pdf');
+
     }
 }

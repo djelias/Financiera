@@ -13,17 +13,20 @@
      <div class="col-sm-5">
       <div class="form-horizontal {{ $errors->has('idGenero') ? 'has-error' : "" }}">
         {!! form::label('Seleccione el género:') !!}
-      <select name="idGenero" class="form-control">
+   
+      <select name="idGenero" class="form-control" onchange="reino()">
                 <option disabled selected>Seleccione género </option>
-                @foreach($generos as $genero)
+                   @foreach($generos as $genero)  
                       <option value="{{$genero->id}}">{{$genero->nombreGenero}}</option>
-                 @endforeach
+                @endforeach
             </select>
-            <div class="help-block" > 
+      
+          <div class="help-block" > 
           {{ $errors->first('idGenero', 'Debe seleccionar una opción') }}
       </div>          
  </div>
 </div>
+
         <div>
         <br>
         {{ Form::button(isset($model)? 'Update' : 'Guardar' , ['class'=>'btn btn-success btn-sm','type'=>'submit']) }}
@@ -33,4 +36,4 @@
     </div>
      
       <br>
-      
+ 

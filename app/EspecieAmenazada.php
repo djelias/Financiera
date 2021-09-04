@@ -8,6 +8,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class EspecieAmenazada extends Model
 {
+	 public $table = "especieAmenazadas";
 
   use LogsActivity;
   

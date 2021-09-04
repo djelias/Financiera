@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 use App\Dominio;
 use App\Reino;
 use App\Filum;
@@ -14,6 +15,9 @@ use App\Genero;
 use App\Especie;
 use Especie1\http\Request\ClaseRequest;
 use RealRashid\SweetAlert\Facades\Alert;
+use PDF;
+use DB;
+use Carbon\Carbon;
 
 class EspecieController extends Controller
 {
@@ -37,13 +41,25 @@ class EspecieController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
+
     {
-    	
+        $idReino=$request->get('idReino');
        $generos = Genero::all();
        $especies = Especie::all();
-        $nombre =$request->get('nombreEspecie');
-        $especies = Especie::orderBy('id','DESC')->nombre($nombre)->paginate(10);
-        return view('especie.index',compact('especies','generos'));
+       $reinos = Reino::all();
+       $nombre=$request->get('nombreEspecie');
+
+
+        if ($idReino != "") {
+               
+             $especies = Especie::orderBy('id','DESC')->nombre($nombre)->paginate(10);
+        return view('especie.index_filter',compact('especies','generos','reinos','idReino'));
+            }
+        else{
+           $especies = Especie::orderBy('id','DESC')->nombre($nombre)->paginate(10);
+        return view('especie.index',compact('especies','generos','reinos','idReino'));
+            } 
+        
     }
 
     /**
@@ -71,6 +87,7 @@ class EspecieController extends Controller
         $this->validate($request,[
           'idGenero'=>'required|numeric',  
           'nombreEspecie'=>'required|alpha_spaces',
+           'idReino', 
           ]);
             Especie::create($request->all());
             Alert::success('Especie agregado con éxito');
@@ -86,8 +103,13 @@ class EspecieController extends Controller
      */
     public function show($id)
     {
-        $especies = Especie::find($id);
-      return view('especie.show',compact('especies'));
+       $especies = Especie::find($id);
+        $date=new Carbon();
+        $fecha = $date->format('d-m-Y');
+
+        $pdf = PDF::loadView('especie.reportePDF',compact('especies','fecha'));
+        $pdf->getDomPDF()->set_option("enable_php", TRUE);
+        return $pdf->stream('reportePDF.pdf');
     }
 
     /**
@@ -116,6 +138,7 @@ class EspecieController extends Controller
         $this->validate($request,[
           'idGenero'=>'required|numeric',  
           'nombreEspecie'=>'required|alpha_spaces',
+          'idReino',  
           ]);
         Especie::find($idEspecie)->update($request->all());
         Alert::success('Especie actualizada con éxito');
@@ -139,4 +162,30 @@ class EspecieController extends Controller
         return redirect()->route('especie.index');
     }
     }
+    
+    public function reportePDF( request $request, $idReino)
+
+    {
+        if ($idReino != NULL) {
+        $generos = Genero::all();
+        $especies = Especie::all();
+        $reinos = Reino::all();
+        $nombre =$request->get('nombreEspecie');
+        $nombreReino= DB::table('reinos')->select('nombreReino')->where('id', $idReino)->get();
+        $especies = Especie::orderBy('id','DESC')->nombre($nombre)->paginate(15);
+        $date=new Carbon();
+        $fecha = $date->format('d-m-Y');
+        $pdf = PDF::loadView('especie.reporte2',compact('especies','fecha','idReino','nombreReino'));
+        $pdf->getDomPDF()->set_option("enable_php", TRUE);
+        return $pdf->stream('reporteEspecie.pdf');
+        }
+        else {
+            Alert::danger('Seleccione un reino');
+             return redirect()->route('especie.index');
+        }
+        
+        
+        
+    }
+
 }

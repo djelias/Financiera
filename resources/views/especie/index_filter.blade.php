@@ -82,9 +82,8 @@
       <th style="text-align:center">Acciones</th>
     </tr>
     <?php $no=1; ?>
-      <?php $no=1; ?>
-    @foreach ($especies as $key => $value).
-
+    @foreach ($especies as $key => $value)
+    @if($value->Genero->Familia->Orden->Clase->Filum->Reino->id == $idReino)
     <tr>
         <td>{{$no++}}</td>
         <td>{{$value->Genero->Familia->Orden->Clase->Filum->Reino->Dominio->nombreDominio}}</td>
@@ -110,6 +109,7 @@
           @endcan
         </td>
       </tr>
+      @endif
     @endforeach
   </table>
   {!! $especies->appends(Request::only(['idReino'=>'idReino']))->render() !!} 
