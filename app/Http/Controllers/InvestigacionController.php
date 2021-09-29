@@ -41,7 +41,7 @@ class InvestigacionController extends Controller
     
     	$zonas = Zona::all();
       $municipios = Municipio::all();
-      $tipoInvestigaciones = Investigacion::all();
+      $tipoInvestigaciones = TipoInvestigacion::all();
       $users = User::all();
       $nombre =$request->get('nombreInv');
       $investigaciones = Investigacion::orderBy('id','DESC')->nombre($nombre)->paginate(10);
@@ -129,13 +129,13 @@ class InvestigacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($idInv)
+    public function edit($id)
     {
         $zonas = Zona::all();
         $municipios = Municipio::all();
         $tipoInvestigaciones = TipoInvestigacion::all();
         $users = User::all();
-        $investigaciones = Investigacion::find($idInv);
+        $investigaciones = Investigacion::find($id);
         return view('investigacion.edit',compact('zonas','municipios','tipoInvestigaciones','investigaciones','users'));
     }
 
@@ -146,7 +146,7 @@ class InvestigacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $idInv)
+    public function update(Request $request, $id)
     {
         $this->validate($request,[
           'idZona' ,
@@ -165,7 +165,7 @@ class InvestigacionController extends Controller
           'descripcionInvestigacion'=>'required|alpha_spaces',
           'correoElectronico'=>'required|alpha_spaces',
           ]);
-        Investigacion::find($idInv)->update($request->all());
+        Investigacion::find($id)->update($request->all());
         Alert::success('Investigacion actualizada con éxito');
       return redirect()->route('investigacion.index');
     }
@@ -176,10 +176,10 @@ class InvestigacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($idInv)
+    public function destroy($id)
     {
         try{
-             Investigacion::find($idInv)->delete();
+             Investigacion::find($id)->delete();
              Alert::success('Investigacion eliminado con exito');
         return redirect()->route('investigacion.index');
     }catch (\Illuminate\Database\QueryException $e) {

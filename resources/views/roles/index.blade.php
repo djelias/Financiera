@@ -12,7 +12,7 @@
           </div>
         <div class="pull-right">
         @can('Crear Rol')
-            <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
+            <a class="btn btn-success" href="{{ route('roles.create') }}"> Nuevo Rol de Usuario</a>
         @endcan
         </div>
     </div>
@@ -37,13 +37,13 @@
         <td>{{ ++$i }}</td>
         <td>{{ $role->name }}</td>
         <td>
-            <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">Detalle</a>
+            <a class="btn btn-info btn-sm" href="{{ route('roles.show',$role->id) }}">Detalle</a>
             @can('Editar Rol')
-                <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Editar</a>
+                <a class="btn btn-primary btn-sm" href="{{ route('roles.edit',$role->id) }}">Editar</a>
             @endcan
             @can('Eliminar Rol')
-                {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-                    {!! Form::submit('Eliminar', ['class' => 'btn btn-danger']) !!}
+                {!! Form::open(['method' => 'Eliminar','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+                    {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-sm']) !!}
                 {!! Form::close() !!}
             @endcan
         </td>

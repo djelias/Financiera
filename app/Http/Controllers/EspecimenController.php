@@ -57,7 +57,7 @@ class EspecimenController extends Controller
     public function create()
     {
     	$especimens= Especimen::all();
-        $investigaciones = Especie::all();
+        $investigaciones = Investigacion::all();
         return view('especimen.create', compact('especimens','investigaciones'));
     }
 
