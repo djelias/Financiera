@@ -34,7 +34,7 @@
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/home-bg.jpg')">
+        <header class="masthead" style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/prueba2.jpg'); width:1350px; height:400px;">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">

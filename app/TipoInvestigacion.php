@@ -7,11 +7,12 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class TipoInvestigacion extends Model
 {
+  public $table = "tipoInvestigacions";
 
   use LogsActivity;
   
     //
-    public $table = "tipo_investigacions";
+  
     protected $fillable = ['nombreTipo','descripcionTipo'];
     protected $dates = ['created_at','updated_at'];
 

@@ -1,7 +1,7 @@
  @extends('layout')
  @section('header')
  
-  <header class="masthead" style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/jaguar.jpg')">
+  <header class="masthead" style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/cotuza.jpg')">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">

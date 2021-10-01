@@ -10258,6 +10258,7 @@ header.masthead {
   background-attachment: scroll;
   position: relative;
   background-size: cover;
+
 }
 header.masthead .overlay {
   position: absolute;
@@ -10278,7 +10279,7 @@ header.masthead .site-heading {
   header.masthead .page-heading,
 header.masthead .post-heading,
 header.masthead .site-heading {
-    padding: 200px 0;
+    padding: 15px 0 10px;
   }
 }
 header.masthead .page-heading,
@@ -10289,6 +10290,7 @@ header.masthead .page-heading h1,
 header.masthead .site-heading h1 {
   font-size: 50px;
   margin-top: 0;
+
 }
 header.masthead .page-heading .subheading,
 header.masthead .site-heading .subheading {
@@ -10302,7 +10304,8 @@ header.masthead .site-heading .subheading {
 @media only screen and (min-width: 768px) {
   header.masthead .page-heading h1,
 header.masthead .site-heading h1 {
-    font-size: 80px;
+    font-size: 60px;
+    text-align: center;
   }
 }
 header.masthead .post-heading h1 {
