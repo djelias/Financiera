@@ -67,6 +67,19 @@
                                     
                                 </button>
                         </div>
+
+<!-- Faceebook Button -->
+                        <div class="form-group ">
+                                <a href="{{url('/redirect')}}"  class="form-control btn btn-primary rounded submit px-3">
+                                Iniciar Sesión con Facebook </a>
+                        </div>
+<!-- Google Button -->
+                        <div class="form-group ">
+                                <a href="{{url('auth/google')}}"  class="form-control btn btn-primary rounded submit px-3">
+                                   Iniciar Sesión con Google </a>
+                        </div>
+
+
                           <div class="form-group">
                         <a href="{{ url('/') }}" class="form-control btn btn-danger rounded submit px-3">Cancelar</a>
                     </div>
