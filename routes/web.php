@@ -39,6 +39,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/redirect', 'SocialAuthController@redirect');
+Route::get('/callback', 'SocialAuthController@callback');
+
+Route::get('google', function () {
+    return view('googleAuth');
+});
+    
+Route::get('auth/google', 'Auth\LoginController@redirectToGoogle');
+Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 
@@ -79,6 +89,12 @@ Route::get('/reportePDF.pdf/{id}', 'EspecimenController@generatePDF');
 Route::get('/reporteEspecie/{idReino}', 'EspecieController@reportePDF')->name('reporte2');
 Route::get('index_filter', 'EspecieController@index');
 //Route::get('reporte2.pdf', 'EspecieController@reportePDF');
+
+
+//Rutas para Facebook y google
+
+
+
 });
 
 
