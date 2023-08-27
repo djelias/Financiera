@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>BIO-UES</title>
+        <title>EM&ASOCIADOS</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
@@ -31,7 +31,7 @@
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="{{ url('/home') }}">
-    <img src="startbootstrap-clean-blog-gh-pages/assets/img/ues.svg" width="70" height="70" class="d-inline-block align-top" alt="">
+    <img src="startbootstrap-clean-blog-gh-pages/assets/img/logo.jpg" width="70" height="70" class="d-inline-block align-top" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -40,50 +40,71 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">BIO-UES</a>
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">EM&ASOCIADOS</a>
       </li>
 
       @can('Dominios')
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Especies
+          Cuentas por cobrar
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           @can('Dominios')
-          <a class="dropdown-item" href="{{ route('dominio.index') }}">Gestión de Dominios</a>
+          <a class="dropdown-item" href="{{ route('prestamo.index') }}">Gestión de Prestamos</a>
           @endcan
-          @can('Reinos')
-          <a class="dropdown-item" href="{{ route('reino.index') }}">Gestión de Reinos</a>
+          @can('Dominios')
+          <a class="dropdown-item" href="{{ route('prestatario.index') }}">Gestión de Prestatarios</a>
           @endcan
-          @can('Filums')
-           <a class="dropdown-item" href="{{ route('filum.index') }}">Gestión de Filums</a>
-           @endcan
-           @can('Clases')
-           <a class="dropdown-item" href="{{ route('clase.index') }}">Gestión de Clases</a>
-           @endcan
-           @can('Ordenes')
-           <a class="dropdown-item" href="{{ route('orden.index') }}">Gestión de Orden</a>
-           @endcan
-           @can('Familias')
-           <a class="dropdown-item" href="{{ route('familia.index') }}">Gestión de Familias</a>
-           @endcan
-           @can('Generos')
-           <a class="dropdown-item" href="{{ route('genero.index') }}">Gestión de Géneros</a>
-           @endcan
-           @can('Especies')
-           <a class="dropdown-item" href="{{ route('especie.index') }}">Gestión de Especies</a>
-           @endcan
+          @can('Dominios')
+          <a class="dropdown-item" href="{{ route('pago.index') }}">Gestión de Pagos</a>
+          @endcan
+          
         </div>
       </li>
       @endcan
 
+            @can('Dominios')
       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Modulo de contabilidad
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @can('Dominios')
+          <a class="dropdown-item" href="{{ route('partidac.index') }}">Gestión de Partidas contables</a>
+          @endcan
+          
+        </div>
+      </li>
+      @endcan
+
+      @can('Dominios')
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Contabilidad
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @can('Dominios')
+          <a class="dropdown-item" href="{{ route('contribuyente.index') }}">Gestión de Contribuyentes</a>
+          @endcan
+          @can('Dominios')
+          <a class="dropdown-item" href="{{ route('catcuenta.index') }}">Gestión de Cuentas</a>
+          @endcan
+          @can('Dominios')
+          <a class="dropdown-item" href="{{ route('libcompras.index') }}">Gestión de Compras</a>
+          @endcan
+          
+        </div>
+      </li>
+      @endcan
+
+      <!--<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Colecciones
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           @can('Colecciones')
           <a class="dropdown-item"  href="{{ route('coleccion.index') }}">Colecciones</a>
+          <a class="dropdown-item"  href="{{ route('prestatario.index') }}">Prestatarios</a>
           @endcan
           @can('Taxonomias')
           <a class="dropdown-item"  href="{{ route('taxonomia.index') }}">Taxonomias</a>
@@ -134,7 +155,7 @@
           <a class="dropdown-item"  href="https://www.boldsystems.org/index.php/Public_BINSearch?searchtype=records"> Bold System</a>
           </div>
       </li>
-
+-->
       @can('Usuarios')
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -214,13 +235,13 @@
                                 </a>
                             </li>
                         </ul>
-                        <p class="copyright text-muted">Copyright &copy; BIO-UES 2021</p>
+                        <p class="copyright text-muted">Copyright &copy; EM & Asociados 2023</p>
                     </div>
                 </div>
             </div>
             <div>
                 <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: #D7D2D1 ;">
-        <a class="navbar-brand"> BIO-UES </a>
+        <a class="navbar-brand"> EM & Asociados </a>
             <div >&emsp;<span class="glyphicon glyphicon-copyright-mark"><span id= "fecha"></span></div>
              </nav>
             </div>

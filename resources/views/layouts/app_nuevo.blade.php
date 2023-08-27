@@ -50,7 +50,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           @can('Dominios')
-          <a class="dropdown-item" href="{{ route('dominio.index') }}">Gestión de Dominios</a>
+          <a class="dropdown-item" href="{{ route('contribuyente.index') }}">Gestión de Contribuyentes</a>
           @endcan
           @can('Reinos')
           <a class="dropdown-item" href="{{ route('reino.index') }}">Gestión de Reinos</a>

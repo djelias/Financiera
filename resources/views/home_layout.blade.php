@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>INICIO BIO-UES</title>
+        <title>INICIO</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
@@ -56,13 +56,13 @@
                                 </a>
                             </li>
                         </ul>
-                        <p class="copyright text-muted">Copyright &copy; BIO-UES 2021</p>
+                        <p class="copyright text-muted">Copyright &copy; EM & Asociados 2023</p>
                     </div>
                 </div>
             </div>
             <div>
                 <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: #D7D2D1 ;">
-        <a class="navbar-brand"> BIO-UES </a>
+        <a class="navbar-brand"> EM&Asociados </a>
             <div >&emsp;<span class="glyphicon glyphicon-copyright-mark"><span id= "fecha"></span></div>
              </nav>
             </div>

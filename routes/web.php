@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('departamento','DepartamentoController');
     Route::resource('municipio','MunicipioController');
     Route::resource('coleccion','ColeccionController');
+    Route::resource('prestatario','PrestatarioController');
     Route::resource('publicacion','PublicacionController');
     Route::resource('aprobacion','AprobacionController');
     Route::resource('zona','ZonaController');
@@ -65,6 +66,16 @@ Route::group(['middleware' => ['auth']], function() {
      Route::resource('coleccion','ColeccionController');
  Route::resource('zona','ZonaController');
  Route::resource('dominio','DominioController');
+ 
+ Route::resource('pago','PagoController');
+ Route::resource('partidac','PartidacController');
+ Route::get('balancec','PartidacController@estadoc')->name('reporteBalance');
+ Route::resource('prestamo','PrestamoController');
+ Route::resource('prestatario','PrestatarioController');
+ Route::resource('contribuyente','ContribuyenteController');
+ Route::resource('catcuenta','CatcuentaController');
+ Route::resource('libcompras','LibcomprasController');
+ 
  Route::resource('secuencia','SecuenciaController');
  Route::resource('riesgo','RiesgoController');
  Route::resource('tipoInvestigacion','TipoInvestigacionController');
@@ -83,6 +94,17 @@ Route::resource('investigacion','InvestigacionController');
 
 //RUTAS PARA REPORTERIA
 Route::get('dominioPrueba.pdf', 'DominioController@generatePDF');
+
+Route::get('partidacPrueba.pdf', 'PartidacController@generatePDF');
+Route::get('pagoPrueba.pdf', 'PagoController@generatePDF');
+Route::get('contribuyentePrueba.pdf', 'ContribuyenteController@generatePDF');
+Route::get('catcuentaPrueba.pdf', 'CatcuentaController@generatePDF');
+Route::get('libcomprasPrueba.pdf', 'LibcomprasController@generatePDF');
+Route::get('/prestamoPrueba.pdf/{id}', 'PrestamoController@generatePDF')->name('reportePre');
+
+Route::get('exportPartidac', 'PartidacController@exportExcel')->name('excelPartidac');
+Route::get('exportLibcompras', 'LibcomprasController@exportExcel')->name('excelLibcompras');
+
 Route::get('especieAmenazada.pdf', 'EspecieAmenazadaController@generatePDF');
 Route::get('reporteTaxonomia.pdf', 'TaxonomiaController@generatePDF');
 Route::get('/reportePDF.pdf/{id}', 'EspecimenController@generatePDF');

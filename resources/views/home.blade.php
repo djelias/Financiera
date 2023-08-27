@@ -5,9 +5,9 @@
 
             <div class="container">
                             <a class="navbar-brand" href="{{ url('/home') }}">
-    <img src="startbootstrap-clean-blog-gh-pages/assets/img/ues.svg" width="90" height="90" alt="">
+    <img src="startbootstrap-clean-blog-gh-pages/assets/img/logo.jpg" width="90" height="90" alt="">
   </a>
-                <a class="navbar-brand" href="index.html">BIO-UES</a>
+                <a class="navbar-brand" href="index.html">EM&ASOCIADOS</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -20,7 +20,7 @@
                         @if (Auth::guest())
                     <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Entrar</a></li>                   
                          @else
-                          <li class="nav-item"><a class="nav-link" href="{{ url('/gestion') }}">Gestiones BIO-UES</a></li>
+                          <li class="nav-item"><a class="nav-link" href="{{ url('/gestion') }}">Gestiones del Sistema</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url('/home') }}" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Cerrar Sesión </a>
@@ -34,14 +34,14 @@
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/prueba2.jpg'); width:1350px; height:400px;">
+        <header class="masthead" style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/prueba2.png'); width:1350px; height:400px;">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-10 mx-auto">
                         <div class="site-heading">
-                            <h1>Biodiversidad de El Salvador</h1>
-                            <span class="subheading">Universidad de El Salvador</span>
+                            <h1>EM & Asociados</h1>
+                            <span class="subheading">Sistema financiero</span>
                         </div>
                     </div>
                 </div>

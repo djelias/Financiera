@@ -1,11 +1,13 @@
 /* Global Styles */
 
 body {
-  margin: 5mm 5mm 5mm 5mm;
+  margin: 1mm 1mm 1mm 1mm;
   background-color: #fff;
   font-family: sans-serif;
 
   
+
+}
 
 }
 
@@ -25,15 +27,7 @@ h3 {
     text-align: center;
 }
 
-/* Styles Encabezado */
-.encabezado h4{
-    margin: 2mm 2mm 2mm 2mm;
-    text-align: center;
-}
 
-.der h5 {
-    text-align: left;
-}
 
 .header h5{
     display: inline;
@@ -59,6 +53,9 @@ h3 {
     margin-bottom:auto;
 }
 
+@page { 
+    size: 210mm 297mm; 
+}
 /* Styles Tabla Nomina */
 table {
     border-collapse: collapse;
@@ -72,15 +69,19 @@ table {
     border:0px solid black;
 }
 
+.tamletra {
+    font-size: 11px;
+}
+
 table {
     width: 100%;
 }
 
 th {
-    height: 5px;
+    height: 0px;
 }
 td {
-    height: 10px;
+    height: 0px;
     vertical-align: bottom;
 }
 
@@ -89,7 +90,7 @@ th {
 }
 
 th, td {
-    padding: 10px;
+    padding: 0px;
     text-align: left;
 }
 
@@ -103,8 +104,8 @@ tr:hover {background-color: #2194C6}
 tr:nth-child(even) {background-color: #f2f2f2}
 
 th {
-    background-color: #2194C6;
-    color: white;
+    color: black;
+    border:1px solid black
 }
 img {
     border: 1px solid #ddd;

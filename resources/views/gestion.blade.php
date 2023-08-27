@@ -1,14 +1,14 @@
  @extends('layout')
  @section('header')
  
-  <header class="masthead" style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/cotuza.jpg')">
+  <header class="masthead" style="background-image: url('startbootstrap-clean-blog-gh-pages/assets/img/inicio.jpg')">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-10 mx-auto">
                         <div class="site-heading">
-                            <h1>BIENVENIDOS</h1>
-                            <span class="subheading">Tu plataforma completa de acceso a la información sobre las especies de la Biodiversidad salvadoreña.</span>
+                            <h1>BIENVENID@S</h1>
+                            <span class="subheading">Tu plataforma para la gestión financiera de la empresa EM & Asociados</span>
                         </div>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10 mx-auto">
-                        <h2>Sobre BIO-UES</h2>
+                        <h2>Sobre EM & Asociados</h2>
                         <p class="lead">BIO-UES  es una plataforma para el almacenamiento de datos sobre las especies naturales administrado por la Escuela de Biología de la Universidad de El Salvador. Podrás encontrar la siguiente informacion:</p>
                         <ul>
                             <li>Clasificación taxonomica de las especies registradas de la Biodiversidad salvadoreña.</li>
